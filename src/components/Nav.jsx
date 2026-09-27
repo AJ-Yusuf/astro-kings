@@ -7,7 +7,7 @@ import { BOOKING_MODE, BOOKING_PLATFORM_URL } from '../lib/config.js';
 import { useRoute } from '../lib/router.js';
 
 /* All booking CTAs share one destination — only their look differs.
-   'link' mode deep-links to the hosted Planyo page; 'demo'/'embed' stay on
+   'link' mode deep-links to the hosted Planyo page; 'embed' stays on
    our #booking page (which renders the built-in flow or the Planyo widget). */
 const linkOut = BOOKING_MODE === 'link' && BOOKING_PLATFORM_URL;
 export const BOOK_HREF = linkOut ? BOOKING_PLATFORM_URL : '#booking';
@@ -205,7 +205,7 @@ export function Footer(){
             </div>
           </div>
           <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-[12px] text-white/40 md:flex-row md:items-center md:justify-between">
-            <span>© 2016–2026 Astro Kings · All rights reserved</span>
+            <span>© 2016–2026 Astro Kings · All rights reserved · <a href="#privacy" className="hover:text-white/70 underline">Privacy policy</a></span>
             <span className="flex items-center gap-1.5"><span className="text-white/30">Nottingham NG8</span> · floodlit 4G 5-a-side</span>
           </div>
         </Glass>

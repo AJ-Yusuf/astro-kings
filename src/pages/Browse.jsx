@@ -4,8 +4,6 @@ import { useState } from 'react';
 import { I } from '../lib/icons.jsx';
 import { PITCHES, PITCH_PHOTO, slotsInBand, TIME_BANDS, store } from '../lib/data.js';
 import { go } from '../lib/router.js';
-import { useStore } from '../lib/store.js';
-import { canStart } from '../lib/booking.js';
 import { todayKey, keyLabel } from '../lib/dates.js';
 import { Glass, Tag, PageHead } from '../components/ui.jsx';
 import { Calendar } from '../components/Calendar.jsx';
@@ -24,7 +22,6 @@ export function Chip({ active, onClick, children }){
 }
 
 export function Browse(){
-  useStore();
   const [fmt,setFmt] = useState('all');   // always land on 'all' — users narrow down themselves
   const [dayKey,setDayKey] = useState(isKey(store.day) ? store.day : todayKey());
   const [band,setBand] = useState('evening');
@@ -93,19 +90,13 @@ export function Browse(){
                     </div>
                     <div className="text-right"><div className="tnum text-2xl font-semibold">£{p.price}</div><div className="-mt-1 text-[12px] text-white/45">{p.unit}</div></div>
                   </div>
-                  {/* mini slot strip — reflects the chosen date + time of day */}
-                  <div className="mt-4 flex flex-wrap items-center gap-2">
-                    {bandSlots.map(s=>{
-                      const taken = !canStart(p.id, dayKey, s, 1);
-                      return (
-                        <button key={s} disabled={taken}
-                          onClick={()=>{ store.venue=p.id; store.time=s; store.day=dayKey; go('booking',{p:p.id,t:s}); }}
-                          className={`tnum rounded-xl px-3 py-2 text-[13px] transition ${taken?'cursor-not-allowed text-white/25 line-through':'glass glass-soft text-white/80 hover:accent-bg hover:text-[#0b0b0b]'}`}>
-                          {s}
-                        </button>
-                      );
-                    })}
-                    <button onClick={()=>{ store.venue=p.id; store.day=dayKey; go('venue',{p:p.id}); }} className="ml-auto inline-flex items-center gap-1.5 text-[13px] accent-text">view all<span style={{width:15,height:15}}>{I.chev({})}</span></button>
+                  {/* live availability lives in the booking system - link straight there */}
+                  <div className="mt-4 flex flex-wrap items-center gap-3">
+                    <button onClick={()=>{ store.venue=p.id; store.day=dayKey; go('booking',{p:p.id}); }}
+                      className="tnum rounded-xl px-4 py-2 text-[13px] accent-bg text-[#0b0b0b] font-medium transition hover:opacity-90">
+                      check availability &amp; book
+                    </button>
+                    <button onClick={()=>{ store.venue=p.id; store.day=dayKey; go('venue',{p:p.id}); }} className="ml-auto inline-flex items-center gap-1.5 text-[13px] accent-text">pitch details<span style={{width:15,height:15}}>{I.chev({})}</span></button>
                   </div>
                 </div>
               </Glass>

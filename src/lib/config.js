@@ -1,50 +1,55 @@
-/* config.js — booking rules in one place so they're trivial to change */
+/* config.js — site configuration.
 
-export const DEPOSIT_PERCENT   = 0.20;   // deposit = 20% of total, DEDUCTED from it (not added on top)
-export const HOLD_MINUTES      = 15;     // a pending reservation holds the slot(s) this long
-export const CANCEL_WINDOW_HRS = 24;     // >24h before start → refund as credit; inside → forfeit
-export const NO_SHOW_LIMIT     = 2;      // legacy threshold (kept for compatibility)
-export const MAX_HOURS         = 2;      // longest bookable run (consecutive 1h slots)
+   PRODUCTION SETUP (Path 1 — Planyo embed):
+   Bookings, payments and availability are all handled by Planyo inside an
+   embedded widget. This site does NOT take payments, store customer records,
+   or hold any API keys. */
 
-/* Escalating no-show defence */
-export const NO_SHOW_PREPAY_AT = 1;      // after this many no-shows → full prepayment required (no deposit)
-export const NO_SHOW_FEE_AT    = 2;      // after this many no-shows → also add a no-show fee
-export const NO_SHOW_FEE       = 10;     // £ surcharge added for repeat offenders
-export const CONFIRM_WINDOW_HRS = 2;     // must confirm attendance at least this long before kick-off
-export const PAYPLAY_PRICE      = 4.5;    // U18 daily pay & play, per person
-
-export const STUDENT_DOMAIN_RE = /\.ac\.uk$/i;  // student status derived from email domain
+/* ---------------------------------------------------------------- booking */
 
 /* Which booking experience the #booking page shows:
-   'demo'   — our built-in simulated flow (default)
-   'embed'  — Level 2: the venue's Planyo booking widget lives inside our page
+   'embed'  — the venue's Planyo booking widget lives inside our page  ← PRODUCTION
    'link'   — deep-link out to BOOKING_PLATFORM_URL (their hosted booking page) */
-export const BOOKING_MODE = 'demo';
+export const BOOKING_MODE = 'embed';
 
-/* Planyo Level-2 embed. Paste the venue's Planyo INLINE/IFRAME embed src here.
-   Empty = show a styled PREVIEW of where the live widget will sit (demo only). */
-export const PLANYO_EMBED_URL = '';
+/* The venue's Planyo booking system, embedded in an iframe on our #booking page.
+   calendar=22300 is the Astro Kings Planyo calendar ID.
+   This is Planyo's own hosted booking page, so it does NOT depend on the old
+   WordPress site existing. */
+export const PLANYO_EMBED_URL = 'https://www.planyo.com/booking.php?calendar=22300';
 
-/* The venue's LIVE hosted booking page (Planyo). Used by 'link' mode and as the
-   fallback destination for booking CTAs. TODO: paste the real Planyo URL. */
-export const BOOKING_PLATFORM_URL = '';
+/* Same Planyo booking page, opened in a new tab. Used by 'link' mode and as the
+   "having trouble?" fallback beneath the embedded widget. */
+export const BOOKING_PLATFORM_URL = 'https://www.planyo.com/booking.php?calendar=22300';
 
-/* Cloudflare Turnstile site key. This is Cloudflare's official ALWAYS-PASSES test
-   key — it renders a real, working widget on any domain with no account needed.
-   For production: replace with the owner's real site key (challenges.cloudflare.com)
-   AND verify the token server-side at /siteverify. */
+/* Planyo resource IDs for the pitches, from Dan's own Planyo shortcode:
+   ppp_resfilter=58246,58245,58244,185941
+   ⚠️ NOT yet matched to individual pitch names - we know these are the four
+   bookable resources but not which ID is which pitch. Only needed if the
+   custom API booking flow (Path 2) is built later. */
+export const PLANYO_RESOURCE_IDS = [58246, 58245, 58244, 185941];
+
+/* Where enquiry/registration forms should send submissions.
+   Until a real endpoint exists, forms tell the user to call or email instead
+   of pretending to submit. Set this to a real handler (e.g. '/api/enquiry.php'
+   or a form service like Formspree) to enable in-page submission. */
+export const ENQUIRY_ENDPOINT = '';
+
+/* ---------------------------------------------------------------- display only */
+/* Indicative prices shown on marketing pages. The ACTUAL price charged is
+   always whatever Planyo calculates at booking time — these are for display
+   and must be kept in step with Planyo's pricing manager. */
+export const MAX_HOURS      = 2;     // longest bookable run shown in marketing copy
+export const CANCEL_WINDOW_HRS = 24; // shown in the cancellation policy text
+export const PAYPLAY_PRICE  = 4.5;   // U18 daily pay & play, per person
+
+/* ---------------------------------------------------------------- security */
+
+/* Cloudflare Turnstile site key.
+   ⚠️ This is Cloudflare's ALWAYS-PASSES test key — it blocks nothing.
+   Before launch: replace with the venue's real site key from
+   dash.cloudflare.com → Turnstile, AND verify tokens server-side at
+   /siteverify. Until then, treat forms as unprotected against bots. */
 export const TURNSTILE_SITE_KEY = '1x00000000000000000000AA';
-
-/* Stripe publishable TEST key (pk_test_…). Leave blank to use the built-in
-   simulated card field. Paste the owner's test key to activate real Stripe
-   Elements. Taking actual payments still needs a backend PaymentIntent. */
-export const STRIPE_PUBLISHABLE_KEY = '';
-
-/* Simulated Stripe test cards (we have no backend; this mirrors Stripe's test-mode behaviour). */
-export const TEST_CARDS = {
-  '4242424242424242': { ok: true },
-  '4000000000000002': { ok: false, error: 'Your card was declined.' },
-  '4000000000009995': { ok: false, error: 'Insufficient funds.' },
-};
 
 export const pounds = (n) => '£' + Math.round(n);

@@ -3,6 +3,8 @@
 
 import { useState } from 'react';
 import { I } from '../lib/icons.jsx';
+import { ENQUIRY_ENDPOINT } from '../lib/config.js';
+import { CONTACT } from '../lib/data.js';
 import { Btn, Field } from './ui.jsx';
 
 const INPUT = 'w-full bg-transparent text-[14px] outline-none placeholder:text-white/35';
@@ -13,10 +15,32 @@ export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we he
   const [done,setDone] = useState(false);
   const set = (k)=>(e)=>{ setV(s=>({...s,[k]:e.target.value})); setErr(''); };
 
-  function submit(e){
+  const [sending,setSending] = useState(false);
+
+  async function submit(e){
     if (e) e.preventDefault();
     if (!v.name.trim() || !v.email.trim()) { setErr('Please add your name and email.'); return; }
-    setDone(true);
+
+    // No endpoint configured yet - never pretend the message was sent.
+    if (!ENQUIRY_ENDPOINT) {
+      setErr(`Our online form isn't live yet — please email ${CONTACT.email} or call ${CONTACT.phone} and we'll get straight back to you.`);
+      return;
+    }
+
+    setSending(true);
+    try {
+      const res = await fetch(ENQUIRY_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(v),
+      });
+      if (!res.ok) throw new Error('send failed');
+      setDone(true);
+    } catch (_) {
+      setErr(`Sorry — we couldn't send that. Please email ${CONTACT.email} or call ${CONTACT.phone}.`);
+    } finally {
+      setSending(false);
+    }
   }
 
   if (done) return (
@@ -39,7 +63,11 @@ export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we he
         <textarea rows="3" value={v.message} onChange={set('message')} className="glass glass-soft w-full rounded-2xl px-4 py-3 text-[14px] outline-none placeholder:text-white/35" placeholder={placeholder}></textarea>
       </label>
       {err ? <div className="text-[13px] text-red-200">{err}</div> : null}
-      <Btn kind="primary" size="lg" type="submit" className="w-full" iconEnd={I.arrow({})}>{cta}</Btn>
+      <Btn kind="primary" size="lg" type="submit" className="w-full" disabled={sending} iconEnd={I.arrow({})}>{sending ? 'sending…' : cta}</Btn>
+      <p className="text-center text-[11px] leading-relaxed text-white/35">
+        We use your details only to reply to your enquiry. See our{' '}
+        <a href="#privacy" className="underline hover:text-white/60">privacy policy</a>.
+      </p>
     </form>
   );
 }

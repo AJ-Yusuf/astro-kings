@@ -2,3 +2,13 @@ node_modules
 dist
 *.local
 .DS_Store
+
+# never commit secrets
+.env
+.env.*
+*.pem
+
+# internal tooling - not part of the client deliverable
+.agents/
+.claude/
+skills-lock.json
