@@ -8,7 +8,7 @@
 import { I } from '../lib/icons.jsx';
 import { scrollToId } from '../lib/router.js';
 import { CONTACT } from '../lib/data.js';
-import { Glass, Btn, Tag, Eyebrow } from '../components/ui.jsx';
+import { Glass, Btn, Tag, Eyebrow, SectionPhoto } from '../components/ui.jsx';
 import { EnquiryForm } from '../components/Enquiry.jsx';
 import { Section } from './Home.jsx';
 import { Footer } from '../components/Nav.jsx';
@@ -147,6 +147,8 @@ export function Events(){
 
       {/* ---------- event extras ---------- */}
       <Section eyebrow="event extras" title="finish it in style">
+        {/* TEMPORARY stock-style photo (not Astro Kings) — see IMAGE_SOURCES.md */}
+        <SectionPhoto src="/images/events-celebrate.webp" alt="Young players celebrating together at the side of the pitch" width={1280} height={1024} className="mb-6" />
         <Glass strong className="relative overflow-hidden rounded-[30px] p-7 md:p-8">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{background:VIOLET}}></div>
           <p className="relative text-[15px] leading-relaxed text-white/70">Complete your event with food, drink and awards. We hold an alcohol licence, rooms are available for hire, and the on-site kitchen can serve food fit for a king — why not add a video and photos of the day?</p>
@@ -160,6 +162,8 @@ export function Events(){
 
       {/* ---------- enquire direct ---------- */}
       <section id="events-enquiry" className="mx-auto mt-24 max-w-6xl px-6">
+        {/* TEMPORARY stock-style photo (not Astro Kings) — see IMAGE_SOURCES.md */}
+        <SectionPhoto src="/images/events-action.webp" alt="Goalkeeper diving to save a shot" width={1600} height={1067} className="mb-6" />
         <Glass strong className="relative overflow-hidden rounded-[34px] p-8 md:p-12">
           <div className="pointer-events-none absolute -left-16 -bottom-16 h-64 w-64 rounded-full opacity-20 blur-3xl" style={{background:AMBER}}></div>
           <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center">
