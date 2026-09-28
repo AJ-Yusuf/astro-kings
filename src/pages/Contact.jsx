@@ -19,7 +19,7 @@ export function Contact(){
           <h2 className="text-2xl font-medium lowercase">send us a message</h2>
           <p className="mt-2 text-[14px] text-white/55">General enquiries — we usually reply within one working day.</p>
           <div className="mt-6">
-            <EnquiryForm cta="send message" placeholder="How can we help?" />
+            <EnquiryForm cta="send message" source="contact page" placeholder="How can we help?" />
           </div>
         </Glass>
 

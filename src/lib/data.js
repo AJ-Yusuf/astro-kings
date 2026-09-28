@@ -1,6 +1,6 @@
 /* data.js — domain data, slots, contact + shared booking store */
 
-export const ROUTES = ['home', 'browse', 'venue', 'booking', 'pricing', 'leagues', 'about', 'getagame', 'juniors', 'payandplay', 'skills', 'parties', 'academy', 'clubs', 'events', 'manvfat', 'kingsclub', 'coaching', 'nottsolympic', 'performancezone', 'shop', 'contact'];
+export const ROUTES = ['home', 'browse', 'venue', 'booking', 'pricing', 'leagues', 'about', 'getagame', 'juniors', 'payandplay', 'skills', 'parties', 'academy', 'clubs', 'events', 'manvfat', 'kingsclub', 'coaching', 'nottsolympic', 'performancezone', 'shop', 'contact', 'privacy'];
 
 export const HERO_VIDEO = '/hero.mp4';
 export const HERO_POSTER = '/hero-poster.jpg';   // still frame shown while the video loads
@@ -10,6 +10,9 @@ export const KINGSCLUB_VIDEO = '/kingsclub.mp4'; // background for the Kings Clu
 export const JUNIORS_VIDEO = '/juniors.mp4';     // background for the Juniors (pay & play) hero
 export const ACADEMY_VIDEO = '/academy.mp4';     // background for the Academy (coaching & camps) hero
 
+/* Prices here are DISPLAY ONLY. The actual amount charged is whatever Planyo
+   calculates at booking time from the venue's pricing manager. If these drift
+   apart, customers see one price and are charged another - keep them in step. */
 export const PITCHES = [
   { id:'classic', name:'Classic 5-a-side', price:60, unit:'/hr', size:'5v5', goals:'12ft × 4ft goals', tag:'Most booked', desc:'Rebound boards · 4G surface', spec:['Rebound boards','12ft × 4ft goals','4G rubber-crumb'] },
   { id:'samba',   name:'Samba 5-a-side',   price:60, unit:'/hr', size:'5v5', goals:'12ft × 6ft goals', tag:'', desc:'Bigger goals · rebound boards', spec:['Rebound boards','12ft × 6ft goals','4G rubber-crumb'] },

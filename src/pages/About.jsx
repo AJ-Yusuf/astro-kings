@@ -50,7 +50,7 @@ export function About(){
             <h3 className="text-2xl font-medium lowercase">get in touch</h3>
             <p className="mt-2 text-[14px] text-white/55">Booking a group, party or corporate day? Tell us what you need.</p>
             <div className="mt-6">
-              <EnquiryForm cta="send enquiry" placeholder="e.g. birthday party for 14 kids on a Saturday…" />
+              <EnquiryForm cta="send enquiry" source="about page" placeholder="e.g. birthday party for 14 kids on a Saturday…" />
             </div>
           </Glass>
 

@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { I } from '../lib/icons.jsx';
+import { ENQUIRY_ENDPOINT } from '../lib/config.js';
 import { scrollToId } from '../lib/router.js';
 import { CONTACT, GETAGAME_VIDEO } from '../lib/data.js';
 import { Glass, Btn, Field } from '../components/ui.jsx';
@@ -40,11 +41,37 @@ export function GetAGame(){
   const set = (k)=>(e)=>{ setF(s=>({...s,[k]:e.target.value})); setErr(''); };
   const toggleDay = (d)=> setDays(s=> s.includes(d)?s.filter(x=>x!==d):[...s,d]);
 
-  function submit(){
+  async function submit(){
     if (!f.name.trim() || !f.email.trim() || !f.phone.trim()) { setErr('Please add your name, email and contact number.'); return; }
     if (!token) { setErr('Please complete the captcha to verify you’re human.'); return; }
     if (!confirm) { setErr('Please confirm you’re happy to join the Subs Bench WhatsApp group.'); return; }
-    setDone(true);   // production: POST the form + Turnstile token to the backend for /siteverify
+
+    // No endpoint configured yet - never pretend the registration was sent.
+    if (!ENQUIRY_ENDPOINT) {
+      setErr(`Online sign-up isn't live yet — please email ${CONTACT.email} or call ${CONTACT.phone} to join the Subs Bench.`);
+      return;
+    }
+
+    try {
+      const res = await fetch(ENQUIRY_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          ...f,
+          days: days.join(', '),
+          _subject: 'Subs Bench sign-up — website',
+          _replyto: f.email,
+          page: 'social kicks / subs bench',
+        }),
+      });
+      if (!res.ok) throw new Error('send failed');
+      setDone(true);
+    } catch (_) {
+      setErr(`Sorry — we couldn't send that. Please email ${CONTACT.email} or call ${CONTACT.phone}.`);
+    }
   }
 
   return (

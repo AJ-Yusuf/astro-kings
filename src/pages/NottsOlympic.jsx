@@ -370,7 +370,7 @@ export function NottsOlympic(){
           <Glass strong className="rounded-[30px] p-7">
             <div className="text-[12px] uppercase tracking-wide text-white/45">sponsorship enquiry</div>
             <div className="mt-4">
-              <EnquiryForm cta="enquire about sponsorship" placeholder="Tell us about your business and what you have in mind…" />
+              <EnquiryForm cta="enquire about sponsorship" source="Notts Olympic sponsorship" placeholder="Tell us about your business and what you have in mind…" />
             </div>
           </Glass>
         </div>

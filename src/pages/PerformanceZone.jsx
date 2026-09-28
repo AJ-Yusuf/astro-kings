@@ -170,7 +170,7 @@ export function PerformanceZone(){
           <Glass strong className="rounded-[30px] p-7">
             <div className="text-[12px] uppercase tracking-wide text-white/45">hire enquiry</div>
             <div className="mt-4">
-              <EnquiryForm cta="request a slot" placeholder="e.g. coach — Tuesday nights weekly · or small group of 4, one hour…" />
+              <EnquiryForm cta="request a slot" source="performance zone" placeholder="e.g. coach — Tuesday nights weekly · or small group of 4, one hour…" />
             </div>
           </Glass>
         </div>

@@ -37,7 +37,7 @@ export function Clubs(){
           <aside id="club-enquiry">
             <Glass strong className="rounded-[28px] p-7">
               <div className="text-[12px] uppercase tracking-wide text-white/45">get in touch</div>
-              <div className="mt-4"><EnquiryForm cta="get in touch" labels={false} placeholder="Send a message — how many teams & when?" /></div>
+              <div className="mt-4"><EnquiryForm cta="get in touch" source="clubs & teams" labels={false} placeholder="Send a message — how many teams & when?" /></div>
               <p className="mt-3 text-center text-[12px] text-white/40">or call {CONTACT.phone}</p>
             </Glass>
           </aside>

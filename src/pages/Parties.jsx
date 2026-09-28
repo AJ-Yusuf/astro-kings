@@ -106,7 +106,7 @@ export function Parties(){
             <Glass strong className="rounded-[30px] p-7">
               <div className="text-[12px] uppercase tracking-wide text-white/45">party enquiry</div>
               <div className="mt-4">
-                <EnquiryForm cta="enquire about a party" placeholder="e.g. Saturday 14th, 12 kids, age 8…" />
+                <EnquiryForm cta="enquire about a party" source="kids parties" placeholder="e.g. Saturday 14th, 12 kids, age 8…" />
               </div>
             </Glass>
           </div>

@@ -1,0 +1,65 @@
+# Astro Kings — Apache config
+# Upload this alongside the built site (contents of dist/).
+
+# ---------------------------------------------------------------- security headers
+<IfModule mod_headers.c>
+    # Stop the site being framed by other sites (clickjacking).
+    # NOTE: SAMEORIGIN, not DENY — the Planyo booking widget and Google Map
+    # are iframes we embed, which is fine; this stops OTHERS framing US.
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Don't let browsers guess content types.
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Don't leak the full URL to third parties.
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Turn off browser features the site doesn't use.
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+
+    # Force HTTPS for 1 year. ⚠️ Only enable this once HTTPS is confirmed
+    # working — if the certificate breaks, the site becomes unreachable.
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+    # Content Security Policy — controls what the page is allowed to load.
+    # Allows: Google Fonts, the Planyo booking widget, Google Maps, Cloudflare
+    # Turnstile. Anything else is blocked.
+    # ⚠️ If a feature breaks after deploying, check the browser console — it
+    # will name whatever CSP blocked, and that domain needs adding here.
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; frame-src https://www.planyo.com https://planyo.com https://maps.google.com https://www.google.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; base-uri 'self'; form-action 'self'; object-src 'none'"
+</IfModule>
+
+# ---------------------------------------------------------------- SPA routing
+# The site is a single-page app using hash routing, so this mainly guards
+# against direct hits on paths that don't exist as files.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+</IfModule>
+
+# ---------------------------------------------------------------- caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    # Hashed build assets can be cached hard.
+    <FilesMatch "\.(js|css|woff2|jpg|jpeg|png|gif|svg|webp|mp4)$">
+        ExpiresDefault "access plus 1 year"
+    </FilesMatch>
+    # The HTML entry point must never be cached, or users get a stale site.
+    <FilesMatch "\.(html)$">
+        ExpiresDefault "access plus 0 seconds"
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+# ---------------------------------------------------------------- hardening
+# Don't list directory contents.
+Options -Indexes
+
+# Block access to dotfiles and config that should never be web-readable.
+<FilesMatch "^\.|(\.env|\.git|package\.json|package-lock\.json|vite\.config\.js)$">
+    Require all denied
+</FilesMatch>

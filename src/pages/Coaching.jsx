@@ -365,7 +365,7 @@ export function Coaching(){
             <div className="text-[12px] uppercase tracking-wide text-white/45">quick enquiry</div>
             <p className="mt-2 text-[13px] text-white/55">Prefer we come back to you? Drop your details here.</p>
             <div className="mt-4">
-              <EnquiryForm cta="register interest" placeholder="Child’s name, age, and which day suits…" />
+              <EnquiryForm cta="register interest" source="kids coaching" placeholder="Child’s name, age, and which day suits…" />
             </div>
           </Glass>
         </div>
