@@ -269,8 +269,8 @@ const HOME_TILES = [
   { t:'book an event',             d:'zorb football, darts, tournaments & more',        to:'events',          img:'/corporate.jpg' },
   { t:'kids football party',       d:'parties from just £4 per child — fully hosted',   to:'parties',         img:'/party.jpg' },
   { t:'social kicks',              d:'casual pick-up games — join the whatsapp group',  to:'getagame',        img:'/subs.jpg' },
-  /* TODO: real shop/product photo for this tile */
-  { t:'the football shop',         d:'balls, grip socks & notts olympic kit',           to:'shop' },
+  /* TEMPORARY Pexels placeholder (not Astro Kings) — swap for a real shop/product photo; see IMAGE_SOURCES.md */
+  { t:'the football shop',         d:'balls, grip socks & notts olympic kit',           to:'shop',            img:'/images/shop-tile.webp' },
 ];
 
 export function Home(){

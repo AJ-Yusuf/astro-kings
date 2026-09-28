@@ -18,6 +18,7 @@ recognisable, **consent confirmed** (children: written parental consent).
 | `images/events-action.webp` (from `photo2-goalkeeper-dive.jpg`) | Events — `#events-enquiry` | Pexels | Pexels License | yes — goalkeeper's face visible; other players in background | no | PLACEHOLDER – swap for venue photos before launch |
 | `images/party-huddle.webp` (from `photo1-coach-kids-huddle.jpg`) | no longer used on any page (kept) | Pexels | Pexels License | yes — children and an adult coach | no | PLACEHOLDER – swap for venue photos before launch |
 | `images/party-christmas.webp` (from `photo5-kids-santa-hug.jpg`) | Parties — "book a kids party" card | Pexels | Pexels License | yes — several children's faces clearly visible | no | PLACEHOLDER – swap for venue photos before launch |
+| `images/shop-tile.webp` (from `photo8-kit-shop-window.jpg`) | Home — "the football shop" tile | Pexels – link to be confirmed by Ayuba | Pexels License | no | n/a | PLACEHOLDER – swap for a photo of the centre's own shop before launch. Note: shows another shop's name (EURO SPORTING) and real club/player kits |
 
 These are stock-style photos, **not photos of Astro Kings**; alt text and copy do
 not say otherwise. Originals are in `images-src/` (not committed).
