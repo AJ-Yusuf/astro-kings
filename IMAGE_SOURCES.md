@@ -12,11 +12,11 @@ recognisable, **consent confirmed** (children: written parental consent).
 
 | Image | Where used | Source | Licence | People recognisable? | Consent confirmed? | Status |
 |---|---|---|---|---|---|---|
-| `images/pz-session.webp` (from `photo3-player-striking-ball.jpg`) | Performance Zone — "everything a session needs" | unknown – to be confirmed by Ayuba | unconfirmed | one player, side-on at a distance (face not clearly visible) | no | TEMPORARY – replace before launch |
-| `images/events-celebrate.webp` (from `photo4-team-celebrating.jpg`) | Events — "finish it in style" | unknown – to be confirmed by Ayuba | unconfirmed | yes — young players' faces clearly visible; shirts show other clubs' names/sponsors | no | TEMPORARY – replace before launch |
-| `images/events-action.webp` (from `photo2-goalkeeper-dive.jpg`) | Events — `#events-enquiry` | unknown – to be confirmed by Ayuba | unconfirmed | yes — goalkeeper's face visible; other players in background | no | TEMPORARY – replace before launch |
-| `images/party-huddle.webp` (from `photo1-coach-kids-huddle.jpg`) | Parties — `#party-enquiry` | unknown – to be confirmed by Ayuba | unconfirmed | yes — children and an adult coach | no | TEMPORARY – replace before launch |
-| `images/party-christmas.webp` (from `photo5-kids-santa-hug.jpg`) | not used (processed as a seasonal alternative) | unknown – to be confirmed by Ayuba | unconfirmed | yes — several children's faces clearly visible | no | TEMPORARY – replace before launch |
+| `images/pz-session.webp` (from `photo3-player-striking-ball.jpg`) | Performance Zone — "everything a session needs" | Pexels | Pexels License | one player, side-on at a distance (face not clearly visible) | no | PLACEHOLDER – swap for venue photos before launch |
+| `images/events-celebrate.webp` (from `photo4-team-celebrating.jpg`) | Events — "finish it in style" | Pexels | Pexels License | yes — young players' faces clearly visible; shirts show other clubs' names/sponsors | no | PLACEHOLDER – swap for venue photos before launch |
+| `images/events-action.webp` (from `photo2-goalkeeper-dive.jpg`) | Events — `#events-enquiry` | Pexels | Pexels License | yes — goalkeeper's face visible; other players in background | no | PLACEHOLDER – swap for venue photos before launch |
+| `images/party-huddle.webp` (from `photo1-coach-kids-huddle.jpg`) | Parties — `#party-enquiry` | Pexels | Pexels License | yes — children and an adult coach | no | PLACEHOLDER – swap for venue photos before launch |
+| `images/party-christmas.webp` (from `photo5-kids-santa-hug.jpg`) | not used (processed as a seasonal alternative) | Pexels | Pexels License | yes — several children's faces clearly visible | no | PLACEHOLDER – swap for venue photos before launch |
 
 These are stock-style photos, **not photos of Astro Kings**; alt text and copy do
 not say otherwise. Originals are in `images-src/` (not committed).
