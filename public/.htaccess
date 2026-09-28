@@ -3,10 +3,10 @@
 
 # ---------------------------------------------------------------- security headers
 <IfModule mod_headers.c>
-    # Stop the site being framed by other sites (clickjacking).
-    # NOTE: SAMEORIGIN, not DENY — the Planyo booking widget and Google Map
-    # are iframes we embed, which is fine; this stops OTHERS framing US.
-    Header always set X-Frame-Options "SAMEORIGIN"
+    # Stop the site being framed by any site, including itself (clickjacking).
+    # This only controls who may frame US — it does not affect the Planyo,
+    # Google Maps, YouTube or Turnstile iframes we embed (those are frame-src).
+    Header always set X-Frame-Options "DENY"
 
     # Don't let browsers guess content types.
     Header always set X-Content-Type-Options "nosniff"
@@ -22,11 +22,13 @@
     # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
     # Content Security Policy — controls what the page is allowed to load.
-    # Allows: Google Fonts, the Planyo booking widget, Google Maps, Cloudflare
-    # Turnstile. Anything else is blocked.
+    # Allows only: Google Fonts, Cloudflare Turnstile (script + frame + verify),
+    # Formspree (form submissions), and the embedded Planyo booking widget,
+    # Google Map and YouTube (nocookie) videos. No 'unsafe-inline'/'unsafe-eval'.
     # ⚠️ If a feature breaks after deploying, check the browser console — it
-    # will name whatever CSP blocked, and that domain needs adding here.
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; frame-src https://www.planyo.com https://planyo.com https://maps.google.com https://www.google.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; base-uri 'self'; form-action 'self'; object-src 'none'"
+    # will name whatever CSP blocked, and that exact domain needs adding here.
+    # vite.config.js reads these lines so `npm run preview` tests the same policy.
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.planyo.com https://planyo.com https://maps.google.com https://www.google.com https://www.youtube-nocookie.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 </IfModule>
 
 # ---------------------------------------------------------------- SPA routing
