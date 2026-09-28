@@ -39,7 +39,7 @@ function QuickBook({ compact=false }){
         </div>
 
         <Field icon={I.ball({})}>
-          <select value={size} onChange={e=>setSize(e.target.value)} className="w-full bg-transparent text-[14px] outline-none [&>option]:text-black">
+          <select aria-label="pitch size" value={size} onChange={e=>setSize(e.target.value)} className="w-full bg-transparent text-[14px] outline-none [&>option]:text-black">
             {['5v5','7v7','9v9'].map(d=><option key={d}>{d}</option>)}
           </select>
         </Field>

@@ -64,7 +64,7 @@ export function Venue({ params }){
               ))}
             </div>
 
-            <h3 className="mt-10 text-xl font-medium lowercase">facilities included</h3>
+            <h2 className="mt-10 text-xl font-medium lowercase">facilities included</h2>
             <div className="mt-4 flex flex-wrap gap-2.5">
               {['Hot showers','Secure lockers','On-site café','Free parking','Changing rooms','Spectator area'].map(f=>(
                 <span key={f} className="glass glass-soft inline-flex items-center gap-2 rounded-full px-4 py-2 text-[13px] text-white/75"><span className="accent-text" style={{width:15,height:15}}>{I.check({})}</span>{f}</span>
