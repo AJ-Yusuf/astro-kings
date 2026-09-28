@@ -29,6 +29,24 @@ export const BOOKING_PLATFORM_URL = 'https://www.planyo.com/booking.php?calendar
    custom API booking flow (Path 2) is built later. */
 export const PLANYO_RESOURCE_IDS = [58246, 58245, 58244, 185941];
 
+/* Map each of our pitch cards (PITCHES id) to its Planyo resource_id, so the
+   native pitch picker on #booking can filter the embedded widget / deep-link
+   straight to that pitch.
+   ⚠️ Leave a pitch null until its ID is CONFIRMED — a wrong guess sends people
+   to the wrong pitch. While null, that card just opens the full calendar.
+   The four known resource IDs are in PLANYO_RESOURCE_IDS above; we don't yet
+   know which is which pitch, so all are null for now. */
+export const PLANYO_PITCH_RESOURCE = {
+  classic: null,
+  samba:   null,
+  big:     null,
+  mini:    null,
+};
+
+/* Build the Planyo booking URL, optionally filtered to one resource. */
+export const planyoUrl = (resourceId) =>
+  PLANYO_EMBED_URL + (resourceId ? `&resource_id=${resourceId}` : '');
+
 /* Where enquiry + Subs Bench form submissions go.
 
    ⚠️ REQUIRED BEFORE LAUNCH — currently empty, so the forms tell people to
