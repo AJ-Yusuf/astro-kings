@@ -8,7 +8,7 @@
 import { I } from '../lib/icons.jsx';
 import { scrollToId } from '../lib/router.js';
 import { ACADEMY_VIDEO } from '../lib/data.js';
-import { Glass, Btn, Tag, Eyebrow } from '../components/ui.jsx';
+import { Glass, Btn, Tag, Eyebrow, SectionPhoto } from '../components/ui.jsx';
 import { EnquiryForm } from '../components/Enquiry.jsx';
 import { Section } from './Home.jsx';
 import { Footer } from '../components/Nav.jsx';
@@ -130,6 +130,8 @@ export function PerformanceZone(){
             </ul>
           </Glass>
         </div>
+        {/* TEMPORARY stock-style photo (not Astro Kings) — see IMAGE_SOURCES.md */}
+        <SectionPhoto src="/images/pz-session.webp" alt="Footballer striking a ball during a training session" width={1600} height={1067} className="mt-6" />
       </Section>
 
       {/* ---------- rates ---------- */}
