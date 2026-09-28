@@ -6,9 +6,13 @@ dist
 # never commit secrets
 .env
 .env.*
+!.env.example
 *.pem
 
 # internal tooling - not part of the client deliverable
 .agents/
 .claude/
 skills-lock.json
+
+# original photos — only the optimised copies in src/assets/images are committed
+images-src/
