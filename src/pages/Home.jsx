@@ -154,11 +154,6 @@ export function Hero({ variant='stacked' }){
             <div><div className="tnum text-3xl font-semibold">65k+</div><div className="text-[12px] text-white/60">games played</div></div>
           </div>
         </div>
-        <div className="fade-up" style={{animationDelay:'.08s'}}>
-          <a href={BOOK_HREF} {...BOOK_EXT} aria-label="Book a pitch" className="block">
-            <Btn kind="primary" size="lg" className="h-16 w-full text-[17px] accent-glow" icon={I.ball({})} iconEnd={I.arrow({})}>book a pitch</Btn>
-          </a>
-        </div>
       </div>
     </header>
   );
