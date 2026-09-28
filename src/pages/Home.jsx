@@ -123,7 +123,7 @@ export function Hero({ variant='stacked' }){
         <h1 className="hero-title absolute right-2 top-[25%] text-[10vw] font-semibold lowercase fade-up" style={{animationDelay:'.06s'}}>new 4g</h1>
         <h1 className="hero-title absolute left-[24%] top-[41%] text-[10vw] font-semibold lowercase accent-text fade-up" style={{animationDelay:'.12s'}}>pitches</h1>
 
-        <p className="absolute left-0 top-[38%] max-w-[230px] text-[15px] leading-snug text-white/85 fade-up" style={{animationDelay:'.18s'}}>
+        <p className="absolute inset-x-0 top-[66%] mx-auto max-w-xs text-center text-[15px] leading-snug text-white/85 fade-up" style={{animationDelay:'.18s'}}>
           football, leagues, birthday parties, stag, hen & corporate events.
         </p>
 
