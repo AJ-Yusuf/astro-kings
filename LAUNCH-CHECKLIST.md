@@ -10,15 +10,33 @@ takes no payments, and stores no customer records.
 
 - [ ] **Hosting access** (FTP / cPanel) to actually deploy.
 
-- [ ] **Real Turnstile site key** — `TURNSTILE_SITE_KEY` is currently
-      Cloudflare's always-passes TEST key and blocks nothing.
-      dash.cloudflare.com → Turnstile. **Note:** the token also needs verifying
-      server-side at /siteverify — until that exists, the captcha is
+- [ ] **Real Turnstile site key + server-side verification** —
+      `TURNSTILE_SITE_KEY` is currently Cloudflare's always-passes TEST key and
+      blocks nothing. dash.cloudflare.com → Turnstile. The token must ALSO be
+      verified server-side at /siteverify — until that exists, the captcha is
       cosmetic even with a real key.
 
-- [ ] **`ENQUIRY_ENDPOINT`** — enquiry + Subs Bench forms currently tell users
-      to phone/email rather than submitting, because there's nowhere to send to.
-      Needs a real handler (PHP mail script, or Formspree/similar).
+- [ ] **Switch the Formspree recipient to the venue inbox.** `ENQUIRY_ENDPOINT`
+      is set to `https://formspree.io/f/mvkgdpok` and the enquiry + Subs Bench
+      forms DO submit to it — but it currently delivers to a developer's
+      personal test inbox. In Formspree: add play@astro-kings.com under Linked
+      Emails, have the venue confirm it, then make it the form's recipient
+      (the endpoint URL does not change).
+
+- [ ] **Enable HSTS once HTTPS is confirmed.** The `Strict-Transport-Security`
+      line in `public/.htaccess` is commented out. Turn it on only after the
+      certificate is live and working, and only keep `includeSubDomains` if
+      every subdomain of the domain is also on HTTPS.
+
+- [ ] **Confirm the cancellation wording.** "free cancellation up to 24h" is
+      shown on Venue and in `PlanyoBooking.jsx` (from `CANCEL_WINDOW_HRS`).
+      Check it against the cancellation policy actually configured in Planyo;
+      change or remove it if they differ.
+
+- [ ] **Privacy page legal review.** `src/pages/Privacy.jsx` must name every
+      processor that handles visitors' data: Formspree (form submissions),
+      Planyo (bookings and payments) and Cloudflare (Turnstile). See the
+      review item below for the other open questions.
 
 ---
 
@@ -68,7 +86,9 @@ takes no payments, and stores no customer records.
 - localStorage "database" removed — no customer data stored in browsers.
 - Fake availability removed from Browse and Venue (they were showing invented
   free/taken slots unrelated to the real calendar).
-- Forms no longer show a fake "sent" confirmation.
+- Forms no longer show a fake "sent" confirmation. (The footer newsletter
+  still did — it said "you're subscribed" but sent nothing; removed on the
+  `security-fixes` branch.)
 - Student discount (`.ac.uk` email = discount, trivially spoofed) gone with the
   deleted booking engine.
 - `.agents/`, `.claude/`, `.env` gitignored.
@@ -79,5 +99,20 @@ takes no payments, and stores no customer records.
 
 - [ ] Test the full booking journey on mobile and desktop
 - [ ] Confirm booking confirmation emails arrive (customer + venue)
-- [ ] Enable HSTS in `.htaccess` once HTTPS is stable
+- [ ] HSTS — now a launch blocker (see above)
 - [ ] Set up a backup of the Planyo data
+
+---
+
+## 📝 Notes — existing images (no files changed; owner to decide)
+
+- **Licences unconfirmed for existing photos** (found in their metadata):
+  - `public/corporate.jpg` — IPTC "FBMD" marker: saved from Facebook.
+  - `public/kingsclub-tile.jpg`, `public/subs.jpg` — EXIF "Google Inc. 2016":
+    likely saved from Google.
+  - `public/nottsolympic-hero.png` — Canva XMP (contains Canva account IDs).
+  - `public/league-academy.png`, `league-development.png`,
+    `league-foundation.png` — screenshots.
+  None contain GPS data. See `IMAGE_SOURCES.md` once it exists.
+- **Large files:** `public/kfl-crest.png` and `public/nottsolympic-crest.png`
+  are about 1.5 MB each. The owner will decide whether to optimise them.
