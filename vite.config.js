@@ -10,7 +10,16 @@ const htaccessHeaders = () => Object.fromEntries(
     .map(([, name, value]) => [name, value])
 );
 
+/* The live site is on Vercel, which reads vercel.json and ignores .htaccess.
+   Refuse to run if the two header sets differ, so neither host is left behind. */
+const vercelHeaders = () => Object.fromEntries(
+  JSON.parse(readFileSync('vercel.json', 'utf8')).headers.find(h => h.source === '/(.*)').headers.map(h => [h.key, h.value])
+);
+const headers = htaccessHeaders();
+if (JSON.stringify(headers) !== JSON.stringify(vercelHeaders()))
+  throw new Error('Security headers differ between public/.htaccess and vercel.json — update both.');
+
 export default defineConfig({
   plugins: [react()],
-  preview: { headers: htaccessHeaders() },
+  preview: { headers },
 });

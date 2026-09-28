@@ -28,6 +28,8 @@
     # ⚠️ If a feature breaks after deploying, check the browser console — it
     # will name whatever CSP blocked, and that exact domain needs adding here.
     # vite.config.js reads these lines so `npm run preview` tests the same policy.
+    # The live site is on Vercel, which ignores this file: vercel.json carries the
+    # same headers, and vite.config.js refuses to run if the two differ.
     Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.planyo.com https://planyo.com https://maps.google.com https://www.google.com https://www.youtube-nocookie.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 </IfModule>
 
