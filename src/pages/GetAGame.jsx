@@ -55,9 +55,17 @@ export function GetAGame(){
     try {
       const res = await fetch(ENQUIRY_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        // the Turnstile token MUST be verified server-side at /siteverify
-        body: JSON.stringify({ ...f, days, type: 'subs-bench', turnstileToken: token }),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          ...f,
+          days: days.join(', '),
+          _subject: 'Subs Bench sign-up — website',
+          _replyto: f.email,
+          page: 'social kicks / subs bench',
+        }),
       });
       if (!res.ok) throw new Error('send failed');
       setDone(true);

@@ -29,11 +29,29 @@ export const BOOKING_PLATFORM_URL = 'https://www.planyo.com/booking.php?calendar
    custom API booking flow (Path 2) is built later. */
 export const PLANYO_RESOURCE_IDS = [58246, 58245, 58244, 185941];
 
-/* Where enquiry/registration forms should send submissions.
-   Until a real endpoint exists, forms tell the user to call or email instead
-   of pretending to submit. Set this to a real handler (e.g. '/api/enquiry.php'
-   or a form service like Formspree) to enable in-page submission. */
-export const ENQUIRY_ENDPOINT = '';
+/* Where enquiry + Subs Bench form submissions go.
+
+   ⚠️ REQUIRED BEFORE LAUNCH — currently empty, so the forms tell people to
+   phone or email instead of submitting. They never show a fake "sent" message.
+
+   Set this to the venue's Formspree form URL:
+     https://formspree.io/f/XXXXXXXX
+
+   To create it: formspree.io → sign up → New Form → set the recipient to the
+   venue's inbox → copy the form's endpoint URL and paste it below.
+   Formspree emails each submission and handles spam filtering, so no backend
+   of our own is needed. The first submission needs confirming by email.
+
+   Each form passes a `source` (which page it came from) into the subject line,
+   and sets reply-to as the customer's address, so hitting reply in the inbox
+   replies straight to them.
+
+   ⚠️ CURRENTLY POINTS AT A PERSONAL INBOX. The Formspree form behind this URL
+   delivers to the developer's own address for testing. Before launch, add the
+   venue's address (play@astro-kings.com) under Linked Emails in the Formspree
+   account, have the venue confirm it by email, then switch the form's
+   recipient. The URL below does NOT change when you do that. */
+export const ENQUIRY_ENDPOINT = 'https://formspree.io/f/mvkgdpok';
 
 /* ---------------------------------------------------------------- display only */
 /* Indicative prices shown on marketing pages. The ACTUAL price charged is

@@ -1,5 +1,12 @@
 /* Enquiry.jsx — reusable contact/enquiry form with validation + success state.
-   Used by About, Clubs and Events. (Production: POST to the owner's inbox/CRM.) */
+
+   Submissions POST as JSON to ENQUIRY_ENDPOINT (see src/lib/config.js).
+   That endpoint is a Formspree form URL — Formspree emails each submission to
+   the venue's inbox, so no backend of our own is needed.
+
+   Pass `source` wherever this form is used (e.g. source="parties") — it goes
+   into the email subject so the venue can tell at a glance which page an
+   enquiry came from, since this same form appears on eight pages. */
 
 import { useState } from 'react';
 import { I } from '../lib/icons.jsx';
@@ -9,7 +16,7 @@ import { Btn, Field } from './ui.jsx';
 
 const INPUT = 'w-full bg-transparent text-[14px] outline-none placeholder:text-white/35';
 
-export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we help?', labels = true }){
+export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we help?', labels = true, source = 'website' }){
   const [v,setV]   = useState({ name:'', phone:'', email:'', message:'' });
   const [err,setErr]   = useState('');
   const [done,setDone] = useState(false);
@@ -31,8 +38,19 @@ export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we he
     try {
       const res = await fetch(ENQUIRY_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(v),
+        headers: {
+          'Content-Type': 'application/json',
+          // Formspree returns JSON instead of a redirect when we ask for it
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          ...v,
+          // Formspree uses these to set the email subject and reply-to address,
+          // so hitting reply in the inbox replies straight to the customer.
+          _subject: `Website enquiry — ${source}`,
+          _replyto: v.email,
+          page: source,
+        }),
       });
       if (!res.ok) throw new Error('send failed');
       setDone(true);

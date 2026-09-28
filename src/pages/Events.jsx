@@ -173,7 +173,7 @@ export function Events(){
                 <div className="flex items-center gap-3 text-white/60"><span className="grid h-9 w-9 place-items-center rounded-full" style={{background:AMBER+'22',color:AMBER}}><span style={{width:16,height:16}}>{I.pin({})}</span></span>{CONTACT.addr}</div>
               </div>
             </div>
-            <EnquiryForm cta="send enquiry" placeholder="e.g. 24 staff, tournament + food, a Friday afternoon…" />
+            <EnquiryForm cta="send enquiry" source="events & corporate" placeholder="e.g. 24 staff, tournament + food, a Friday afternoon…" />
           </div>
         </Glass>
       </section>
