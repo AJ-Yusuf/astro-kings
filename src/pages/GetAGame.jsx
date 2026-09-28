@@ -8,6 +8,7 @@ import { scrollToId } from '../lib/router.js';
 import { CONTACT, GETAGAME_VIDEO } from '../lib/data.js';
 import { Glass, Btn, Field } from '../components/ui.jsx';
 import { Turnstile } from '../components/Turnstile.jsx';
+import { submitForm, LIMITS, EMAIL_RE, PHONE_RE, PHONE_PATTERN, HONEYPOT_PROPS } from '../lib/submitForm.js';
 import { Map } from '../components/Map.jsx';
 import { Footer } from '../components/Nav.jsx';
 
@@ -38,11 +39,17 @@ export function GetAGame(){
   const [token,setToken] = useState('');
   const [err,setErr] = useState('');
   const [done,setDone] = useState(false);
+  const [sending,setSending] = useState(false);
+  const [trap,setTrap] = useState('');   // honeypot — see submitForm.js
   const set = (k)=>(e)=>{ setF(s=>({...s,[k]:e.target.value})); setErr(''); };
   const toggleDay = (d)=> setDays(s=> s.includes(d)?s.filter(x=>x!==d):[...s,d]);
 
   async function submit(){
     if (!f.name.trim() || !f.email.trim() || !f.phone.trim()) { setErr('Please add your name, email and contact number.'); return; }
+    if (f.name.length > LIMITS.name) { setErr('Please shorten your name (100 characters max).'); return; }
+    if (!EMAIL_RE.test(f.email.trim()) || f.email.length > LIMITS.email) { setErr('Please check your email address.'); return; }
+    if (!PHONE_RE.test(f.phone.trim())) { setErr('Please check your contact number.'); return; }
+    if (f.age.trim() && !/^\d{1,3}$/.test(f.age.trim())) { setErr('Please enter your age as a number.'); return; }
     if (!token) { setErr('Please complete the captcha to verify you’re human.'); return; }
     if (!confirm) { setErr('Please confirm you’re happy to join the Subs Bench WhatsApp group.'); return; }
 
@@ -52,25 +59,20 @@ export function GetAGame(){
       return;
     }
 
+    setSending(true);
     try {
-      const res = await fetch(ENQUIRY_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          ...f,
-          days: days.join(', '),
-          _subject: 'Subs Bench sign-up — website',
-          _replyto: f.email,
-          page: 'social kicks / subs bench',
-        }),
-      });
-      if (!res.ok) throw new Error('send failed');
+      await submitForm({
+        ...f,
+        days: days.join(', '),
+        _subject: 'Subs Bench sign-up — website',
+        _replyto: f.email,
+        page: 'social kicks / subs bench',
+      }, { honeypot: trap, token });
       setDone(true);
     } catch (_) {
       setErr(`Sorry — we couldn't send that. Please email ${CONTACT.email} or call ${CONTACT.phone}.`);
+    } finally {
+      setSending(false);
     }
   }
 
@@ -176,13 +178,13 @@ export function GetAGame(){
                   <Turnstile onVerify={(t)=>{setToken(t);setErr('');}} onExpire={()=>setToken('')} />
                 </div>
 
-                {err ? <div className="mt-4 rounded-xl border border-red-400/30 bg-red-500/10 px-3 py-2 text-[13px] text-red-200">{err}</div> : null}
+                {err ? <div className="mt-4 rounded-xl border border-red-400/30 bg-red-500/10 px-3 py-2 text-[13px] text-red-200" role="alert">{err}</div> : null}
 
                 <div className="mt-4 space-y-3.5">
-                  <Field label="name" icon={I.user({})}><input value={f.name} onChange={set('name')} className="w-full bg-transparent text-[14px] outline-none placeholder:text-white/35" placeholder="First & last" /></Field>
-                  <Field label="email" icon={I.user({})}><input type="email" value={f.email} onChange={set('email')} className="w-full bg-transparent text-[14px] outline-none placeholder:text-white/35" placeholder="you@email.com" /></Field>
-                  <Field label="contact number" icon={I.user({})}><input value={f.phone} onChange={set('phone')} className="w-full bg-transparent text-[14px] tnum outline-none placeholder:text-white/35" placeholder="07…" /></Field>
-                  <Field label="age" icon={I.user({})}><input value={f.age} onChange={set('age')} className="w-full bg-transparent text-[14px] tnum outline-none placeholder:text-white/35" placeholder="18" /></Field>
+                  <Field label="name" icon={I.user({})}><input name="name" autoComplete="name" required maxLength={LIMITS.name} value={f.name} onChange={set('name')} className="w-full bg-transparent text-[14px] outline-none placeholder:text-white/35" placeholder="First & last" /></Field>
+                  <Field label="email" icon={I.user({})}><input name="email" type="email" autoComplete="email" required maxLength={LIMITS.email} value={f.email} onChange={set('email')} className="w-full bg-transparent text-[14px] outline-none placeholder:text-white/35" placeholder="you@email.com" /></Field>
+                  <Field label="contact number" icon={I.user({})}><input name="phone" type="tel" autoComplete="tel" required maxLength={LIMITS.phone} pattern={PHONE_PATTERN} value={f.phone} onChange={set('phone')} className="w-full bg-transparent text-[14px] tnum outline-none placeholder:text-white/35" placeholder="07…" /></Field>
+                  <Field label="age" icon={I.user({})}><input name="age" inputMode="numeric" maxLength={3} value={f.age} onChange={set('age')} className="w-full bg-transparent text-[14px] tnum outline-none placeholder:text-white/35" placeholder="18" /></Field>
                 </div>
 
                 <div className="mt-5">
@@ -198,7 +200,12 @@ export function GetAGame(){
                   </Check>
                 </div>
 
-                <Btn kind="primary" size="lg" className="mt-6 w-full" iconEnd={I.arrow({})} onClick={submit}>get on the bench</Btn>
+                <input {...HONEYPOT_PROPS} value={trap} onChange={e=>setTrap(e.target.value)} />
+                <Btn kind="primary" size="lg" className="mt-6 w-full" iconEnd={I.arrow({})} onClick={submit} disabled={sending}>{sending ? 'sending…' : 'get on the bench'}</Btn>
+                <p className="mt-3 text-center text-[11px] leading-relaxed text-white/35">
+                  We use your details only to run the Subs Bench. See our{' '}
+                  <a href="#privacy" className="underline hover:text-white/60">privacy policy</a>.
+                </p>
               </>
             )}
           </Glass>
