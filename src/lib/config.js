@@ -43,9 +43,14 @@ export const PLANYO_PITCH_RESOURCE = {
   mini:    null,
 };
 
-/* Build the Planyo booking URL, optionally filtered to one resource. */
-export const planyoUrl = (resourceId) =>
-  PLANYO_EMBED_URL + (resourceId ? `&resource_id=${resourceId}` : '');
+/* Build the Planyo booking URL, optionally pre-set to one resource and start
+   date. `startDate` is best-effort (YYYY-MM-DD): if Planyo's date format differs
+   it's simply ignored and the customer picks the day on Planyo — never a
+   dead-end. */
+export const planyoUrl = (resourceId, startDate) =>
+  PLANYO_EMBED_URL
+  + (resourceId ? `&resource_id=${resourceId}` : '')
+  + (startDate ? `&start_date=${startDate}` : '');
 
 /* Where enquiry + Subs Bench form submissions go.
 
