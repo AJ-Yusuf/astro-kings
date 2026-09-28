@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { I } from '../lib/icons.jsx';
 import { PITCHES, slotsInBand, PITCH_PHOTO, store } from '../lib/data.js';
 import { go } from '../lib/router.js';
+import { GOOGLE_REVIEWS_URL } from '../lib/config.js';
 import { todayKey, keyLabel } from '../lib/dates.js';
 import { Glass, Btn, Tag } from '../components/ui.jsx';
 import { Calendar } from '../components/Calendar.jsx';
@@ -47,7 +48,6 @@ export function Venue({ params }){
             <div className="flex flex-wrap items-center gap-3">
               {p.tag ? <Tag accent>{p.tag}</Tag> : null}
               <Tag>{p.size}</Tag>
-              <span className="inline-flex items-center gap-1 text-[13px] text-white/60"><span className="accent-text" style={{width:15,height:15}}>{I.star({})}</span> 4.9 · 320 reviews</span>
             </div>
             <h1 className="hero-title mt-4 text-5xl md:text-6xl font-semibold lowercase">{p.name}</h1>
             <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/60">
@@ -71,17 +71,13 @@ export function Venue({ params }){
               ))}
             </div>
 
-            {/* reviews */}
-            <h3 className="mt-10 text-xl font-medium lowercase">what players say</h3>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              {[['Best surface in Notts, floodlights are unreal at night.','— Jordan, Wednesday league'],['Booked in 30 seconds, showers were hot, café sorted us after.','— Priya, social 5s']].map(([q,a],i)=>(
-                <Glass key={i} className="rounded-3xl p-5">
-                  <div className="flex gap-0.5 accent-text">{[0,1,2,3,4].map(s=><span key={s} style={{width:14,height:14,display:'block'}}>{I.star({})}</span>)}</div>
-                  <p className="mt-3 text-[14px] leading-relaxed text-white/80">"{q}"</p>
-                  <div className="mt-2 text-[12px] text-white/45">{a}</div>
-                </Glass>
-              ))}
-            </div>
+            {/* reviews — link to real Google reviews only; hidden until the URL is supplied */}
+            {GOOGLE_REVIEWS_URL ? (
+              <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer"
+                 className="mt-10 inline-flex items-center gap-2 text-[14px] accent-text hover:underline">
+                <span style={{width:15,height:15}}>{I.star({})}</span> read our reviews on Google <span style={{width:15,height:15}}>{I.arrow({})}</span>
+              </a>
+            ) : null}
           </div>
 
           {/* sticky booking card */}

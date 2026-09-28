@@ -76,6 +76,12 @@ export const planyoUrl = (resourceId, startDate) =>
    recipient. The URL below does NOT change when you do that. */
 export const ENQUIRY_ENDPOINT = 'https://formspree.io/f/mvkgdpok';
 
+/* ---------------------------------------------------------------- reviews */
+/* The venue's Google Business reviews link. Leave '' until the client supplies
+   it — the "read our reviews on Google" link stays hidden while blank.
+   Never add ratings or quotes by hand: invented reviews are illegal (DMCC Act). */
+export const GOOGLE_REVIEWS_URL = '';
+
 /* ---------------------------------------------------------------- display only */
 /* Indicative prices shown on marketing pages. The ACTUAL price charged is
    always whatever Planyo calculates at booking time — these are for display
