@@ -91,7 +91,7 @@ export function Parties(){
         <Glass strong className="relative overflow-hidden rounded-[34px] p-8 md:p-12">
           <div className="pointer-events-none !absolute -left-16 -bottom-16 h-64 w-64 rounded-full opacity-20 blur-3xl" style={{background:PINK}}></div>
           {/* TEMPORARY Pexels placeholder (not Astro Kings) — see IMAGE_SOURCES.md */}
-          <CardPhoto src="/images/party-huddle.webp" alt="Coach talking to a young team in a huddle" width={1600} height={1120} position="center 35%" className="-mx-8 -mt-8 mb-8 md:-mx-12 md:-mt-12 md:mb-10" />
+          <CardPhoto src="/images/party-christmas.webp" alt="Young players hugging someone dressed as Santa" width={1600} height={1600} position="center 24%" h="h-64 sm:h-80 lg:h-96" className="-mx-8 -mt-8 mb-8 md:-mx-12 md:-mt-12 md:mb-10" />
           <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center">
             <div>
               <Eyebrow>enquire direct</Eyebrow>

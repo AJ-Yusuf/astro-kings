@@ -165,7 +165,7 @@ export function Events(){
         <Glass strong className="relative overflow-hidden rounded-[34px] p-8 md:p-12">
           <div className="pointer-events-none !absolute -left-16 -bottom-16 h-64 w-64 rounded-full opacity-20 blur-3xl" style={{background:AMBER}}></div>
           {/* TEMPORARY Pexels placeholder (not Astro Kings) — see IMAGE_SOURCES.md */}
-          <CardPhoto src="/images/events-action.webp" alt="Goalkeeper diving to save a shot" width={1600} height={1067} position="center 22%" className="-mx-8 -mt-8 mb-8 md:-mx-12 md:-mt-12 md:mb-10" />
+          <CardPhoto src="/images/events-action.webp" alt="Goalkeeper diving to save a shot" width={1600} height={1067} position="center 36%" h="h-64 sm:h-80 lg:h-96" className="-mx-8 -mt-8 mb-8 md:-mx-12 md:-mt-12 md:mb-10" />
           <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center">
             <div>
               <Eyebrow>enquire direct</Eyebrow>

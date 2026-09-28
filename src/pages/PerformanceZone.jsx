@@ -113,7 +113,7 @@ export function PerformanceZone(){
           <Glass strong className="relative overflow-hidden rounded-[30px] p-8">
             <div className="pointer-events-none !absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{background:VOLT}}></div>
             {/* TEMPORARY Pexels placeholder (not Astro Kings) — see IMAGE_SOURCES.md */}
-            <CardPhoto src="/images/pz-session.webp" alt="Footballer striking a ball during a training session" width={1600} height={1067} className="-mx-8 -mt-8 mb-7" />
+            <CardPhoto src="/images/pz-team-talk.webp" alt="Coach talking to a young team sitting on an artificial pitch" width={1600} height={869} position="center 35%" h="h-48 sm:h-72 lg:h-[28rem]" className="-mx-8 -mt-8 mb-7" />
             <p className="relative text-[15px] leading-relaxed text-white/70">
               The Zone runs as <span className="text-white">two dedicated coaching pods</span>, walled off from the main pitches so
               sessions run flat-out without interruption. Every hire comes with the full training set-up ready to go.
