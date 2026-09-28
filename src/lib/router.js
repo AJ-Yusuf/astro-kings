@@ -7,7 +7,8 @@ export function parseHash(){
   const raw = (location.hash || '#home').replace(/^#/, '');
   const [name, q] = raw.split('?');
   const params = {};
-  if (q) q.split('&').forEach(kv => { const [k,v] = kv.split('='); params[k] = decodeURIComponent(v||''); });
+  // malformed escapes (e.g. %E0) make decodeURIComponent throw — drop that param so pages fall back to defaults
+  if (q) q.split('&').forEach(kv => { const [k,v] = kv.split('='); try { params[k] = decodeURIComponent(v||''); } catch(e){} });
   return { name: ROUTES.includes(name) ? name : 'home', params };
 }
 
