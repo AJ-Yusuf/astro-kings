@@ -8,7 +8,7 @@
 import { I } from '../lib/icons.jsx';
 import { scrollToId } from '../lib/router.js';
 import { ACADEMY_VIDEO } from '../lib/data.js';
-import { Glass, Btn, Tag, Eyebrow, SectionPhoto } from '../components/ui.jsx';
+import { Glass, Btn, Tag, Eyebrow, CardPhoto } from '../components/ui.jsx';
 import { EnquiryForm } from '../components/Enquiry.jsx';
 import { Section } from './Home.jsx';
 import { Footer } from '../components/Nav.jsx';
@@ -111,7 +111,9 @@ export function PerformanceZone(){
       <Section eyebrow="inside the zone" title="everything a session needs">
         <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
           <Glass strong className="relative overflow-hidden rounded-[30px] p-8">
-            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{background:VOLT}}></div>
+            <div className="pointer-events-none !absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{background:VOLT}}></div>
+            {/* TEMPORARY Pexels placeholder (not Astro Kings) — see IMAGE_SOURCES.md */}
+            <CardPhoto src="/images/pz-session.webp" alt="Footballer striking a ball during a training session" width={1600} height={1067} className="-mx-8 -mt-8 mb-7" />
             <p className="relative text-[15px] leading-relaxed text-white/70">
               The Zone runs as <span className="text-white">two dedicated coaching pods</span>, walled off from the main pitches so
               sessions run flat-out without interruption. Every hire comes with the full training set-up ready to go.
@@ -130,8 +132,6 @@ export function PerformanceZone(){
             </ul>
           </Glass>
         </div>
-        {/* TEMPORARY stock-style photo (not Astro Kings) — see IMAGE_SOURCES.md */}
-        <SectionPhoto src="/images/pz-session.webp" alt="Footballer striking a ball during a training session" width={1600} height={1067} className="mt-6" />
       </Section>
 
       {/* ---------- rates ---------- */}

@@ -67,6 +67,18 @@ export function Btn({ kind='primary', size='md', className='', icon, iconEnd, ch
   );
 }
 
+/* CardPhoto — a photo that fills the top of a padded Glass card, edge to edge.
+   Pass negative margins that match the card's padding via `className`
+   (e.g. "-mx-8 -mt-8 mb-7" for p-8). Fades into the card at the bottom. */
+export function CardPhoto({ src, alt, width, height, position='center', className='' }){
+  return (
+    <div className={`relative h-52 overflow-hidden sm:h-60 lg:h-64 ${className}`}>
+      <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" draggable="false" style={{objectPosition:position}} className="absolute inset-0 h-full w-full object-cover" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/45 to-transparent"></div>
+    </div>
+  );
+}
+
 /* SectionPhoto — a photo band inside a page section: rounded, hairline border like
    the glass cards, soft fade into the page at the bottom. Pass the image's real
    width/height so the browser reserves space (no layout shift). */
