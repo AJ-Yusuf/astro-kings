@@ -11,6 +11,7 @@
 import { useState } from 'react';
 import { I } from '../lib/icons.jsx';
 import { ENQUIRY_ENDPOINT } from '../lib/config.js';
+import { submitForm, LIMITS, EMAIL_RE, PHONE_RE, PHONE_PATTERN, HONEYPOT_PROPS } from '../lib/submitForm.js';
 import { CONTACT } from '../lib/data.js';
 import { Btn, Field } from './ui.jsx';
 
@@ -18,6 +19,7 @@ const INPUT = 'w-full bg-transparent text-[14px] outline-none placeholder:text-w
 
 export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we help?', labels = true, source = 'website' }){
   const [v,setV]   = useState({ name:'', phone:'', email:'', message:'' });
+  const [trap,setTrap] = useState('');   // honeypot — see submitForm.js
   const [err,setErr]   = useState('');
   const [done,setDone] = useState(false);
   const set = (k)=>(e)=>{ setV(s=>({...s,[k]:e.target.value})); setErr(''); };
@@ -27,6 +29,10 @@ export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we he
   async function submit(e){
     if (e) e.preventDefault();
     if (!v.name.trim() || !v.email.trim()) { setErr('Please add your name and email.'); return; }
+    if (v.name.length > LIMITS.name) { setErr('Please shorten your name (100 characters max).'); return; }
+    if (!EMAIL_RE.test(v.email.trim()) || v.email.length > LIMITS.email) { setErr('Please check your email address.'); return; }
+    if (v.phone.trim() && !PHONE_RE.test(v.phone.trim())) { setErr('Please check your phone number.'); return; }
+    if (v.message.length > LIMITS.message) { setErr('Please shorten your message (2000 characters max).'); return; }
 
     // No endpoint configured yet - never pretend the message was sent.
     if (!ENQUIRY_ENDPOINT) {
@@ -36,23 +42,14 @@ export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we he
 
     setSending(true);
     try {
-      const res = await fetch(ENQUIRY_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          // Formspree returns JSON instead of a redirect when we ask for it
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          ...v,
-          // Formspree uses these to set the email subject and reply-to address,
-          // so hitting reply in the inbox replies straight to the customer.
-          _subject: `Website enquiry — ${source}`,
-          _replyto: v.email,
-          page: source,
-        }),
-      });
-      if (!res.ok) throw new Error('send failed');
+      await submitForm({
+        ...v,
+        // Formspree uses these to set the email subject and reply-to address,
+        // so hitting reply in the inbox replies straight to the customer.
+        _subject: `Website enquiry — ${source}`,
+        _replyto: v.email,
+        page: source,
+      }, { honeypot: trap });
       setDone(true);
     } catch (_) {
       setErr(`Sorry — we couldn't send that. Please email ${CONTACT.email} or call ${CONTACT.phone}.`);
@@ -72,15 +69,16 @@ export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we he
   return (
     <form onSubmit={submit} className="grid gap-3.5">
       <div className="grid gap-3.5 sm:grid-cols-2">
-        <Field label={labels?'your name':undefined} icon={I.user({})}><input value={v.name} onChange={set('name')} className={INPUT} placeholder="First & last" /></Field>
-        <Field label={labels?'phone':undefined} icon={I.user({})}><input value={v.phone} onChange={set('phone')} className={INPUT} placeholder="07…" /></Field>
+        <Field label={labels?'your name':undefined} icon={I.user({})}><input name="name" autoComplete="name" required maxLength={LIMITS.name} value={v.name} onChange={set('name')} className={INPUT} placeholder="First & last" aria-label={labels?undefined:'your name'} /></Field>
+        <Field label={labels?'phone':undefined} icon={I.user({})}><input name="phone" type="tel" autoComplete="tel" maxLength={LIMITS.phone} pattern={PHONE_PATTERN} value={v.phone} onChange={set('phone')} className={INPUT} placeholder="07…" aria-label={labels?undefined:'phone'} /></Field>
       </div>
-      <Field label={labels?'email':undefined} icon={I.user({})}><input type="email" value={v.email} onChange={set('email')} className={INPUT} placeholder="you@email.com" /></Field>
+      <Field label={labels?'email':undefined} icon={I.user({})}><input name="email" type="email" autoComplete="email" required maxLength={LIMITS.email} value={v.email} onChange={set('email')} className={INPUT} placeholder="you@email.com" aria-label={labels?undefined:'email'} /></Field>
       <label className="block">
         {labels ? <span className="mb-2 block text-[12px] uppercase tracking-wide text-white/45">message</span> : null}
-        <textarea rows="3" value={v.message} onChange={set('message')} className="glass glass-soft w-full rounded-2xl px-4 py-3 text-[14px] outline-none placeholder:text-white/35" placeholder={placeholder}></textarea>
+        <textarea name="message" rows="3" maxLength={LIMITS.message} value={v.message} onChange={set('message')} aria-label={labels?undefined:'message'} className="glass glass-soft w-full rounded-2xl px-4 py-3 text-[14px] outline-none placeholder:text-white/35" placeholder={placeholder}></textarea>
       </label>
-      {err ? <div className="text-[13px] text-red-200">{err}</div> : null}
+      <input {...HONEYPOT_PROPS} value={trap} onChange={e=>setTrap(e.target.value)} />
+      {err ? <div className="text-[13px] text-red-200" role="alert">{err}</div> : null}
       <Btn kind="primary" size="lg" type="submit" className="w-full" disabled={sending} iconEnd={I.arrow({})}>{sending ? 'sending…' : cta}</Btn>
       <p className="text-center text-[11px] leading-relaxed text-white/35">
         We use your details only to reply to your enquiry. See our{' '}
