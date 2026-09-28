@@ -22,6 +22,10 @@ import { Footer } from './Nav.jsx';
 const iso = (d) => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 const DAYS = Array.from({ length: 14 }, (_, i) => { const d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate()+i); return d; });
 
+/* open with a sensible selection already made so most people can book in one tap
+   — both are changeable */
+const DEFAULT_PITCH = (PITCHES.find(p => p.tag === 'Most booked') || PITCHES[0]).id;
+
 function TrustRow(){
   const items = [
     { icon: I.bolt,  label: 'instant confirmation' },
@@ -66,8 +70,8 @@ function PitchTile({ p, active, onPick }){
 }
 
 export function PlanyoBooking(){
-  const [pitch, setPitch] = useState(null);
-  const [day, setDay]     = useState(null);   // Date or null
+  const [pitch, setPitch] = useState(DEFAULT_PITCH);   // pre-selected, changeable
+  const [day, setDay]     = useState(DAYS[0]);         // today, changeable
   const active = PITCHES.find(p => p.id === pitch) || null;
   const resId  = pitch ? PLANYO_PITCH_RESOURCE[pitch] : null;
   const href   = planyoUrl(resId, day ? iso(day) : null);
