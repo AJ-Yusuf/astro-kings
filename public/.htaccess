@@ -31,6 +31,10 @@
     Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.planyo.com https://planyo.com https://maps.google.com https://www.google.com https://www.youtube-nocookie.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 </IfModule>
 
+# ---------------------------------------------------------------- MIME types
+# Serve WebP photos (public/images/) with the right type — needed with nosniff.
+AddType image/webp .webp
+
 # ---------------------------------------------------------------- SPA routing
 # The site is a single-page app using hash routing, so this mainly guards
 # against direct hits on paths that don't exist as files.

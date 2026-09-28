@@ -64,6 +64,18 @@ export function Btn({ kind='primary', size='md', className='', icon, iconEnd, ch
   );
 }
 
+/* SectionPhoto — a photo band inside a page section: rounded, hairline border like
+   the glass cards, soft fade into the page at the bottom. Pass the image's real
+   width/height so the browser reserves space (no layout shift). */
+export function SectionPhoto({ src, alt, width, height, aspect='aspect-[16/10] md:aspect-[21/9]', className='' }){
+  return (
+    <div className={`relative w-full overflow-hidden rounded-[30px] border border-[color:var(--glass-border)] ${aspect} ${className}`}>
+      <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" draggable="false" className="absolute inset-0 h-full w-full object-cover" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#06090A]/60 to-transparent"></div>
+    </div>
+  );
+}
+
 export function Tag({ children, accent=false, className='' }){
   return <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-medium uppercase tracking-wide ${accent?'text-[#0b0b0b] accent-bg':'glass text-white/80'} ${className}`}>{children}</span>;
 }
