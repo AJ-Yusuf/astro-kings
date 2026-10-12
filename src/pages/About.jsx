@@ -10,9 +10,9 @@ import { Footer } from '../components/Nav.jsx';
 
 export function About(){
   const events = [
-    { t:'corporate events', d:'Tournaments, team building & away days.', ic:I.trophy, img:'/corporate.jpg' },
-    { t:'birthday parties', d:'From just £4 per child — fully hosted.', ic:I.ball, img:'/party.jpg' },
-    { t:'man v fat', d:'Play football, lose weight, win the league.', ic:I.shield, img:'/manvfat-tile.jpg' },
+    { t:'Corporate events', d:'Tournaments, team building & away days.', ic:I.trophy, img:'/corporate.jpg' },
+    { t:'Birthday parties', d:'From just £4 per child — fully hosted.', ic:I.ball, img:'/party.jpg' },
+    { t:'MAN v FAT', d:'Play football, lose weight, win the league.', ic:I.shield, img:'/manvfat-tile.jpg' },
   ];
   return (
     <div>
@@ -26,7 +26,7 @@ export function About(){
       </div>
 
       {/* events */}
-      <Section eyebrow="events & experiences" title="more ways to play">
+      <Section eyebrow="events & experiences" title="More ways to play">
         <div className="grid gap-4 md:grid-cols-3">
           {events.map((e,i)=>(
             <Glass key={i} className="overflow-hidden rounded-3xl">
@@ -35,7 +35,7 @@ export function About(){
               </div>
               <div className="p-6">
                 <span className="glass grid h-12 w-12 place-items-center rounded-2xl accent-text"><span style={{width:22,height:22}}>{e.ic({})}</span></span>
-                <div className="mt-4 text-[18px] font-medium lowercase">{e.t}</div>
+                <div className="mt-4 text-[18px] font-medium">{e.t}</div>
                 <p className="mt-2 text-[14px] leading-relaxed text-white/55">{e.d}</p>
               </div>
             </Glass>
@@ -47,10 +47,10 @@ export function About(){
       <section className="mx-auto mt-24 max-w-6xl px-6">
         <div className="grid gap-6 lg:grid-cols-[1fr_380px]">
           <Glass strong className="rounded-[30px] p-8">
-            <h3 className="text-2xl font-medium lowercase">get in touch</h3>
+            <h3 className="text-2xl font-medium">Get in touch</h3>
             <p className="mt-2 text-[14px] text-white/55">Booking a group, party or corporate day? Tell us what you need.</p>
             <div className="mt-6">
-              <EnquiryForm cta="send enquiry" source="about page" placeholder="e.g. birthday party for 14 kids on a Saturday…" />
+              <EnquiryForm cta="Send enquiry" source="about page" placeholder="e.g. birthday party for 14 kids on a Saturday…" />
             </div>
           </Glass>
 

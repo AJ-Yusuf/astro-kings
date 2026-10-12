@@ -18,35 +18,35 @@ import { Logo, Glass, Btn } from './ui.jsx';
 /* The 8 nav links = the 8 headline tiles on the home page, in the same order.
    No dropdowns — every destination the client wants is one tap away. */
 export const NAV_LINKS = [
-  { id:'booking',         label:'book a pitch' },
-  { id:'coaching',        label:'coaching' },
-  { id:'nottsolympic',    label:'notts olympic' },
-  { id:'performancezone', label:'performance zone' },
-  { id:'events',          label:'events' },
-  { id:'parties',         label:'parties' },
-  { id:'getagame',        label:'social kicks' },
-  { id:'shop',            label:'shop' },
+  { id:'booking',         label:'Book a pitch' },
+  { id:'coaching',        label:'Coaching' },
+  { id:'nottsolympic',    label:'Notts Olympic' },
+  { id:'performancezone', label:'Performance Zone' },
+  { id:'events',          label:'Events' },
+  { id:'parties',         label:'Parties' },
+  { id:'getagame',        label:'Social Kicks' },
+  { id:'shop',            label:'Shop' },
 ];
 
 /* full link set for footer + mobile sheet */
 export const ALL_LINKS = [
-  { id:'browse',   label:'find a pitch' },
-  { id:'getagame', label:'social kicks' },
-  { id:'performancezone', label:'performance zone' },
-  { id:'pricing',  label:'pricing' },
-  { id:'leagues',  label:'leagues' },
-  { id:'events',   label:'book an event' },
-  { id:'coaching', label:'kids coaching' },
-  { id:'juniors',  label:'juniors' },
-  { id:'payandplay', label:'pay and play' },
-  { id:'parties',  label:'kids parties' },
-  { id:'academy',  label:'academy' },
-  { id:'nottsolympic', label:'notts olympic fc' },
-  { id:'manvfat',  label:'man v fat' },
-  { id:'clubs',    label:'clubs' },
-  { id:'shop',     label:'the football shop' },
-  { id:'about',    label:'about' },
-  { id:'contact',  label:'contact us' },
+  { id:'browse',   label:'Find a pitch' },
+  { id:'getagame', label:'Social Kicks' },
+  { id:'performancezone', label:'Performance Zone' },
+  { id:'pricing',  label:'Pricing' },
+  { id:'leagues',  label:'Leagues' },
+  { id:'events',   label:'Book an event' },
+  { id:'coaching', label:'Kids coaching' },
+  { id:'juniors',  label:'Juniors' },
+  { id:'payandplay', label:'Pay and Play' },
+  { id:'parties',  label:'Kids parties' },
+  { id:'academy',  label:'Academy' },
+  { id:'nottsolympic', label:'Notts Olympic FC' },
+  { id:'manvfat',  label:'MAN v FAT' },
+  { id:'clubs',    label:'Clubs' },
+  { id:'shop',     label:'The football shop' },
+  { id:'about',    label:'About' },
+  { id:'contact',  label:'Contact us' },
 ];
 
 /* desktop nav item — a single tap-through link (no dropdowns) */
@@ -95,7 +95,7 @@ export function TopNav(){
         {/* right — actions */}
         <div className="flex items-center gap-2">
           <a href={BOOK_HREF} {...BOOK_EXT} className="hidden md:block" aria-label="Search availability">
-            <Btn kind="primary" size="md" icon={I.search({})}>search availability</Btn>
+            <Btn kind="primary" size="md" icon={I.search({})}>Search availability</Btn>
           </a>
           <button onClick={()=>setOpen(o=>!o)} aria-label={open?'Close menu':'Open menu'} aria-expanded={open}
             className="glass glass-soft grid h-11 w-11 place-items-center rounded-full text-white xl:hidden">
@@ -123,7 +123,7 @@ export function TopNav(){
               ))}
 
               <a href={BOOK_HREF} {...BOOK_EXT} className="mt-1 block px-1 pb-1">
-                <Btn kind="primary" className="w-full" iconEnd={I.arrow({})}>search availability</Btn>
+                <Btn kind="primary" className="w-full" iconEnd={I.arrow({})}>Search availability</Btn>
               </a>
             </Glass>
           </div>
@@ -139,7 +139,7 @@ export function BookBar(){
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 px-4 pb-4 md:hidden" style={{paddingBottom:'max(1rem, env(safe-area-inset-bottom))'}}>
       <a href={BOOK_HREF} {...BOOK_EXT} aria-label="Book a pitch" className="block">
-        <Btn kind="primary" size="lg" className="w-full shadow-2xl" icon={I.ball({})} iconEnd={I.arrow({})}>book a pitch</Btn>
+        <Btn kind="primary" size="lg" className="w-full shadow-2xl" icon={I.ball({})} iconEnd={I.arrow({})}>Book a pitch</Btn>
       </a>
     </div>
   );

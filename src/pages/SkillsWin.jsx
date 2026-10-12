@@ -25,9 +25,9 @@ const SOCIALS = [
 
 const FACILITIES = [
   { ic:I.shield, t:'4G pitch surface',      d:'All our football pitches have a brand-new 4G surface.' },
-  { ic:I.bolt,   t:'floodlights',           d:'State-of-the-art LED floodlights for a bright, uniform light.' },
-  { ic:I.ball,   t:'choose your pitch type', d:'Classic pitches have 4ft goals and Samba pitches have 6ft goals.' },
-  { ic:I.shower, t:'changing facilities',   d:'Hot showers and secure changing facilities before and after the game.' },
+  { ic:I.bolt,   t:'Floodlights',           d:'State-of-the-art LED floodlights for a bright, uniform light.' },
+  { ic:I.ball,   t:'Choose your pitch type', d:'Classic pitches have 4ft goals and Samba pitches have 6ft goals.' },
+  { ic:I.shower, t:'Changing facilities',   d:'Hot showers and secure changing facilities before and after the game.' },
 ];
 
 function Tube({ id, title }){
@@ -50,7 +50,7 @@ function Tube({ id, title }){
 export function SkillsWin(){
   return (
     <div>
-      <PageHead eyebrow="competition" title="show us your skills and win at astro kings"
+      <PageHead eyebrow="competition" title="Show us your skills and win at Astro Kings"
         sub="Upload videos of your best skills and tag us for your chance to win free passes, footballs and other goodies." />
 
       {/* upload / prizes + featured video */}
@@ -69,7 +69,7 @@ export function SkillsWin(){
                 </li>
               ))}
             </ul>
-            <h3 className="mt-8 text-xl font-semibold lowercase">prizes</h3>
+            <h3 className="mt-8 text-xl font-semibold">Prizes</h3>
             <p className="mt-3 text-[15px] leading-relaxed text-white/65">
               We’ll let you know about all the prizes on our social media accounts, so follow, like and get involved!
             </p>
@@ -99,7 +99,7 @@ export function SkillsWin(){
           {FACILITIES.map((f,i)=>(
             <div key={i} className="text-center fade-up" style={{animationDelay:(i*.05)+'s'}}>
               <span className="mx-auto grid h-16 w-16 place-items-center rounded-full border-2 border-[var(--accent)] accent-text"><span style={{width:26,height:26}}>{f.ic({})}</span></span>
-              <div className="mt-4 text-[15px] font-semibold lowercase">{f.t}</div>
+              <div className="mt-4 text-[15px] font-semibold">{f.t}</div>
               <p className="mt-1.5 text-[13px] leading-relaxed text-white/55">{f.d}</p>
             </div>
           ))}
@@ -110,7 +110,7 @@ export function SkillsWin(){
       <section className="mx-auto mt-20 max-w-6xl px-6">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <div>
-            <h2 className="hero-title text-3xl font-semibold lowercase md:text-4xl">how to find us</h2>
+            <h2 className="hero-title text-3xl font-semibold md:text-4xl">How to find us</h2>
             <p className="mt-5 text-[15px] leading-relaxed text-white/65">
               Astro Kings 5-a-side football centre is located next to the Harvey Hadden Sports Village in Nottingham, NG8.
             </p>
@@ -119,7 +119,7 @@ export function SkillsWin(){
               It’s ideal for players located in Ilkeston, Beeston, Bilborough, Stapleford and Hucknall areas.
             </p>
             <p className="mt-3 text-[15px] text-white/65">Contact us on <span className="accent-text">{CONTACT.phone}</span> for more information.</p>
-            <a href="#getagame" className="mt-6 inline-block"><Btn kind="primary" iconEnd={I.arrow({})}>get a game</Btn></a>
+            <a href="#getagame" className="mt-6 inline-block"><Btn kind="primary" iconEnd={I.arrow({})}>Get a game</Btn></a>
           </div>
           <div className="aspect-[4/3] w-full overflow-hidden rounded-[30px] glass">
             <Map className="h-full w-full" />

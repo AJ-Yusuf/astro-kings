@@ -8,9 +8,9 @@ import { Section } from './Home.jsx';
 import { Footer } from '../components/Nav.jsx';
 
 const PAYPLAY = [
-  { slot:'after school',    note:'after school', price:'£4.50' },
-  { slot:'weekends',        note:'11 till 8',    price:'£4.50' },
-  { slot:'school holidays', note:'11 till 6',    price:'£4.50' },
+  { slot:'After school',    note:'After school', price:'£4.50' },
+  { slot:'Weekends',        note:'11 till 8',    price:'£4.50' },
+  { slot:'School holidays', note:'11 till 6',    price:'£4.50' },
 ];
 
 export function PayAndPlay(){
@@ -25,14 +25,14 @@ export function PayAndPlay(){
         <div className="relative z-10 mx-auto flex h-full max-w-4xl items-center justify-center px-6 text-center">
           <div className="pop text-center">
             <Eyebrow>juniors · u18s</Eyebrow>
-            <h1 className="hero-title mt-4 text-5xl font-semibold leading-[1.04] lowercase md:text-7xl">u18s pay and play football</h1>
+            <h1 className="hero-title mt-4 text-5xl font-semibold leading-[1.04] md:text-7xl">U18s Pay and Play football</h1>
           </div>
         </div>
       </section>
 
       {/* ---------- intro ---------- */}
       <section className="mx-auto mt-16 max-w-3xl px-6">
-        <h2 className="text-2xl font-semibold lowercase md:text-3xl">u18s pay and play football at astro kings</h2>
+        <h2 className="text-2xl font-semibold md:text-3xl">U18s Pay and Play football at Astro Kings</h2>
         <p className="mt-5 text-[15px] leading-relaxed text-white/65">
           When you’re not in school, come and play football here with your friends — we’ve teamed up with
           <a href="#kingsclub" className="accent-text hover:underline"> Kings Football Academy</a> to offer special prices that make
@@ -47,7 +47,7 @@ export function PayAndPlay(){
       </section>
 
       {/* ---------- daily pay and play prices ---------- */}
-      <Section eyebrow="turn up & play" title="daily pay and play prices">
+      <Section eyebrow="turn up & play" title="Daily Pay and Play prices">
         <p className="-mt-2 mb-6 max-w-2xl text-[15px] leading-relaxed text-white/60">
           You don’t have to join the club to play — you can still <span className="text-white/85">pay and play each day</span>.
         </p>
@@ -72,11 +72,11 @@ export function PayAndPlay(){
       <section className="mx-auto mt-20 max-w-6xl px-6">
         <div className="grid items-center gap-8 lg:grid-cols-[1fr_360px]">
           <div>
-            <h2 className="hero-title text-3xl font-semibold lowercase md:text-4xl">want to be the next neymar?</h2>
+            <h2 className="hero-title text-3xl font-semibold md:text-4xl">Want to be the next Neymar?</h2>
             <p className="mt-4 text-[15px] leading-relaxed text-white/65">
               If you’re 16 and have some real footballing talent, film yourself on the pitches and show the world you’re the next Neymar!
             </p>
-            <h3 className="mt-8 text-xl font-semibold lowercase">win footy prizes!</h3>
+            <h3 className="mt-8 text-xl font-semibold">Win footy prizes!</h3>
             <p className="mt-3 text-[15px] leading-relaxed text-white/65">
               Not only can you play for just a few pounds at Nottingham’s best 5-a-side football centre, we also have exclusive
               offers and the chance to <span className="text-white">win weekly prizes</span>. Upload vids of your skills and tag us
@@ -86,7 +86,7 @@ export function PayAndPlay(){
           <Glass strong className="rounded-[28px] p-8 text-center accent-ring">
             <span className="mx-auto grid h-14 w-14 place-items-center rounded-full accent-bg text-[#0b0b0b]"><span style={{width:26,height:26}}>{I.star({})}</span></span>
             <div className="mt-4 text-[20px] font-semibold leading-snug">Post your skills<br/>and Win!</div>
-            <a href="#skills" className="mt-6 block"><Btn kind="primary" size="lg" className="w-full" iconEnd={I.arrow({})}>get involved</Btn></a>
+            <a href="#skills" className="mt-6 block"><Btn kind="primary" size="lg" className="w-full" iconEnd={I.arrow({})}>Get involved</Btn></a>
           </Glass>
         </div>
       </section>

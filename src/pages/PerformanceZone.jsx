@@ -19,22 +19,22 @@ const CYAN = '#35E0FF';   // electric cyan — secondary
 
 const SESSION_TYPES = [
   { ic:I.user,    c:VOLT, t:'1-2-1 sessions',     d:'Focused individual coaching time — every rep on you.' },
-  { ic:I.ball,    c:CYAN, t:'small groups',       d:'Sharpen up together with up to 6 players.' },
-  { ic:I.whistle, c:VOLT, t:'coaches',            d:'Take the space and run your own client sessions.' },
-  { ic:I.bolt,    c:CYAN, t:'player development', d:'Technique, speed & split-second decisions.' },
+  { ic:I.ball,    c:CYAN, t:'Small groups',       d:'Sharpen up together with up to 6 players.' },
+  { ic:I.whistle, c:VOLT, t:'Coaches',            d:'Take the space and run your own client sessions.' },
+  { ic:I.bolt,    c:CYAN, t:'Player development', d:'Technique, speed & split-second decisions.' },
 ];
 
 const KIT = ['2 coaching pods','Speed ladders & hurdles','Mannequins','Mini-goals','Reaction games','Footballs provided'];
 
 const RATES = [
   {
-    who:'players & small groups', price:'£30', unit:'/session', tag:'',
-    note:'hire the Zone for yourself — up to 1 hour',
+    who:'Players & small groups', price:'£30', unit:'/session', tag:'',
+    note:'Hire the Zone for yourself — up to 1 hour',
     feat:['Full coaching set-up, ready to go','Suitable for 1–6 players','Equipment & footballs included'],
   },
   {
-    who:'coaches — full day or night', price:'from £60', unit:'', tag:'best for coaches',
-    note:'take the Zone and run your own clients',
+    who:'Coaches — full day or night', price:'from £60', unit:'', tag:'best for coaches',
+    note:'Take the Zone and run your own clients',
     feat:['The space is exclusively yours','Full coaching set-up included','Advertising board on site','Featured on our socials','Recurring slots get priority'],
   },
 ];
@@ -65,7 +65,7 @@ export function PerformanceZone(){
               <span className="h-1.5 w-1.5 rounded-full" style={{background:VOLT, boxShadow:`0 0 10px ${VOLT}`}}></span>
               1-2-1 · small groups · coaches
             </span>
-            <h1 className="hero-title mt-5 text-5xl font-semibold lowercase leading-[.98] md:text-7xl">the performance<br/><span style={{color:VOLT}}>zone</span></h1>
+            <h1 className="hero-title mt-5 text-5xl font-semibold leading-[.98] md:text-7xl">The performance<br/><span style={{color:VOLT}}>zone</span></h1>
             {/* volt speed line */}
             <div className="mx-auto mt-5 h-[3px] w-40 rounded-full" style={{background:`linear-gradient(90deg, transparent, ${VOLT}, ${CYAN})`}}></div>
             <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-white/80">
@@ -73,8 +73,8 @@ export function PerformanceZone(){
               their own clients. Every training tool, ready to go.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-              <a href="#performancezone-hire" onClick={(e)=>{e.preventDefault(); scrollToId('performancezone-hire');}}><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>book your session</Btn></a>
-              <a href="#rates" onClick={(e)=>{e.preventDefault(); scrollToId('rates');}}><Btn kind="outline" size="lg">see rates</Btn></a>
+              <a href="#performancezone-hire" onClick={(e)=>{e.preventDefault(); scrollToId('performancezone-hire');}}><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>Book your session</Btn></a>
+              <a href="#rates" onClick={(e)=>{e.preventDefault(); scrollToId('rates');}}><Btn kind="outline" size="lg">See rates</Btn></a>
             </div>
           </div>
         </div>
@@ -86,21 +86,21 @@ export function PerformanceZone(){
           <div className="flex items-center gap-3">
             <span className="grid h-11 w-11 place-items-center rounded-2xl" style={{background:VOLT+'22',color:VOLT}}><span style={{width:20,height:20}}>{I.whistle({})}</span></span>
             <div>
-              <div className="text-[15px] font-medium lowercase">coaches — this one’s for you</div>
+              <div className="text-[15px] font-medium">Coaches — this one’s for you</div>
               <div className="text-[13px] text-white/55">Hire the space, bring your clients, keep the income. Regular slots get priority.</div>
             </div>
           </div>
-          <a href="#performancezone-hire" onClick={(e)=>{e.preventDefault(); scrollToId('performancezone-hire');}} className="shrink-0"><Btn kind="primary" size="sm" iconEnd={I.arrow({})}>enquire</Btn></a>
+          <a href="#performancezone-hire" onClick={(e)=>{e.preventDefault(); scrollToId('performancezone-hire');}} className="shrink-0"><Btn kind="primary" size="sm" iconEnd={I.arrow({})}>Enquire</Btn></a>
         </Glass>
       </div>
 
       {/* ---------- ways to train ---------- */}
-      <Section eyebrow="how it’s used" title="built to develop players">
+      <Section eyebrow="how it’s used" title="Built to develop players">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {SESSION_TYPES.map((s,i)=>(
             <Glass key={s.t} className="rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 fade-up" style={{animationDelay:(i*.05)+'s'}}>
               <span className="grid h-12 w-12 place-items-center rounded-2xl" style={{background:s.c+'1e',color:s.c}}><span style={{width:22,height:22}}>{s.ic({})}</span></span>
-              <div className="mt-4 text-[16px] font-medium lowercase">{s.t}</div>
+              <div className="mt-4 text-[16px] font-medium">{s.t}</div>
               <p className="mt-1.5 text-[13.5px] leading-relaxed text-white/60">{s.d}</p>
             </Glass>
           ))}
@@ -108,7 +108,7 @@ export function PerformanceZone(){
       </Section>
 
       {/* ---------- inside the zone ---------- */}
-      <Section eyebrow="inside the zone" title="everything a session needs">
+      <Section eyebrow="inside the zone" title="Everything a session needs">
         <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
           <Glass strong className="relative overflow-hidden rounded-[30px] p-8">
             <div className="pointer-events-none !absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{background:VOLT}}></div>
@@ -136,18 +136,18 @@ export function PerformanceZone(){
 
       {/* ---------- rates ---------- */}
       <div id="rates"></div>
-      <Section eyebrow="hire rates" title="pick your hire">
+      <Section eyebrow="hire rates" title="Pick your hire">
         <div className="grid gap-4 md:grid-cols-2">
           {RATES.map((r,i)=>(
             <Glass key={r.who} strong={!!r.tag} className={`flex flex-col rounded-[28px] p-7 transition-transform duration-300 hover:-translate-y-1 fade-up ${r.tag?'accent-ring':''}`} style={{animationDelay:(i*.06)+'s'}}>
               {r.tag ? <Tag accent className="mb-3 self-start">{r.tag}</Tag> : <span className="mb-3 h-6"></span>}
-              <div className="text-[17px] font-medium lowercase">{r.who}</div>
+              <div className="text-[17px] font-medium">{r.who}</div>
               <div className="mt-1 text-[13px] text-white/45">{r.note}</div>
               <div className="mt-4 flex items-end gap-1"><span className="tnum text-5xl font-semibold" style={r.tag?{color:VOLT}:undefined}>{r.price}</span>{r.unit?<span className="mb-1.5 text-[13px] text-white/45">{r.unit}</span>:null}</div>
               <ul className="mt-6 flex-1 space-y-2.5 text-[14px] text-white/75">
                 {r.feat.map(f=><li key={f} className="flex items-center gap-2.5"><span className="grid h-6 w-6 shrink-0 place-items-center rounded-full" style={{background:(r.tag?VOLT:CYAN)+'1e',color:r.tag?VOLT:CYAN}}><span style={{width:12,height:12}}>{I.check({})}</span></span>{f}</li>)}
               </ul>
-              <a href="#performancezone-hire" onClick={(e)=>{e.preventDefault(); scrollToId('performancezone-hire');}} className="mt-7"><Btn kind={r.tag?'primary':'outline'} size="lg" className="w-full">hire now</Btn></a>
+              <a href="#performancezone-hire" onClick={(e)=>{e.preventDefault(); scrollToId('performancezone-hire');}} className="mt-7"><Btn kind={r.tag?'primary':'outline'} size="lg" className="w-full">Hire now</Btn></a>
             </Glass>
           ))}
         </div>
@@ -158,7 +158,7 @@ export function PerformanceZone(){
         <div className="grid gap-8 lg:grid-cols-[1fr_440px]">
           <div>
             <Eyebrow>book the zone</Eyebrow>
-            <h2 className="hero-title mt-3 text-3xl font-semibold lowercase md:text-4xl">hire the performance zone</h2>
+            <h2 className="hero-title mt-3 text-3xl font-semibold md:text-4xl">Hire the Performance Zone</h2>
             <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/65">
               Tell us who the session is for and when you’d like it, and we’ll confirm availability and lock it in.
               Coaches: mention if you want a recurring night — regular slots get priority.
@@ -172,7 +172,7 @@ export function PerformanceZone(){
           <Glass strong className="rounded-[30px] p-7">
             <div className="text-[12px] uppercase tracking-wide text-white/45">hire enquiry</div>
             <div className="mt-4">
-              <EnquiryForm cta="request a slot" source="performance zone" placeholder="e.g. coach — Tuesday nights weekly · or small group of 4, one hour…" />
+              <EnquiryForm cta="Request a slot" source="performance zone" placeholder="e.g. coach — Tuesday nights weekly · or small group of 4, one hour…" />
             </div>
           </Glass>
         </div>

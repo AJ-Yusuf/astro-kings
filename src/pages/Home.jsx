@@ -83,7 +83,7 @@ export function Hero({ variant='stacked' }){
         <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.1fr_.9fr]">
           <div className="fade-up">
             <Eyebrow>Nottingham · NG8</Eyebrow>
-            <h1 className="hero-title mt-5 text-[15vw] font-semibold lowercase leading-[.9] md:text-[8.2vw]">brand<br/>new 4g<br/><span className="accent-text">pitches</span></h1>
+            <h1 className="hero-title mt-5 text-[15vw] font-semibold leading-[.9] md:text-[8.2vw]">Brand<br/>new 4G<br/><span className="accent-text">pitches</span></h1>
             <p className="mt-6 max-w-md text-[16px] leading-relaxed text-white/65">Football, leagues, birthday parties, stag, hen and corporate events — all on brand-new floodlit 4G.</p>
             <div className="mt-8 flex flex-wrap items-center gap-8">{stats}</div>
           </div>
@@ -102,7 +102,7 @@ export function Hero({ variant='stacked' }){
         <HeroVideo className="!absolute inset-x-3 inset-y-3 md:inset-x-4 md:inset-y-4" dim />
         <div className="relative z-10 mx-auto max-w-4xl text-center fade-up">
           <Tag accent className="mb-6">⚡ brand new 4g pitches</Tag>
-          <h1 className="hero-title text-[17vw] font-semibold lowercase md:text-[9vw]">new <span className="accent-text">4g</span> pitches</h1>
+          <h1 className="hero-title text-[17vw] font-semibold md:text-[9vw]">New <span className="accent-text">4G</span> pitches</h1>
           <p className="mx-auto mt-6 max-w-xl text-[16px] leading-relaxed text-white/65">Football, leagues, birthday parties, stag, hen and corporate events — Nottingham’s best 5-a-side centre.</p>
         </div>
         <div className="relative z-10 mx-auto mt-10 max-w-3xl fade-up" style={{animationDelay:'.08s'}}><QuickBook /></div>
@@ -119,12 +119,12 @@ export function Hero({ variant='stacked' }){
 
       {/* desktop — staggered scattered words (upper half), CTA + search (lower band, no overlap) */}
       <div className="relative mx-auto hidden h-full max-w-7xl md:block">
-        <h1 className="hero-title absolute left-0 top-[9%] text-[10vw] font-semibold lowercase fade-up">brand</h1>
-        <h1 className="hero-title absolute right-2 top-[25%] text-[10vw] font-semibold lowercase fade-up" style={{animationDelay:'.06s'}}>new 4g</h1>
-        <h1 className="hero-title absolute left-[24%] top-[41%] text-[10vw] font-semibold lowercase accent-text fade-up" style={{animationDelay:'.12s'}}>pitches</h1>
+        <h1 className="hero-title absolute left-0 top-[9%] text-[10vw] font-semibold fade-up">Brand</h1>
+        <h1 className="hero-title absolute right-2 top-[25%] text-[10vw] font-semibold fade-up" style={{animationDelay:'.06s'}}>New 4G</h1>
+        <h1 className="hero-title absolute left-[24%] top-[41%] text-[10vw] font-semibold accent-text fade-up" style={{animationDelay:'.12s'}}>Pitches</h1>
 
         <p className="absolute left-0 top-[38%] max-w-[230px] text-[15px] leading-snug text-white/85 fade-up" style={{animationDelay:'.18s'}}>
-          football, leagues, birthday parties, stag, hen & corporate events.
+          Football, leagues, birthday parties, stag, hen & corporate events.
         </p>
 
         <div className="absolute right-0 top-[10%] text-right fade-up" style={{animationDelay:'.2s'}}>
@@ -139,7 +139,7 @@ export function Hero({ variant='stacked' }){
         {/* the main event — one booking CTA, front and centre */}
         <div className="absolute inset-x-0 bottom-[10%] flex justify-center fade-up" style={{animationDelay:'.3s'}}>
           <a href={BOOK_HREF} {...BOOK_EXT} aria-label="Book a pitch">
-            <Btn kind="primary" className="h-16 px-12 text-[17px] accent-glow hover:scale-[1.03]" icon={I.ball({})} iconEnd={I.arrow({})}>book a pitch</Btn>
+            <Btn kind="primary" className="h-16 px-12 text-[17px] accent-glow hover:scale-[1.03]" icon={I.ball({})} iconEnd={I.arrow({})}>Book a pitch</Btn>
           </a>
         </div>
       </div>
@@ -147,8 +147,8 @@ export function Hero({ variant='stacked' }){
       {/* mobile — clean stacked layout (no clipping) */}
       <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-end gap-6 pb-10 md:hidden">
         <div className="fade-up">
-          <h1 className="hero-title text-[16vw] font-semibold leading-[.95] lowercase">brand<br/>new 4g<br/><span className="accent-text">pitches</span></h1>
-          <p className="mt-4 max-w-xs text-[14px] leading-snug text-white/85">football, leagues, birthday parties, stag, hen &amp; corporate events.</p>
+          <h1 className="hero-title text-[16vw] font-semibold leading-[.95]">Brand<br/>new 4G<br/><span className="accent-text">pitches</span></h1>
+          <p className="mt-4 max-w-xs text-[14px] leading-snug text-white/85">Football, leagues, birthday parties, stag, hen &amp; corporate events.</p>
           <div className="mt-5 flex items-center gap-8">
             <div><div className="tnum text-3xl font-semibold">4</div><div className="text-[12px] text-white/60">floodlit 4G pitches</div></div>
             <div><div className="tnum text-3xl font-semibold">65k+</div><div className="text-[12px] text-white/60">games played</div></div>
@@ -235,15 +235,15 @@ export function FeatureTiles({ tiles, cols='md:grid-cols-2', aspect='aspect-[16/
 /* "Football" hero grid — the four headline offerings */
 /* The 8 headline tiles — booking first (primary goal), club-building close behind. */
 const HOME_TILES = [
-  { t:'book a pitch',              d:'brand-new 4g pitches · book online in minutes', to:'booking',         img:PITCH_PHOTO },
-  { t:'kids coaching',             d:'notts olympic kids league & weekly coaching',     to:'coaching',        img:'/coaching.jpg' },
-  { t:'notts olympic fc',          d:'the club behind the centre — follow & support',   to:'nottsolympic',    img:'/juniors-poster.jpg' },
-  { t:'book the performance zone', d:'1-2-1 & small-group coaching space for hire',     to:'performancezone', img:'/academy-poster.jpg' },
-  { t:'book an event',             d:'zorb football, darts, tournaments & more',        to:'events',          img:'/corporate.jpg' },
-  { t:'kids football party',       d:'parties from just £4 per child — fully hosted',   to:'parties',         img:'/party.jpg' },
-  { t:'social kicks',              d:'casual pick-up games — join the whatsapp group',  to:'getagame',        img:'/subs.jpg' },
+  { t:'Book a pitch',              d:'Brand-new 4G pitches · book online in minutes', to:'booking',         img:PITCH_PHOTO },
+  { t:'Kids coaching',             d:'Notts Olympic kids league & weekly coaching',     to:'coaching',        img:'/coaching.jpg' },
+  { t:'Notts Olympic FC',          d:'The club behind the centre — follow & support',   to:'nottsolympic',    img:'/juniors-poster.jpg' },
+  { t:'Book the Performance Zone', d:'1-2-1 & small-group coaching space for hire',     to:'performancezone', img:'/academy-poster.jpg' },
+  { t:'Book an event',             d:'Zorb football, darts, tournaments & more',        to:'events',          img:'/corporate.jpg' },
+  { t:'Kids football party',       d:'Parties from just £4 per child — fully hosted',   to:'parties',         img:'/party.jpg' },
+  { t:'Social Kicks',              d:'Casual pick-up games — join the WhatsApp group',  to:'getagame',        img:'/subs.jpg' },
   /* TEMPORARY Pexels placeholder (not Astro Kings) — swap for a real shop/product photo; see IMAGE_SOURCES.md */
-  { t:'the football shop',         d:'balls, grip socks & notts olympic kit',           to:'shop',            img:'/images/shop-tile.webp' },
+  { t:'The football shop',         d:'Balls, grip socks & Notts Olympic kit',           to:'shop',            img:'/images/shop-tile.webp' },
 ];
 
 export function Home(){
@@ -252,12 +252,12 @@ export function Home(){
       <Hero variant="stacked" />
 
       {/* the 8 headline tiles — the hub: everything the centre offers, booking first */}
-      <Section eyebrow="play at astro kings" title="what would you like to do?">
+      <Section eyebrow="play at astro kings" title="What would you like to do?">
         <FeatureTiles tiles={HOME_TILES} cols="md:grid-cols-2" aspect="aspect-[16/10]" big={true} />
       </Section>
 
-      <Section eyebrow="our pitches" title="choose your format"
-        action={<a href="#browse" className="hidden md:block"><Btn kind="outline" size="sm" iconEnd={I.arrow({})}>see all pitches</Btn></a>}>
+      <Section eyebrow="our pitches" title="Choose your format"
+        action={<a href="#browse" className="hidden md:block"><Btn kind="outline" size="sm" iconEnd={I.arrow({})}>See all pitches</Btn></a>}>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{PITCHES.map((p,i)=><PitchCard key={p.id} p={p} i={i} />)}</div>
       </Section>
 
@@ -265,11 +265,11 @@ export function Home(){
         <Glass strong className="relative overflow-hidden rounded-[34px] p-10 text-center md:p-16">
           <div className="pointer-events-none absolute -inset-20 opacity-60" style={{background:'radial-gradient(40% 60% at 50% 0%, color-mix(in oklab, var(--accent), transparent 70%), transparent)'}}></div>
           <div className="relative">
-            <h3 className="hero-title text-4xl md:text-6xl font-semibold lowercase">ready when you are</h3>
+            <h3 className="hero-title text-4xl md:text-6xl font-semibold">Ready when you are</h3>
             <p className="mx-auto mt-4 max-w-lg text-[15px] text-white/60">Pick a slot, rally the lads, and we’ll have the floodlights on.</p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <a href="#booking"><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>book a pitch</Btn></a>
-              <a href="#pricing"><Btn kind="outline" size="lg">view pricing</Btn></a>
+              <a href="#booking"><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>Book a pitch</Btn></a>
+              <a href="#pricing"><Btn kind="outline" size="lg">View pricing</Btn></a>
             </div>
           </div>
         </Glass>

@@ -28,9 +28,9 @@ const DEFAULT_PITCH = (PITCHES.find(p => p.tag === 'Most booked') || PITCHES[0])
 
 function TrustRow(){
   const items = [
-    { icon: I.bolt,  label: 'instant confirmation' },
-    { icon: I.lock,  label: 'secure card payment' },
-    { icon: I.clock, label: 'free cancellation 48h before' },
+    { icon: I.bolt,  label:'Instant confirmation' },
+    { icon: I.lock,  label:'Secure card payment' },
+    { icon: I.clock, label:'Free cancellation 48h before' },
   ];
   return (
     <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-2.5">
@@ -51,7 +51,7 @@ function PitchTile({ p, active, onPick }){
         ${active ? 'accent-ring border-transparent bg-white/[.06]' : 'border-white/10 bg-white/[.02] hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/[.04]'}`}>
       <div className="flex items-start justify-between gap-2">
         <div>
-          <div className="text-[16px] font-medium lowercase">{p.name}</div>
+          <div className="text-[16px] font-medium">{p.name}</div>
           <div className="mt-0.5 text-[12px] text-white/45">{p.desc}</div>
         </div>
         <span className="shrink-0 rounded-full bg-white/8 px-2.5 py-1 text-[11px] font-medium text-white/70">{p.size}</span>
@@ -85,7 +85,7 @@ export function PlanyoBooking(){
       {/* ---------- hero ---------- */}
       <div className="mx-auto max-w-5xl px-6 pt-28 pb-8 md:pt-32">
         <Eyebrow>secure booking</Eyebrow>
-        <h1 className="hero-title mt-3 text-4xl font-semibold lowercase md:text-5xl">book your pitch</h1>
+        <h1 className="hero-title mt-3 text-4xl font-semibold md:text-5xl">Book your pitch</h1>
         <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/60">
           Pick your pitch and day here, then check live availability and pay by card — all on our secure system.
         </p>
@@ -134,7 +134,7 @@ export function PlanyoBooking(){
             <p className="mt-1 text-[12.5px] text-white/45">Opens our secure Planyo booking page with real-time availability &amp; card payment.</p>
           </div>
           <a href={href} target="_blank" rel="noreferrer" className="w-full md:w-auto">
-            <Btn kind="primary" size="lg" className="w-full md:w-auto" iconEnd={I.arrow({})}>check availability &amp; book</Btn>
+            <Btn kind="primary" size="lg" className="w-full md:w-auto" iconEnd={I.arrow({})}>Check availability &amp; book</Btn>
           </a>
         </Glass>
 

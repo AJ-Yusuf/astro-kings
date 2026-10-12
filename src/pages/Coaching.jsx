@@ -60,10 +60,10 @@ const TEAMS = [
 
 /* how the free trial → team works */
 const STEPS = [
-  { n:'01', t:'book a free trial',   d:'Pick the training day that suits you — the first session is completely free.' },
-  { n:'02', t:'come and play',       d:'Our coaches watch every player during their trial week, in a relaxed, welcoming session.' },
-  { n:'03', t:'get assigned a team', d:'We place each child in a team where they’ll shine, balancing levels so everyone gets minutes.' },
-  { n:'04', t:'get your kit & play', d:'Your own kit, colours & badge — then weekly training, matchdays and tournaments.' },
+  { n:'01', t:'Book a free trial',   d:'Pick the training day that suits you — the first session is completely free.' },
+  { n:'02', t:'Come and play',       d:'Our coaches watch every player during their trial week, in a relaxed, welcoming session.' },
+  { n:'03', t:'Get assigned a team', d:'We place each child in a team where they’ll shine, balancing levels so everyone gets minutes.' },
+  { n:'04', t:'Get your kit & play', d:'Your own kit, colours & badge — then weekly training, matchdays and tournaments.' },
 ];
 
 /* what membership includes */
@@ -101,7 +101,7 @@ const PALETTE = ['#F26A3D', '#3B82F6', '#F59E4B', '#60A5FA'];
 
 /* the founding facts — shown as a slim inline ribbon, not big-number tiles */
 const FACTS = [
-  { v:'since 2022', l:'building the league' },
+  { v:'Since 2022', l:'building the league' },
   { v:'3 divisions', l:'foundation → academy' },
   { v:'8 teams', l:'in every division' },
   { v:'85%', l:'first-ever team' },
@@ -135,7 +135,7 @@ function Crest({ t }){
           </div>
         )}
       </div>
-      <div className="mt-3.5 text-[14px] font-medium lowercase">{t.name}</div>
+      <div className="mt-3.5 text-[14px] font-medium">{t.name}</div>
     </div>
   );
 }
@@ -159,7 +159,7 @@ function LeagueCard({ l, i }){
         {/* overlaid tag + name */}
         <div className="absolute inset-x-0 bottom-0 p-6">
           <span className="rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide backdrop-blur-sm" style={{background:l.c+'33',color:'#fff'}}>{l.tag}</span>
-          <h3 className="hero-title mt-3 text-3xl font-semibold lowercase" style={{color:l.c}}>{l.name}</h3>
+          <h3 className="hero-title mt-3 text-3xl font-semibold" style={{color:l.c}}>{l.name}</h3>
         </div>
       </div>
       {/* caption */}
@@ -214,7 +214,7 @@ export function Coaching(){
           <div className="pointer-events-none absolute inset-x-0 top-0 h-16" style={{background:'linear-gradient(to top, transparent, rgba(11,21,51,.92))'}}></div>
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24" style={{background:'linear-gradient(to bottom, transparent, rgba(11,21,51,.96))'}}></div>
           <div className="absolute inset-0 z-10 flex items-center justify-center px-6 text-center">
-            <h1 className="hero-title font-semibold lowercase leading-[.95]" style={{color:'#16235c', fontSize:'clamp(2.5rem, 6.2vw, 5.5rem)'}}>every child<br/>gets to play</h1>
+            <h1 className="hero-title font-semibold leading-[.95]" style={{color:'#16235c', fontSize:'clamp(2.5rem, 6.2vw, 5.5rem)'}}>Every child<br/>gets to play</h1>
           </div>
         </div>
 
@@ -223,15 +223,15 @@ export function Coaching(){
           <img src="/kfl-crest.png" alt="Kids Football League crest" fetchpriority="high"
                className="mx-auto w-52 drop-shadow-[0_20px_44px_rgba(0,0,0,.5)]"
                style={{ WebkitMaskImage:'radial-gradient(closest-side, #000 74%, transparent 100%)', maskImage:'radial-gradient(closest-side, #000 74%, transparent 100%)' }} />
-          <h1 className="hero-title mt-4 text-[2.6rem] font-semibold lowercase leading-[.98]">every child gets to play</h1>
+          <h1 className="hero-title mt-4 text-[2.6rem] font-semibold leading-[.98]">Every child gets to play</h1>
         </div>
 
         {/* shared subtitle + CTAs */}
         <div className="mx-auto max-w-2xl px-6 pt-5 pb-12 text-center md:pt-9">
           <p className="mx-auto max-w-xl text-[15px] leading-relaxed text-white/75">A league for every child, regardless of ability. Weekly coaching, real matchdays, your own team &amp; kit — start with a free trial.</p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-            <a href={BOOK_TRIAL_URL} target="_blank" rel="noreferrer"><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>start a free trial</Btn></a>
-            <a href="#register" onClick={(e)=>{e.preventDefault(); scrollToId('register');}}><Btn kind="outline" size="lg">how it works</Btn></a>
+            <a href={BOOK_TRIAL_URL} target="_blank" rel="noreferrer"><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>Start a free trial</Btn></a>
+            <a href="#register" onClick={(e)=>{e.preventDefault(); scrollToId('register');}}><Btn kind="outline" size="lg">How it works</Btn></a>
           </div>
         </div>
       </section>
@@ -242,7 +242,7 @@ export function Coaching(){
           {FACTS.map((f,i)=>(
             <div key={i} className="flex items-center gap-2.5 fade-up" style={{animationDelay:(i*.05)+'s'}}>
               <span className="h-2 w-2 rounded-full" style={{background:PALETTE[i], boxShadow:`0 0 10px ${PALETTE[i]}`}}></span>
-              <span className="text-[15px] font-semibold lowercase text-white/95">{f.v}</span>
+              <span className="text-[15px] font-semibold text-white/95">{f.v}</span>
               <span className="hidden text-[13px] text-white/45 sm:inline">{f.l}</span>
             </div>
           ))}
@@ -250,7 +250,7 @@ export function Coaching(){
       </section>
 
       {/* ---------- the story ---------- */}
-      <Section eyebrow="about the league" title="a league for every child">
+      <Section eyebrow="about the league" title="A league for every child">
         <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr]">
           <div className="text-[16px] leading-relaxed text-white/70">
             <p>We started back in early 2022 with a single mixed-age division and one simple belief: <span className="text-white">every child should get to play</span>. Over 85% of the children in our first season were playing for the very first time — many others had trained with teams but barely got any minutes on a matchday.</p>
@@ -270,7 +270,7 @@ export function Coaching(){
       </Section>
 
       {/* ---------- the three leagues (a real progression) ---------- */}
-      <Section eyebrow="the pathway" title="three leagues, one journey">
+      <Section eyebrow="the pathway" title="Three leagues, one journey">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch lg:gap-2">
           {LEAGUES.map((l,i)=>(
             <Fragment key={l.key}>
@@ -284,12 +284,12 @@ export function Coaching(){
           ))}
         </div>
         <div className="mt-6 flex justify-center">
-          <a href={LEAGUE_TABLES_URL} target="_blank" rel="noreferrer"><Btn kind="outline" icon={I.trophy({})} iconEnd={I.arrow({})}>view live league tables</Btn></a>
+          <a href={LEAGUE_TABLES_URL} target="_blank" rel="noreferrer"><Btn kind="outline" icon={I.trophy({})} iconEnd={I.arrow({})}>View live league tables</Btn></a>
         </div>
       </Section>
 
       {/* ---------- training timetable ---------- */}
-      <Section eyebrow="weekly training" title="when we train">
+      <Section eyebrow="weekly training" title="When we train">
         <div className="grid gap-5 md:grid-cols-2">
           {TRAINING.map((t,i)=>(
             <Glass key={t.age} strong className="flex items-center justify-between rounded-[26px] p-7 fade-up" style={{animationDelay:(i*.05)+'s'}}>
@@ -313,7 +313,7 @@ export function Coaching(){
         <div className="pointer-events-none absolute inset-0" style={{background:'radial-gradient(55% 60% at 22% 32%, rgba(59,130,246,.10), transparent 62%), radial-gradient(55% 60% at 80% 42%, rgba(242,106,61,.10), transparent 62%)'}}></div>
         <div className="relative">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="hero-title text-4xl font-semibold lowercase md:text-5xl">pick a shirt, join a team</h2>
+            <h2 className="hero-title text-4xl font-semibold md:text-5xl">Pick a shirt, join a team</h2>
             <p className="mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-white/65">Eight teams across the league — each with its own kit, colours and badge. Every child gets theirs.</p>
           </div>
           <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
@@ -325,14 +325,14 @@ export function Coaching(){
       </section>
 
       {/* ---------- how the trial works ---------- */}
-      <Section eyebrow="how it works" title="from free trial to matchday">
+      <Section eyebrow="how it works" title="From free trial to matchday">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((s,i)=>{
             const c = PALETTE[i];
             return (
               <Glass key={s.n} className="rounded-3xl p-6 fade-up" style={{animationDelay:(i*.05)+'s'}}>
                 <div className="grid h-11 w-11 place-items-center rounded-2xl text-[15px] font-semibold" style={{background:c+'22',color:c}}>{s.n}</div>
-                <div className="mt-4 text-[17px] font-medium lowercase">{s.t}</div>
+                <div className="mt-4 text-[17px] font-medium">{s.t}</div>
                 <p className="mt-2 text-[14px] leading-relaxed text-white/55">{s.d}</p>
               </Glass>
             );
@@ -345,7 +345,7 @@ export function Coaching(){
         <div className="grid gap-8 lg:grid-cols-[1fr_440px]">
           <div>
             <Eyebrow>join the league</Eyebrow>
-            <h2 className="hero-title mt-3 text-3xl font-semibold lowercase md:text-4xl">book your child’s free trial</h2>
+            <h2 className="hero-title mt-3 text-3xl font-semibold md:text-4xl">Book your child’s free trial</h2>
             <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/65">
               Tell us your child’s name and age and which day suits, and we’ll book their free trial and confirm
               everything by email. No commitment until you’ve tried a session — and no minimum term after.
@@ -358,21 +358,21 @@ export function Coaching(){
               ))}
             </div>
             <div className="mt-7">
-              <a href={BOOK_TRIAL_URL} target="_blank" rel="noreferrer"><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>book online now</Btn></a>
+              <a href={BOOK_TRIAL_URL} target="_blank" rel="noreferrer"><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>Book online now</Btn></a>
             </div>
           </div>
           <Glass strong className="rounded-[30px] p-7">
             <div className="text-[12px] uppercase tracking-wide text-white/45">quick enquiry</div>
             <p className="mt-2 text-[13px] text-white/55">Prefer we come back to you? Drop your details here.</p>
             <div className="mt-4">
-              <EnquiryForm cta="register interest" source="kids coaching" placeholder="Child’s name, age, and which day suits…" />
+              <EnquiryForm cta="Register interest" source="kids coaching" placeholder="Child’s name, age, and which day suits…" />
             </div>
           </Glass>
         </div>
       </section>
 
       {/* ---------- FAQ ---------- */}
-      <Section title="questions, answered">
+      <Section title="Questions, answered">
         <div className="mx-auto max-w-3xl border-b border-white/10">
           {FAQ.map((f,i)=>(
             <FaqItem key={i} q={f.q} a={f.a} defaultOpen={i===0} />

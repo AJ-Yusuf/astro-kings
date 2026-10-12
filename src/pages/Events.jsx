@@ -18,10 +18,10 @@ const AMBER = '#F5B22D';   // gold / celebration — primary
 const VIOLET = '#B15CFF';  // fun / social — secondary
 
 const EVENTS = [
-  { ic:I.ball,   c:AMBER,  t:'zorb football',       d:'Bubble-suit chaos — brilliant for groups, stag & hen dos.' },
-  { ic:I.star,   c:VIOLET, t:'darts & social games', d:'Soft darts, table games and more, off the pitch.' },
-  { ic:I.trophy, c:AMBER,  t:'tournaments',          d:'5-a-side cups for work, clubs or mates.' },
-  { ic:I.user,   c:VIOLET, t:'team building',        d:'Coached games & challenge days that actually bond a team.' },
+  { ic:I.ball,   c:AMBER,  t:'Zorb football',       d:'Bubble-suit chaos — brilliant for groups, stag & hen dos.' },
+  { ic:I.star,   c:VIOLET, t:'Darts & social games', d:'Soft darts, table games and more, off the pitch.' },
+  { ic:I.trophy, c:AMBER,  t:'Tournaments',          d:'5-a-side cups for work, clubs or mates.' },
+  { ic:I.user,   c:VIOLET, t:'Team building',        d:'Coached games & challenge days that actually bond a team.' },
 ];
 
 export function Events(){
@@ -59,15 +59,15 @@ export function Events(){
               <span className="h-1.5 w-1.5 rounded-full" style={{background:AMBER, boxShadow:`0 0 10px ${AMBER}`}}></span>
               events &amp; experiences
             </span>
-            <h1 className="hero-title mt-5 text-5xl font-semibold lowercase leading-[.98] md:text-7xl">book an <span style={{color:AMBER}}>event</span></h1>
+            <h1 className="hero-title mt-5 text-5xl font-semibold leading-[.98] md:text-7xl">Book an <span style={{color:AMBER}}>event</span></h1>
             <div className="mx-auto mt-5 h-[3px] w-40 rounded-full" style={{background:`linear-gradient(90deg, transparent, ${AMBER}, ${VIOLET})`}}></div>
             <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-white/80">
               Zorb football, darts, tournaments, team-building and corporate days — Nottingham’s best venue for sports
               events, on state-of-the-art 4G at the redeveloped Harvey Hadden Sports Village.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-              <a href="#events-enquiry" onClick={jump('events-enquiry')}><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>plan your event</Btn></a>
-              <a href="#whats-on" onClick={jump('whats-on')}><Btn kind="outline" size="lg">what’s on</Btn></a>
+              <a href="#events-enquiry" onClick={jump('events-enquiry')}><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>Plan your event</Btn></a>
+              <a href="#whats-on" onClick={jump('whats-on')}><Btn kind="outline" size="lg">What’s on</Btn></a>
             </div>
           </div>
         </div>
@@ -79,25 +79,25 @@ export function Events(){
           <div className="flex items-center gap-3">
             <span className="grid h-11 w-11 place-items-center rounded-2xl" style={{background:AMBER+'22',color:AMBER}}><span style={{width:20,height:20}}>{I.bolt({})}</span></span>
             <div>
-              <div className="text-[15px] font-medium lowercase">enquire direct to the team</div>
+              <div className="text-[15px] font-medium">Enquire direct to the team</div>
               <div className="text-[13px] text-white/55">Tell us your idea and we’ll build it around you — no middlemen.</div>
             </div>
           </div>
           <div className="flex items-center gap-2">
             <a href={'tel:'+CONTACT.phone.replace(/\s/g,'')}><Btn kind="outline" size="sm" icon={I.clock({})}>{CONTACT.phone}</Btn></a>
-            <a href="#events-enquiry" onClick={jump('events-enquiry')}><Btn kind="primary" size="sm" iconEnd={I.arrow({})}>enquire</Btn></a>
+            <a href="#events-enquiry" onClick={jump('events-enquiry')}><Btn kind="primary" size="sm" iconEnd={I.arrow({})}>Enquire</Btn></a>
           </div>
         </Glass>
       </div>
 
       {/* ---------- event types ---------- */}
       <div id="whats-on"></div>
-      <Section eyebrow="what’s on" title="pick your kind of chaos">
+      <Section eyebrow="what’s on" title="Pick your kind of chaos">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {EVENTS.map((s,i)=>(
             <Glass key={s.t} className="rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 fade-up" style={{animationDelay:(i*.05)+'s'}}>
               <span className="grid h-12 w-12 place-items-center rounded-2xl" style={{background:s.c+'1e',color:s.c}}><span style={{width:22,height:22}}>{s.ic({})}</span></span>
-              <div className="mt-4 text-[16px] font-medium lowercase">{s.t}</div>
+              <div className="mt-4 text-[16px] font-medium">{s.t}</div>
               <p className="mt-1.5 text-[13.5px] leading-relaxed text-white/60">{s.d}</p>
             </Glass>
           ))}
@@ -108,12 +108,12 @@ export function Events(){
       <section className="mx-auto mt-16 max-w-6xl px-6">
         <div className="grid gap-6 lg:grid-cols-[1fr_340px]">
           <div className="fade-up">
-            <h2 className="hero-title text-3xl md:text-4xl font-semibold lowercase">choose a package or build your own</h2>
+            <h2 className="hero-title text-3xl md:text-4xl font-semibold">Choose a package or build your own</h2>
             <p className="mt-4 text-[15px] leading-relaxed text-white/70">Starting from simple pitch hire, build an event to suit your staff or clients. Run it yourself or let us run it for you — team-building games, tournaments, a big match, coaching, pretty much anything you can dream up.</p>
             <p className="mt-3 text-[15px] leading-relaxed text-white/70">Food starts at £4.50 per person, but we can lay on a banquet fit for a king. Photos, trophies, medals or a full event pack — just tell us what you’re after.</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#events-enquiry" onClick={jump('events-enquiry')}><Btn kind="primary" iconEnd={I.arrow({})}>enquire now</Btn></a>
-              <a href="#manvfat"><Btn kind="outline">man v fat football</Btn></a>
+              <a href="#events-enquiry" onClick={jump('events-enquiry')}><Btn kind="primary" iconEnd={I.arrow({})}>Enquire now</Btn></a>
+              <a href="#manvfat"><Btn kind="outline">MAN v FAT Football</Btn></a>
             </div>
           </div>
           <Glass strong className="overflow-hidden rounded-[28px] p-2 fade-up">
@@ -128,13 +128,13 @@ export function Events(){
       </section>
 
       {/* ---------- tournament packages ---------- */}
-      <Section eyebrow="tournament packages" title="let us take the stress out">
+      <Section eyebrow="tournament packages" title="Let us take the stress out">
         <p className="-mt-2 mb-6 max-w-2xl text-[15px] leading-relaxed text-white/65">Run your staff or client tournament yourself, or let us handle everything so you can enjoy the day. Here’s the difference.</p>
         <div className="grid gap-4 md:grid-cols-2">
           {[['self managed', selfManaged, false],['fully managed', managed, true]].map(([title,list,hot],i)=>(
             <Glass key={i} strong={hot} className={`rounded-[28px] p-7 transition-transform duration-300 hover:-translate-y-1 fade-up ${hot?'accent-ring':''}`} style={{animationDelay:(i*.06)+'s'}}>
               <div className="flex items-center justify-between">
-                <div className="text-[18px] font-medium lowercase">{title}</div>
+                <div className="text-[18px] font-medium">{title}</div>
                 {hot ? <Tag accent>most popular</Tag> : null}
               </div>
               <ul className="mt-5 space-y-3 text-[14px] text-white/75">
@@ -146,7 +146,7 @@ export function Events(){
       </Section>
 
       {/* ---------- event extras ---------- */}
-      <Section eyebrow="event extras" title="finish it in style">
+      <Section eyebrow="event extras" title="Finish it in style">
         <Glass strong className="relative overflow-hidden rounded-[30px] p-7 md:p-8">
           <div className="pointer-events-none !absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{background:VIOLET}}></div>
           {/* TEMPORARY Pexels placeholder (not Astro Kings) — see IMAGE_SOURCES.md */}
@@ -169,7 +169,7 @@ export function Events(){
           <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center">
             <div>
               <Eyebrow>enquire direct</Eyebrow>
-              <h2 className="hero-title mt-3 text-3xl md:text-4xl font-semibold lowercase">let’s build your event</h2>
+              <h2 className="hero-title mt-3 text-3xl md:text-4xl font-semibold">Let’s build your event</h2>
               <p className="mt-3 text-[15px] leading-relaxed text-white/65">Fill in the form and one of the team will come straight back to build your perfect day — or reach us directly:</p>
               <div className="mt-5 space-y-2.5 text-[14px]">
                 <a href={'tel:'+CONTACT.phone.replace(/\s/g,'')} className="flex items-center gap-3 text-white/80 hover:text-white"><span className="grid h-9 w-9 place-items-center rounded-full" style={{background:AMBER+'22',color:AMBER}}><span style={{width:16,height:16}}>{I.clock({})}</span></span>{CONTACT.phone}</a>
@@ -177,7 +177,7 @@ export function Events(){
                 <div className="flex items-center gap-3 text-white/60"><span className="grid h-9 w-9 place-items-center rounded-full" style={{background:AMBER+'22',color:AMBER}}><span style={{width:16,height:16}}>{I.pin({})}</span></span>{CONTACT.addr}</div>
               </div>
             </div>
-            <EnquiryForm cta="send enquiry" source="events & corporate" placeholder="e.g. 24 staff, tournament + food, a Friday afternoon…" />
+            <EnquiryForm cta="Send enquiry" source="events & corporate" placeholder="e.g. 24 staff, tournament + food, a Friday afternoon…" />
           </div>
         </Glass>
       </section>

@@ -10,16 +10,16 @@ import { Footer } from '../components/Nav.jsx';
 export function Contact(){
   return (
     <div>
-      <PageHead eyebrow="get in touch" title="contact us"
+      <PageHead eyebrow="get in touch" title="Contact us"
         sub="Questions about bookings, parties, events, coaching or the club — call, email, or drop us a message and we’ll get back to you." />
 
       <div className="mx-auto mt-12 grid max-w-6xl gap-6 px-6 lg:grid-cols-[1fr_380px]">
         {/* enquiry form */}
         <Glass strong className="rounded-[30px] p-8">
-          <h2 className="text-2xl font-medium lowercase">send us a message</h2>
+          <h2 className="text-2xl font-medium">Send us a message</h2>
           <p className="mt-2 text-[14px] text-white/55">General enquiries — we usually reply within one working day.</p>
           <div className="mt-6">
-            <EnquiryForm cta="send message" source="contact page" placeholder="How can we help?" />
+            <EnquiryForm cta="Send message" source="contact page" placeholder="How can we help?" />
           </div>
         </Glass>
 

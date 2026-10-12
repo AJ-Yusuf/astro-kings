@@ -10,13 +10,13 @@ import { Footer } from '../components/Nav.jsx';
 export function Pricing(){
   const [tab,setTab] = useState('hire');
   const memb = [
-    { n:'Pay & Play', price:'£3.50', unit:'/pp', note:'before 6pm, every day', feat:['2 players minimum','Off-peak slots','No commitment','Café discount'], tag:'' },
-    { n:'Kings Club', price:'£39', unit:'/mo', note:'most popular', feat:['20% off all pitch hire','Priority booking window','Free bibs & match ball','League entry discount'], tag:'most popular' },
+    { n:'Pay & Play', price:'£3.50', unit:'/pp', note:'Before 6pm, every day', feat:['2 players minimum','Off-peak slots','No commitment','Café discount'], tag:'' },
+    { n:'Kings Club', price:'£39', unit:'/mo', note:'Most popular', feat:['20% off all pitch hire','Priority booking window','Free bibs & match ball','League entry discount'], tag:'most popular' },
     { n:'Team Season', price:'£540', unit:'/block', note:'12-week league', feat:['Guaranteed weekly slot','League fixtures & table','Trophy & medals','Fixed price all season'], tag:'' },
   ];
   return (
     <div>
-      <PageHead eyebrow="pitch hire & memberships" title="simple pricing"
+      <PageHead eyebrow="pitch hire & memberships" title="Simple pricing"
         sub="All pitches include changing facilities, hot showers, secure lockers and the café. 4G surface, LED floodlights & rebound boards." >
         <Glass strong className="flex gap-1 rounded-full p-1.5">
           {[['hire','pitch hire'],['membership','memberships']].map(([k,l])=>(
@@ -46,13 +46,13 @@ export function Pricing(){
             {memb.map((m,i)=>(
               <Glass key={m.n} strong={i===1} className={`flex flex-col rounded-[28px] p-7 fade-up ${i===1?'accent-ring':''}`} style={{animationDelay:(i*.06)+'s'}}>
                 {m.tag ? <Tag accent className="self-start mb-3">{m.tag}</Tag> : <span className="mb-3 h-6"></span>}
-                <div className="text-[19px] font-medium lowercase">{m.n}</div>
+                <div className="text-[19px] font-medium">{m.n}</div>
                 <div className="mt-1 text-[13px] text-white/45">{m.note}</div>
                 <div className="mt-5 flex items-end gap-1"><span className="tnum text-5xl font-semibold">{m.price}</span><span className="mb-1.5 text-[13px] text-white/45">{m.unit}</span></div>
                 <ul className="mt-6 flex-1 space-y-3 text-[14px] text-white/70">
                   {m.feat.map(f=><li key={f} className="flex items-center gap-3"><span className="glass grid h-6 w-6 place-items-center rounded-full accent-text"><span style={{width:13,height:13}}>{I.check({})}</span></span>{f}</li>)}
                 </ul>
-                <a href="#booking" className="mt-7"><Btn kind={i===1?'primary':'outline'} size="lg" className="w-full">choose plan</Btn></a>
+                <a href="#booking" className="mt-7"><Btn kind={i===1?'primary':'outline'} size="lg" className="w-full">Choose plan</Btn></a>
               </Glass>
             ))}
           </div>
@@ -60,7 +60,7 @@ export function Pricing(){
 
         <Glass strong className="mt-8 flex flex-col items-center justify-between gap-4 rounded-3xl p-7 text-center md:flex-row md:text-left">
           <div><div className="text-[16px] font-medium">Booking for a group, party or corporate day?</div><div className="mt-1 text-[14px] text-white/55">We'll build a custom package with catering and multiple pitches.</div></div>
-          <a href="#about"><Btn kind="glass" iconEnd={I.arrow({})}>talk to the team</Btn></a>
+          <a href="#about"><Btn kind="glass" iconEnd={I.arrow({})}>Talk to the team</Btn></a>
         </Glass>
       </div>
       <Footer />

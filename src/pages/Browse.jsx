@@ -30,7 +30,7 @@ export function Browse(){
 
   return (
     <div>
-      <PageHead eyebrow="find a pitch" title="search availability"
+      <PageHead eyebrow="find a pitch" title="Search availability"
         sub="One venue, four floodlit formats. Pick a date and time, then jump straight into a slot.">
         <Glass strong className="flex items-center gap-3 rounded-2xl px-5 py-4">
           <span className="text-white/45" style={{width:18,height:18}}>{I.pin({})}</span>

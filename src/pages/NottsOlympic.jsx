@@ -52,20 +52,20 @@ const POLICIES = [
 ];
 
 const FACTS = [
-  { v:'est. 1882',        l:'one of the originals', c:RED },
+  { v:'Est. 1882',        l:'one of the originals', c:RED },
   { v:'FA Cup 1885/86',   l:'the world’s oldest cup', c:GREEN },
-  { v:'per sempre calcio',l:'forever football', c:RED },
+  { v:'Per sempre calcio',l:'forever football', c:RED },
   { v:'Notts Senior League', l:'back since 2023/24', c:GREEN },
 ];
 
 const SUPPORT = [
-  { ic:I.star,   t:'the 1882 supporters club', c:RED,
+  { ic:I.star,   t:'The 1882 supporters club', c:RED,
     d:'Join the community chat, share your ideas and experiences, be part of the conversations, and help carry out the plans for the season and the future of the club. Help run it, vote on key decisions, have your say.',
     cta:'i want to support', to:PATREON, ext:true },
-  { ic:I.ball,   t:'the 100 club', c:GREEN,
+  { ic:I.ball,   t:'The 100 club', c:GREEN,
     d:'£10 a number, drawn monthly. The winner takes a big share of the pot, and everything left over goes straight back into the club.',
     cta:'100 club sign up', to:'#partner' },   /* TODO: real 100 Club signup link */
-  { ic:I.trophy, t:'sponsor the club', c:RED,
+  { ic:I.trophy, t:'Sponsor the club', c:RED,
     d:'Sponsor a junior or first-team player, an NSL league game or the cup run, or advertise in the matchday programme. Options for every budget, from £5 to £1,500.',
     cta:'i can sponsor', to:'#partner' },
 ];
@@ -78,9 +78,9 @@ const PARTNERS = [
 
 /* TODO: client to supply full squad, staff, fixtures & results */
 const TEAMS = [
-  { c:RED,   t:'first team', league:'Notts Senior League',
+  { c:RED,   t:'First team', league:'Notts Senior League',
     d:'Senior men’s football, competing week in, week out as the club climbs back up the pyramid.' },
-  { c:GREEN, t:'juniors', league:'Kids Football League',
+  { c:GREEN, t:'Juniors', league:'Kids Football League',
     d:'Boys’ and girls’ teams playing through the Kids Football League here at Astro Kings — the pathway to the senior side.' },
 ];
 
@@ -126,7 +126,7 @@ export function NottsOlympic(){
           <div className="pointer-events-none absolute inset-x-0 top-0 h-16" style={{background:'linear-gradient(to top, transparent, rgba(18,10,12,.92))'}}></div>
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24" style={{background:'linear-gradient(to bottom, transparent, rgba(18,10,12,.96))'}}></div>
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6 text-center">
-            <h1 className="hero-title font-semibold lowercase leading-[.95] text-white" style={{ fontSize:'clamp(2.5rem, 6vw, 5rem)', textShadow:'0 2px 22px rgba(0,0,0,.45)' }}>notts olympic fc</h1>
+            <h1 className="hero-title font-semibold leading-[.95] text-white" style={{ fontSize:'clamp(2.5rem, 6vw, 5rem)', textShadow:'0 2px 22px rgba(0,0,0,.45)' }}>Notts Olympic FC</h1>
             <div className="mt-3 text-[15px] italic tracking-wide text-white/85 md:text-[17px]" style={{textShadow:'0 1px 10px rgba(0,0,0,.5)'}}>“per sempre calcio” — <span className="not-italic text-white/60">forever football</span></div>
           </div>
         </div>
@@ -139,7 +139,7 @@ export function NottsOlympic(){
               <span className="h-1.5 w-1.5 rounded-full" style={{background:RED, boxShadow:`0 0 10px ${RED}`}}></span>
               nottingham · founded 1882
             </div>
-            <h1 className="hero-title mt-4 text-5xl font-semibold lowercase leading-[1]">notts olympic fc</h1>
+            <h1 className="hero-title mt-4 text-5xl font-semibold leading-[1]">Notts Olympic FC</h1>
             <div className="mt-4 text-[15px] italic tracking-wide text-white/80">“per sempre calcio” — <span className="not-italic text-white/50">forever football</span></div>
           </div>
         </div>
@@ -151,8 +151,8 @@ export function NottsOlympic(){
             the pitch in the Notts Senior League, playing out of Astro Kings.
           </p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-            <a href={PATREON} target="_blank" rel="noreferrer"><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>support the club</Btn></a>
-            <a href="#story" onClick={(e)=>{e.preventDefault(); scrollToId('story');}}><Btn kind="outline" size="lg">our story</Btn></a>
+            <a href={PATREON} target="_blank" rel="noreferrer"><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>Support the club</Btn></a>
+            <a href="#story" onClick={(e)=>{e.preventDefault(); scrollToId('story');}}><Btn kind="outline" size="lg">Our story</Btn></a>
           </div>
         </div>
       </section>
@@ -163,7 +163,7 @@ export function NottsOlympic(){
           {FACTS.map((f,i)=>(
             <div key={i} className="flex items-center gap-2.5">
               <span className="h-2 w-2 rounded-full" style={{background:f.c, boxShadow:`0 0 10px ${f.c}`}}></span>
-              <span className="text-[14.5px] font-semibold lowercase text-white/95">{f.v}</span>
+              <span className="text-[14.5px] font-semibold text-white/95">{f.v}</span>
               <span className="hidden text-[13px] text-white/45 sm:inline">{f.l}</span>
             </div>
           ))}
@@ -172,7 +172,7 @@ export function NottsOlympic(){
 
       {/* ---------- the story ---------- */}
       <div id="story"></div>
-      <Section eyebrow="our history" title="one of football’s originals">
+      <Section eyebrow="our history" title="One of football’s originals">
         <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr]">
           <div className="text-[16px] leading-relaxed text-white/70">
             <p>Notts Olympic was among the very first organised football clubs in the country — competing in the
@@ -215,7 +215,7 @@ export function NottsOlympic(){
               <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full opacity-20 blur-3xl" style={{background:RED}}></div>
               <div className="relative">
                 <div className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide" style={{background:RED+'22',color:RED}}>the rossoneri connection</div>
-                <h3 className="hero-title mt-4 text-4xl font-semibold lowercase md:text-5xl">from nottingham to milan</h3>
+                <h3 className="hero-title mt-4 text-4xl font-semibold md:text-5xl">From Nottingham to Milan</h3>
                 <div className="mt-5 text-[16px] leading-relaxed text-white/75">
                   <p><span className="text-white">Herbert Kilpin</span> was born in Nottingham and played for Notts Olympic at
                     the Forest Recreation Ground. He moved to Italy for the lace trade, fell for the game there, and in 1899
@@ -233,35 +233,35 @@ export function NottsOlympic(){
       </section>
 
       {/* ---------- the comeback / home ---------- */}
-      <Section title="back on the pitch">
+      <Section title="Back on the pitch">
         <div className="grid gap-4 md:grid-cols-3">
           {[
-            { c:RED,   t:'a proper home', d:'The club is rebuilding out of Astro Kings — Harvey Hadden Sports Village — with training and matchdays on brand-new 4G.' },
-            { c:GREEN, t:'in the league', d:'Notts Olympic took its place in the Notts Senior League from the 2023/24 season, competing week in, week out.' },
-            { c:RED,   t:'a pathway for kids', d:'The Kids Football League runs here too — a route from first kicks all the way to the senior side.' },
+            { c:RED,   t:'A proper home', d:'The club is rebuilding out of Astro Kings — Harvey Hadden Sports Village — with training and matchdays on brand-new 4G.' },
+            { c:GREEN, t:'In the league', d:'Notts Olympic took its place in the Notts Senior League from the 2023/24 season, competing week in, week out.' },
+            { c:RED,   t:'A pathway for kids', d:'The Kids Football League runs here too — a route from first kicks all the way to the senior side.' },
           ].map((x,i)=>(
             <Glass key={i} className="rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 fade-up" style={{animationDelay:(i*.06)+'s'}}>
               <span className="grid h-11 w-11 place-items-center rounded-2xl" style={{background:x.c+'22',color:x.c}}><span style={{width:20,height:20}}>{I.shield({})}</span></span>
-              <div className="mt-4 text-[17px] font-medium lowercase">{x.t}</div>
+              <div className="mt-4 text-[17px] font-medium">{x.t}</div>
               <p className="mt-2 text-[14px] leading-relaxed text-white/60">{x.d}</p>
             </Glass>
           ))}
         </div>
         <div className="mt-5 flex flex-wrap gap-3">
-          <a href={SENIOR_LEAGUE} target="_blank" rel="noreferrer"><Btn kind="outline" size="sm" icon={I.trophy({})} iconEnd={I.arrow({})}>notts senior league</Btn></a>
-          <a href="#coaching"><Btn kind="outline" size="sm" iconEnd={I.arrow({})}>the kids league</Btn></a>
+          <a href={SENIOR_LEAGUE} target="_blank" rel="noreferrer"><Btn kind="outline" size="sm" icon={I.trophy({})} iconEnd={I.arrow({})}>Notts Senior League</Btn></a>
+          <a href="#coaching"><Btn kind="outline" size="sm" iconEnd={I.arrow({})}>The kids league</Btn></a>
         </div>
       </Section>
 
       {/* ---------- teams ---------- */}
-      <Section eyebrow="who plays" title="our teams">
+      <Section eyebrow="who plays" title="Our teams">
         <div className="grid gap-4 md:grid-cols-2">
           {TEAMS.map((t,i)=>(
             <Glass key={t.t} className="rounded-3xl p-7 transition-transform duration-300 hover:-translate-y-1 fade-up" style={{animationDelay:(i*.06)+'s'}}>
               <div className="flex items-center gap-3">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl" style={{background:t.c+'22',color:t.c}}><span style={{width:20,height:20}}>{I.ball({})}</span></span>
                 <div>
-                  <div className="text-[18px] font-medium lowercase">{t.t}</div>
+                  <div className="text-[18px] font-medium">{t.t}</div>
                   <div className="text-[12px] uppercase tracking-wide" style={{color:t.c}}>{t.league}</div>
                 </div>
               </div>
@@ -273,7 +273,7 @@ export function NottsOlympic(){
       </Section>
 
       {/* ---------- get involved ---------- */}
-      <Section eyebrow="get involved" title="help write the next chapter">
+      <Section eyebrow="get involved" title="Help write the next chapter">
         <p className="-mt-2 mb-7 max-w-2xl text-[15px] leading-relaxed text-white/65">
           This is a club where you can make a difference — no matter how small. Play a small part, or become a
           significant contributor with ideas you see through. Support us on social media, be at the games, or get
@@ -284,7 +284,7 @@ export function NottsOlympic(){
           {SUPPORT.map((s,i)=>(
             <Glass key={s.t} strong className="flex flex-col rounded-3xl p-6 transition-transform duration-300 hover:-translate-y-1 fade-up" style={{animationDelay:(i*.06)+'s'}}>
               <span className="grid h-12 w-12 place-items-center rounded-2xl" style={{background:s.c+'22',color:s.c}}><span style={{width:22,height:22}}>{s.ic({})}</span></span>
-              <div className="mt-4 text-[17px] font-medium lowercase">{s.t}</div>
+              <div className="mt-4 text-[17px] font-medium">{s.t}</div>
               <p className="mt-2 flex-1 text-[14px] leading-relaxed text-white/60">{s.d}</p>
               <a href={s.to} {...(s.ext?{target:'_blank',rel:'noreferrer'}:{onClick:(e)=>{e.preventDefault(); scrollToId(s.to.slice(1));}})} className="mt-4"><Btn kind="outline" size="sm" iconEnd={I.arrow({})}>{s.cta}</Btn></a>
             </Glass>
@@ -296,11 +296,11 @@ export function NottsOlympic(){
           <div className="flex items-start gap-4">
             <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl" style={{background:GREEN+'22',color:GREEN}}><span style={{width:22,height:22}}>{I.shield({})}</span></span>
             <div>
-              <div className="text-[17px] font-medium lowercase">join the 1882 club board</div>
+              <div className="text-[17px] font-medium">Join the 1882 club board</div>
               <p className="mt-1 text-[14px] leading-relaxed text-white/60">Help us run the club, vote on key decisions and have your say in where Notts Olympic goes next.</p>
             </div>
           </div>
-          <a href={PATREON} target="_blank" rel="noreferrer" className="shrink-0"><Btn kind="primary" iconEnd={I.arrow({})}>get on board</Btn></a>
+          <a href={PATREON} target="_blank" rel="noreferrer" className="shrink-0"><Btn kind="primary" iconEnd={I.arrow({})}>Get on board</Btn></a>
         </Glass>
       </Section>
 
@@ -316,7 +316,7 @@ export function NottsOlympic(){
       </section>
 
       {/* ---------- watch NOFC ---------- */}
-      <Section eyebrow="watch nofc" title="follow every kick">
+      <Section eyebrow="watch nofc" title="Follow every kick">
         <Glass strong className="flex flex-col items-center gap-6 rounded-[30px] p-8 text-center md:flex-row md:justify-between md:p-10 md:text-left">
           <div className="max-w-xl">
             <p className="text-[15px] leading-relaxed text-white/70">
@@ -331,7 +331,7 @@ export function NottsOlympic(){
       </Section>
 
       {/* ---------- club policies ---------- */}
-      <Section eyebrow="safe & proper" title="club policies">
+      <Section eyebrow="safe & proper" title="Club policies">
         <p className="-mt-2 mb-6 max-w-2xl text-[15px] leading-relaxed text-white/65">
           Notts Olympic has adopted the policies of Nottinghamshire FA. These are in force across the club —
           request a copy of any document via the contact form below.
@@ -351,7 +351,7 @@ export function NottsOlympic(){
         <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
           <div>
             <Eyebrow>partner with us</Eyebrow>
-            <h2 className="hero-title mt-3 text-3xl font-semibold lowercase md:text-4xl">sponsor a piece of history</h2>
+            <h2 className="hero-title mt-3 text-3xl font-semibold md:text-4xl">Sponsor a piece of history</h2>
             <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/65">
               Back a club with real heritage and real momentum. Sponsor a junior or first-team player, an NSL league
               game or the cup run, or advertise in the new home-ground matchday programme. Options for every budget,
@@ -370,7 +370,7 @@ export function NottsOlympic(){
           <Glass strong className="rounded-[30px] p-7">
             <div className="text-[12px] uppercase tracking-wide text-white/45">sponsorship enquiry</div>
             <div className="mt-4">
-              <EnquiryForm cta="enquire about sponsorship" source="Notts Olympic sponsorship" placeholder="Tell us about your business and what you have in mind…" />
+              <EnquiryForm cta="Enquire about sponsorship" source="Notts Olympic sponsorship" placeholder="Tell us about your business and what you have in mind…" />
             </div>
           </Glass>
         </div>

@@ -49,7 +49,7 @@ export function Venue({ params }){
               {p.tag ? <Tag accent>{p.tag}</Tag> : null}
               <Tag>{p.size}</Tag>
             </div>
-            <h1 className="hero-title mt-4 text-5xl md:text-6xl font-semibold lowercase">{p.name}</h1>
+            <h1 className="hero-title mt-4 text-5xl md:text-6xl font-semibold">{p.name}</h1>
             <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/60">
               {p.desc}. Played under LED floodlights on a 4G rubber-crumb surface with rebound boards — the fast, all-weather game Astro Kings is known for.
             </p>
@@ -64,7 +64,7 @@ export function Venue({ params }){
               ))}
             </div>
 
-            <h2 className="mt-10 text-xl font-medium lowercase">facilities included</h2>
+            <h2 className="mt-10 text-xl font-medium">Facilities included</h2>
             <div className="mt-4 flex flex-wrap gap-2.5">
               {['Hot showers','Secure lockers','On-site café','Free parking','Changing rooms','Spectator area'].map(f=>(
                 <span key={f} className="glass glass-soft inline-flex items-center gap-2 rounded-full px-4 py-2 text-[13px] text-white/75"><span className="accent-text" style={{width:15,height:15}}>{I.check({})}</span>{f}</span>

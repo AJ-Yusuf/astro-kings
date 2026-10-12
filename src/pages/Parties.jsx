@@ -48,15 +48,15 @@ export function Parties(){
               <span className="h-1.5 w-1.5 rounded-full" style={{background:PINK, boxShadow:`0 0 10px ${PINK}`}}></span>
               kids football parties
             </span>
-            <h1 className="hero-title mt-5 text-5xl font-semibold lowercase leading-[.98] md:text-7xl">a party they’ll<br/><span style={{color:PINK}}>never forget</span></h1>
+            <h1 className="hero-title mt-5 text-5xl font-semibold leading-[.98] md:text-7xl">A party they’ll<br/><span style={{color:PINK}}>never forget</span></h1>
             <div className="mx-auto mt-5 h-[3px] w-40 rounded-full" style={{background:`linear-gradient(90deg, transparent, ${PINK}, ${CYAN})`}}></div>
             <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-white/80">
               Fully hosted football birthday parties on floodlit 4G — coaching, matches, mini-tournaments, photos and
               prizes. Built around your child, run by qualified coaches.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-              <a href="#party-enquiry" onClick={jump('party-enquiry')}><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>enquire now</Btn></a>
-              <a href="#packages" onClick={jump('packages')}><Btn kind="outline" size="lg">see packages</Btn></a>
+              <a href="#party-enquiry" onClick={jump('party-enquiry')}><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>Enquire now</Btn></a>
+              <a href="#packages" onClick={jump('packages')}><Btn kind="outline" size="lg">See packages</Btn></a>
             </div>
           </div>
         </div>
@@ -64,12 +64,12 @@ export function Parties(){
 
       {/* ---------- packages ---------- */}
       <div id="packages"></div>
-      <Section eyebrow="party packages" title="pick your party">
+      <Section eyebrow="party packages" title="Pick your party">
         <div className="grid gap-4 md:grid-cols-3">
           {pkgs.map((m,i)=>(
             <Glass key={m.n} strong={i===1} className={`flex flex-col rounded-[28px] p-7 transition-transform duration-300 hover:-translate-y-1.5 fade-up ${i===1?'accent-ring':''}`} style={{animationDelay:(i*.06)+'s'}}>
               {m.tag ? <Tag accent className="self-start mb-3">{m.tag}</Tag> : <span className="mb-3 h-6"></span>}
-              <div className="text-[19px] font-medium lowercase" style={{color:m.c}}>{m.n}</div>
+              <div className="text-[19px] font-medium" style={{color:m.c}}>{m.n}</div>
               <div className="mt-1 text-[13px] text-white/45">{m.dur} · 12 players</div>
               <div className="mt-5 flex items-end gap-1"><span className="tnum text-5xl font-semibold">{m.price}</span></div>
               <ul className="mt-6 flex-1 space-y-3 text-[14px] text-white/75">
@@ -82,7 +82,7 @@ export function Parties(){
 
         <Glass strong className="mt-4 flex flex-col items-center justify-between gap-4 rounded-3xl p-7 text-center md:flex-row md:text-left">
           <div><div className="text-[16px] font-medium">Every party is built around your child</div><div className="mt-1 text-[14px] text-white/55">Skills training, matches, games or a mini-tournament — plus photos & video. All dietary requirements catered for.</div></div>
-          <a href="#party-enquiry" onClick={jump('party-enquiry')}><Btn kind="glass" iconEnd={I.arrow({})}>talk to the team</Btn></a>
+          <a href="#party-enquiry" onClick={jump('party-enquiry')}><Btn kind="glass" iconEnd={I.arrow({})}>Talk to the team</Btn></a>
         </Glass>
       </Section>
 
@@ -95,7 +95,7 @@ export function Parties(){
           <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center">
             <div>
               <Eyebrow>enquire direct</Eyebrow>
-              <h2 className="hero-title mt-3 text-3xl font-semibold lowercase md:text-4xl">book a kids party</h2>
+              <h2 className="hero-title mt-3 text-3xl font-semibold md:text-4xl">Book a kids party</h2>
               <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-white/65">
                 Tell us the date you have in mind, how many children and the age group — we’ll come back the same day
                 with availability and a full price. Or reach us directly:
@@ -108,7 +108,7 @@ export function Parties(){
             <Glass strong className="rounded-[30px] p-7">
               <div className="text-[12px] uppercase tracking-wide text-white/45">party enquiry</div>
               <div className="mt-4">
-                <EnquiryForm cta="enquire about a party" source="kids parties" placeholder="e.g. Saturday 14th, 12 kids, age 8…" />
+                <EnquiryForm cta="Enquire about a party" source="kids parties" placeholder="e.g. Saturday 14th, 12 kids, age 8…" />
               </div>
             </Glass>
           </div>

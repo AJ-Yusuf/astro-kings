@@ -98,21 +98,21 @@ export function GetAGame(){
             <span className="h-1.5 w-1.5 rounded-full" style={{background:ELECTRIC, boxShadow:`0 0 10px ${ELECTRIC}`}}></span>
             social kicks · football · friends · every week
           </span>
-          <h1 className="hero-title mt-5 text-5xl font-semibold leading-[.98] lowercase md:text-7xl">
-            play more.<br/><span style={{color:ELECTRIC}}>meet more.</span>
+          <h1 className="hero-title mt-5 text-5xl font-semibold leading-[.98] md:text-7xl">
+            Play more.<br/><span style={{color:ELECTRIC}}>Meet more.</span>
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-white/80">On your own or just a few of you? We’ve weekly pick-up games you can join. Join the WhatsApp group, get the game night invites, turn up and play.</p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer"><Btn kind="primary" size="lg" icon={WHATSAPP_ICON} iconEnd={I.arrow({})} style={{ background:GREEN, color:'#04140b', boxShadow:`0 14px 44px -12px ${GREEN}` }}>join the whatsapp group</Btn></a>
-            <a href="#register" onClick={(e)=>{e.preventDefault(); scrollToId('register');}}><Btn kind="outline" size="lg">register for invites</Btn></a>
+            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer"><Btn kind="primary" size="lg" icon={WHATSAPP_ICON} iconEnd={I.arrow({})} style={{ background:GREEN, color:'#04140b', boxShadow:`0 14px 44px -12px ${GREEN}` }}>Join the WhatsApp group</Btn></a>
+            <a href="#register" onClick={(e)=>{e.preventDefault(); scrollToId('register');}}><Btn kind="outline" size="lg">Register for invites</Btn></a>
           </div>
 
           {/* the three offers, from the brand */}
           <div className="mx-auto mt-9 flex max-w-2xl flex-wrap items-center justify-center gap-x-8 gap-y-3">
             {[
-              { ic:I.ball, c:ELECTRIC, t:'multiple games each week' },
-              { ic:null,   c:GREEN,    t:'whatsapp group chat', wa:true },
-              { ic:I.cal,  c:ELECTRIC, t:'monthly membership or pay ’n play' },
+              { ic:I.ball, c:ELECTRIC, t:'Multiple games each week' },
+              { ic:null,   c:GREEN,    t:'WhatsApp group chat', wa:true },
+              { ic:I.cal,  c:ELECTRIC, t:'Monthly membership or pay ’n play' },
             ].map((x,i)=>(
               <div key={i} className="flex items-center gap-2.5 text-[13.5px] text-white/85">
                 <span className="grid h-8 w-8 place-items-center rounded-full" style={{background:x.c+'22',color:x.c}}><span style={{width:16,height:16}}>{x.wa?WHATSAPP_ICON:x.ic({})}</span></span>
@@ -135,13 +135,13 @@ export function GetAGame(){
         <div className="grid gap-10 lg:grid-cols-[1fr_440px]">
           {/* concept copy */}
           <div className="max-w-xl">
-            <h2 className="hero-title text-3xl font-semibold lowercase md:text-4xl">register here to get invites to football games</h2>
+            <h2 className="hero-title text-3xl font-semibold md:text-4xl">Register here to get invites to football games</h2>
             <p className="mt-5 text-[15px] leading-relaxed text-white/60">
               If you’re always ready to play and looking for a bit more football during the week, register here to get
               notifications and invites to matches where our regular bookings are a couple of players short.
             </p>
 
-            <h3 className="mt-9 text-[19px] font-medium lowercase">the subs bench concept</h3>
+            <h3 className="mt-9 text-[19px] font-medium">The Subs Bench concept</h3>
             <p className="mt-3 text-[15px] leading-relaxed text-white/60">
               Sometimes players drop out at the last minute or can’t make their usual games. So rather than everybody
               missing out, you can be the super sub by joining their game. All standards are welcome — just register your
@@ -149,7 +149,7 @@ export function GetAGame(){
               Bench WhatsApp group.
             </p>
 
-            <h3 className="mt-9 text-[19px] font-medium lowercase">who’s on the bench?</h3>
+            <h3 className="mt-9 text-[19px] font-medium">Who’s on the bench?</h3>
             <p className="mt-3 text-[15px] leading-relaxed text-white/60">
               There’s lots of reasons somebody would want to be on the bench. They might be new to the area, want a bit of
               extra exercise, or just fancy a run out any given day. Plus it’s a great way to make friends and have a bit of fun.
@@ -165,7 +165,7 @@ export function GetAGame(){
             {done ? (
               <div className="py-8 text-center">
                 <span className="mx-auto grid h-16 w-16 place-items-center rounded-full accent-bg text-[#0b0b0b]"><span style={{width:30,height:30}}>{I.check({})}</span></span>
-                <h3 className="hero-title mt-5 text-2xl font-semibold lowercase">you’re on the bench</h3>
+                <h3 className="hero-title mt-5 text-2xl font-semibold">You’re on the bench</h3>
                 <p className="mx-auto mt-3 max-w-xs text-[14px] text-white/60">Thanks {f.name.split(' ')[0]}! We’ll add you to the Subs Bench WhatsApp group and ping you when a game needs a sub.</p>
                 <Btn kind="outline" className="mt-6" onClick={()=>{ setDone(false); setF({name:'',email:'',phone:'',age:''}); setDays([]); setConfirm(false); }}>register someone else</Btn>
               </div>
@@ -214,7 +214,7 @@ export function GetAGame(){
 
       {/* ---------- location ---------- */}
       <section className="mx-auto mt-24 max-w-3xl px-6 text-center">
-        <h2 className="hero-title text-3xl font-semibold lowercase md:text-4xl">our location</h2>
+        <h2 className="hero-title text-3xl font-semibold md:text-4xl">Our location</h2>
         <p className="mt-5 text-[15px] leading-relaxed text-white/60">
           Astro Kings 5-a-side football centre is located next to the Harvey Hadden Sports Village in Nottingham, NG8.
           The ground is easily accessible from the M1 Junction 26 — it’s just 4 minutes from the motorway to the pitches.

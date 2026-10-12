@@ -20,9 +20,9 @@ export function Leagues(){
   ];
   return (
     <div>
-      <PageHead eyebrow="leagues & tournaments" title="join a league"
+      <PageHead eyebrow="leagues & tournaments" title="Join a league"
         sub="Competitive blocks every night of the week. Guaranteed weekly slot, live tables, fixtures, trophies and medals.">
-        <a href="#about"><Btn kind="primary" iconEnd={I.arrow({})}>enter a team</Btn></a>
+        <a href="#about"><Btn kind="primary" iconEnd={I.arrow({})}>Enter a team</Btn></a>
       </PageHead>
 
       <div className="mx-auto mt-12 grid max-w-6xl gap-6 px-6 lg:grid-cols-[1fr_360px]">

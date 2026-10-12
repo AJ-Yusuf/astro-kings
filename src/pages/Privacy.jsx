@@ -19,7 +19,7 @@ import { Footer } from '../components/Nav.jsx';
 function Section({ title, children }){
   return (
     <section className="mt-10">
-      <h2 className="text-[19px] font-medium lowercase">{title}</h2>
+      <h2 className="text-[19px] font-medium">{title}</h2>
       <div className="mt-3 space-y-3 text-[14px] leading-relaxed text-white/65">{children}</div>
     </section>
   );
@@ -28,13 +28,13 @@ function Section({ title, children }){
 export function Privacy(){
   return (
     <div>
-      <PageHead eyebrow="legal" title="privacy policy"
+      <PageHead eyebrow="legal" title="Privacy policy"
         sub="How Astro Kings collects, uses and protects your personal information." />
 
       <div className="mx-auto max-w-2xl px-6 pb-16">
         <p className="mt-8 text-[13px] text-white/40">Last updated: September 2026</p>
 
-        <Section title="who we are">
+        <Section title="Who we are">
           <p>
             Astro Kings Ltd, {CONTACT.addr}. Astro Kings Ltd is owned by
             Nineteen Twelve Holdings Ltd — where this policy says “we” or “us”,
@@ -49,7 +49,7 @@ export function Privacy(){
           </p>
         </Section>
 
-        <Section title="what we collect">
+        <Section title="What we collect">
           <p>Depending on how you use the site, we may collect:</p>
           <ul className="space-y-1.5 pl-4">
             <li>· <span className="text-white/85">Enquiry forms:</span> your name, email address, phone number and the message you send us.</li>
@@ -73,7 +73,7 @@ export function Privacy(){
           </p>
         </Section>
 
-        <Section title="why we use it">
+        <Section title="Why we use it">
           <p>
             We use your information to reply to your enquiry, to organise the
             sessions and games you have asked to join, and to contact you about
@@ -83,7 +83,7 @@ export function Privacy(){
           <p>We do not sell your information, and we do not use it for advertising.</p>
         </Section>
 
-        <Section title="who we share it with">
+        <Section title="Who we share it with">
           <p>
             <span className="text-white/85">Planyo</span> — our booking and payment
             provider, who process bookings and card payments on our behalf.
@@ -105,7 +105,7 @@ export function Privacy(){
           </p>
         </Section>
 
-        <Section title="how long we keep it">
+        <Section title="How long we keep it">
           <p>
             We keep personal data, including transaction history and complaints,
             for up to seven years after our last contact with you — so that we
@@ -123,7 +123,7 @@ export function Privacy(){
           </p>
         </Section>
 
-        <Section title="your rights">
+        <Section title="Your rights">
           <p>
             You have the right to ask us for a copy of the information we hold
             about you, to have it corrected or deleted, and to object to how we
@@ -137,7 +137,7 @@ export function Privacy(){
           </p>
         </Section>
 
-        <Section title="cookies">
+        <Section title="Cookies">
           <p>
             This website does not set advertising or analytics cookies, and does
             not track you across other websites. The embedded booking widget and

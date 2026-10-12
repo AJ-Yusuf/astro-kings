@@ -17,9 +17,9 @@ export function Academy(){
       feat:['Full week — one day free','Games, matches & challenges','Priority for Kings Club members'] },
   ];
   const trust = [
-    { ic:I.shield, t:'safe & secure', d:'DBS-checked, first-aid qualified coaches and secure, supervised pitches.' },
-    { ic:I.whistle, t:'fa-affiliated', d:'Delivered by Kings Football Academy, a local FA-affiliated club.' },
-    { ic:I.bolt, t:'all-weather 4G', d:'LED-lit 4G means camps run rain or shine, all year round.' },
+    { ic:I.shield, t:'Safe & secure', d:'DBS-checked, first-aid qualified coaches and secure, supervised pitches.' },
+    { ic:I.whistle, t:'Fa-affiliated', d:'Delivered by Kings Football Academy, a local FA-affiliated club.' },
+    { ic:I.bolt, t:'All-weather 4G', d:'LED-lit 4G means camps run rain or shine, all year round.' },
   ];
   return (
     <div>
@@ -32,20 +32,20 @@ export function Academy(){
         <div className="relative z-10 mx-auto flex h-full max-w-4xl items-center justify-center px-6 text-center">
           <div className="pop text-center">
             <Eyebrow>kings football academy</Eyebrow>
-            <h1 className="hero-title mt-4 text-5xl font-semibold leading-[1.04] lowercase md:text-7xl">coaching &amp; camps</h1>
+            <h1 className="hero-title mt-4 text-5xl font-semibold leading-[1.04] md:text-7xl">Coaching &amp; camps</h1>
             <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-white/70">Weekend and holiday football coaching for kids — games, skills, challenges, matches and tournaments, led by qualified Academy coaches.</p>
-            <a href="#juniors" className="mt-6 inline-block"><Btn kind="primary" iconEnd={I.arrow({})}>junior memberships</Btn></a>
+            <a href="#juniors" className="mt-6 inline-block"><Btn kind="primary" iconEnd={I.arrow({})}>Junior memberships</Btn></a>
           </div>
         </div>
       </section>
 
-      <Section eyebrow="holiday camps" title="loads of football fun"
-        action={<a href="#about" className="hidden md:block"><Btn kind="outline" size="sm" iconEnd={I.arrow({})}>book a camp</Btn></a>}>
+      <Section eyebrow="holiday camps" title="Loads of football fun"
+        action={<a href="#about" className="hidden md:block"><Btn kind="outline" size="sm" iconEnd={I.arrow({})}>Book a camp</Btn></a>}>
         <div className="grid gap-4 md:grid-cols-3">
           {camps.map((m,i)=>(
             <Glass key={m.n} strong={i===2} className={`flex flex-col rounded-[28px] p-7 fade-up ${i===2?'accent-ring':''}`} style={{animationDelay:(i*.06)+'s'}}>
               {m.tag ? <Tag accent className="self-start mb-3">{m.tag}</Tag> : <span className="mb-3 h-6"></span>}
-              <div className="text-[19px] font-medium lowercase">{m.n}</div>
+              <div className="text-[19px] font-medium">{m.n}</div>
               <div className="mt-5 flex items-end gap-1"><span className="tnum text-5xl font-semibold">{m.price}</span><span className="mb-1.5 text-[13px] text-white/45">{m.unit}</span></div>
               <ul className="mt-6 flex-1 space-y-3 text-[14px] text-white/70">
                 {m.feat.map(f=><li key={f} className="flex items-center gap-3"><span className="glass grid h-6 w-6 place-items-center rounded-full accent-text"><span style={{width:13,height:13}}>{I.check({})}</span></span>{f}</li>)}
@@ -56,12 +56,12 @@ export function Academy(){
         </div>
       </Section>
 
-      <Section eyebrow="why parents choose us" title="qualified, safe & fun">
+      <Section eyebrow="why parents choose us" title="Qualified, safe & fun">
         <div className="grid gap-4 md:grid-cols-3">
           {trust.map((w,i)=>(
             <Glass key={i} className="rounded-3xl p-7 fade-up" style={{animationDelay:(i*.05)+'s'}}>
               <span className="glass grid h-14 w-14 place-items-center rounded-2xl accent-text"><span style={{width:26,height:26}}>{w.ic({})}</span></span>
-              <div className="mt-6 text-2xl font-medium lowercase">{w.t}</div>
+              <div className="mt-6 text-2xl font-medium">{w.t}</div>
               <p className="mt-2 text-[14px] leading-relaxed text-white/55">{w.d}</p>
             </Glass>
           ))}

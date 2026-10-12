@@ -48,7 +48,7 @@ export function Shop(){
             <span className="h-1.5 w-1.5 rounded-full" style={{background:TEAL, boxShadow:`0 0 10px ${TEAL}`}}></span>
             the football shop
           </span>
-          <h1 className="hero-title mt-5 text-5xl font-semibold lowercase leading-[.98] md:text-6xl">kit up at <span style={{color:TEAL}}>the centre</span></h1>
+          <h1 className="hero-title mt-5 text-5xl font-semibold leading-[.98] md:text-6xl">Kit up at <span style={{color:TEAL}}>the centre</span></h1>
           <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-white/75">
             Footballs, grip socks, Notts Olympic kits and training wear — available to buy at reception every day we’re
             open.
@@ -91,12 +91,12 @@ export function Shop(){
         <Glass strong className="relative mt-10 flex flex-col items-center gap-4 overflow-hidden rounded-[30px] p-8 text-center md:flex-row md:justify-between md:text-left">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{background:TEAL}}></div>
           <div className="relative">
-            <div className="text-[18px] font-medium lowercase">need club kit in a specific size?</div>
+            <div className="text-[18px] font-medium">Need club kit in a specific size?</div>
             <p className="mt-1 text-[14px] text-white/60">Ask at reception or get in touch — we can order Notts Olympic kits and training wear in for you.</p>
           </div>
           <div className="relative flex shrink-0 items-center gap-2">
             <Btn href={'tel:'+CONTACT.phone.replace(/\s/g,'')} kind="outline" icon={I.clock({})} aria-label={'call '+CONTACT.phone}>{CONTACT.phone}</Btn>
-            <Btn href="#contact" kind="primary" iconEnd={I.arrow({})}>contact us</Btn>
+            <Btn href="#contact" kind="primary" iconEnd={I.arrow({})}>Contact us</Btn>
           </div>
         </Glass>
       </section>
