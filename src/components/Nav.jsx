@@ -19,34 +19,29 @@ import { Logo, Glass, Btn } from './ui.jsx';
    No dropdowns — every destination the client wants is one tap away. */
 export const NAV_LINKS = [
   { id:'booking',         label:'Book a pitch' },
-  { id:'coaching',        label:'Coaching' },
+  { id:'leagues',         label:'Leagues' },
   { id:'nottsolympic',    label:'Notts Olympic' },
+  { id:'coaching',        label:'Kids Football League' },
+  { id:'getagame',        label:'Social Kicks' },
   { id:'performancezone', label:'Performance Zone' },
   { id:'events',          label:'Events' },
-  { id:'parties',         label:'Parties' },
-  { id:'getagame',        label:'Social Kicks' },
-  { id:'shop',            label:'Shop' },
+  { id:'parties',         label:'Kids Parties' },
+  { id:'shop',            label:'Football Shop' },
 ];
 
 /* full link set for footer + mobile sheet */
 export const ALL_LINKS = [
-  { id:'browse',   label:'Find a pitch' },
-  { id:'getagame', label:'Social Kicks' },
+  { id:'booking',         label:'Book a pitch' },
+  { id:'browse',          label:'Find a pitch' },
+  { id:'leagues',         label:'Leagues' },
+  { id:'coaching',        label:'Kids Football League' },
+  { id:'getagame',        label:'Social Kicks' },
   { id:'performancezone', label:'Performance Zone' },
-  { id:'pricing',  label:'Pricing' },
-  { id:'leagues',  label:'Leagues' },
-  { id:'events',   label:'Book an event' },
-  { id:'coaching', label:'Kids coaching' },
-  { id:'juniors',  label:'Juniors' },
-  { id:'payandplay', label:'Pay and Play' },
-  { id:'parties',  label:'Kids parties' },
-  { id:'academy',  label:'Academy' },
-  { id:'nottsolympic', label:'Notts Olympic FC' },
-  { id:'manvfat',  label:'MAN v FAT' },
-  { id:'clubs',    label:'Clubs' },
-  { id:'shop',     label:'The football shop' },
-  { id:'about',    label:'About' },
-  { id:'contact',  label:'Contact us' },
+  { id:'nottsolympic',    label:'Notts Olympic FC' },
+  { id:'events',          label:'Events' },
+  { id:'parties',         label:'Kids Parties' },
+  { id:'shop',            label:'Football Shop' },
+  { id:'contact',         label:'Contact us' },
 ];
 
 /* desktop nav item — a single tap-through link (no dropdowns) */
@@ -168,7 +163,7 @@ export function Footer(){
               </ul>
             </div>
             <div>
-              <div className="text-[11px] uppercase tracking-[.2em] text-white/40">juniors & clubs</div>
+              <div className="text-[11px] uppercase tracking-[.2em] text-white/40">more</div>
               <ul className="mt-4 space-y-2.5 text-[14px] text-white/65">
                 {ALL_LINKS.slice(5).map(l=>(<li key={l.id}><a href={'#'+l.id} className="hover:text-white">{l.label}</a></li>))}
               </ul>

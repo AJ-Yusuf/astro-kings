@@ -269,7 +269,6 @@ export function Home(){
             <p className="mx-auto mt-4 max-w-lg text-[15px] text-white/60">Pick a slot, rally the lads, and we’ll have the floodlights on.</p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <a href="#booking"><Btn kind="primary" size="lg" iconEnd={I.arrow({})}>Book a pitch</Btn></a>
-              <a href="#pricing"><Btn kind="outline" size="lg">View pricing</Btn></a>
             </div>
           </div>
         </Glass>

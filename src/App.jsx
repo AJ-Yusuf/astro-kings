@@ -8,19 +8,10 @@ import { Browse } from './pages/Browse.jsx';
 import { Venue } from './pages/Venue.jsx';
 import { Booking } from './pages/Booking.jsx';
 import { Privacy } from './pages/Privacy.jsx';
-import { Pricing } from './pages/Pricing.jsx';
 import { Leagues } from './pages/Leagues.jsx';
-import { About } from './pages/About.jsx';
 import { GetAGame } from './pages/GetAGame.jsx';
-import { Juniors } from './pages/Juniors.jsx';
-import { PayAndPlay } from './pages/PayAndPlay.jsx';
-import { SkillsWin } from './pages/SkillsWin.jsx';
 import { Parties } from './pages/Parties.jsx';
-import { Academy } from './pages/Academy.jsx';
-import { Clubs } from './pages/Clubs.jsx';
 import { Events } from './pages/Events.jsx';
-import { ManVFat } from './pages/ManVFat.jsx';
-import { KingsClub } from './pages/KingsClub.jsx';
 import { Coaching } from './pages/Coaching.jsx';
 import { NottsOlympic } from './pages/NottsOlympic.jsx';
 import { PerformanceZone } from './pages/PerformanceZone.jsx';
@@ -33,19 +24,10 @@ const PAGES = {
   venue: (params) => <Venue params={params} />,
   booking: (params) => <Booking params={params} />,
   privacy: () => <Privacy />,
-  pricing: () => <Pricing />,
   leagues: () => <Leagues />,
-  about: () => <About />,
   getagame: () => <GetAGame />,
-  juniors: () => <Juniors />,
-  payandplay: () => <PayAndPlay />,
-  skills: () => <SkillsWin />,
   parties: () => <Parties />,
-  academy: () => <Academy />,
-  clubs: () => <Clubs />,
   events: () => <Events />,
-  manvfat: () => <ManVFat />,
-  kingsclub: () => <KingsClub />,
   coaching: () => <Coaching />,
   nottsolympic: () => <NottsOlympic />,
   performancezone: () => <PerformanceZone />,

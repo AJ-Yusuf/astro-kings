@@ -113,7 +113,6 @@ export function Events(){
             <p className="mt-3 text-[15px] leading-relaxed text-white/70">Food starts at £4.50 per person, but we can lay on a banquet fit for a king. Photos, trophies, medals or a full event pack — just tell us what you’re after.</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href="#events-enquiry" onClick={jump('events-enquiry')}><Btn kind="primary" iconEnd={I.arrow({})}>Enquire now</Btn></a>
-              <a href="#manvfat"><Btn kind="outline">MAN v FAT Football</Btn></a>
             </div>
           </div>
           <Glass strong className="overflow-hidden rounded-[28px] p-2 fade-up">
