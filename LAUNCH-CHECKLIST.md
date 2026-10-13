@@ -27,24 +27,42 @@ differ. The astro-kings.com domain still points at the old Apache site.
       Emails, have the venue confirm it, then make it the form's recipient
       (the endpoint URL does not change).
 
-- [ ] **Enable HSTS once HTTPS is confirmed on the real domain.** The
-      `Strict-Transport-Security` line in `public/.htaccess` is commented out,
-      and it is not in `public/_headers` or `vercel.json` yet. Once the domain
-      is on Cloudflare, either turn on HSTS in the Cloudflare dashboard
-      (SSL/TLS → Edge Certificates) or add it to all three files together
-      (the build check requires that). Only keep
-      `includeSubDomains` if every subdomain is also on HTTPS.
+- [ ] **Before pointing astro-kings.com at Cloudflare: HTTPS everywhere.**
+      HSTS (`max-age=31536000; includeSubDomains`) is now sent by all three
+      header files. Once the domain is live, browsers will refuse plain HTTP
+      for it AND every subdomain for a year — so first confirm every
+      `*.astro-kings.com` subdomain (mail, old site, etc.) works over HTTPS, or
+      drop `includeSubDomains` from all three files. Also turn on Cloudflare →
+      SSL/TLS → Edge Certificates → "Always Use HTTPS" (`http://` currently
+      returns the page instead of redirecting).
 
-- [ ] **Confirm the cancellation wording.** "free cancellation up to 48h" is
-      shown on Venue and in `PlanyoBooking.jsx` (from `CANCEL_WINDOW_HRS`).
-      Check it against the cancellation policy actually configured in Planyo;
-      change or remove it if they differ.
+- [ ] **Confirm the cancellation policy.** The "free cancellation up to 48h"
+      claim has been REMOVED from Venue and the booking page until the venue
+      confirms the policy actually set in Planyo (unconfirmed promises are a
+      DMCC Act risk). Re-add it only with the confirmed wording. "Instant
+      confirmation" on the booking page also depends on Planyo's settings.
 
-- [ ] **Privacy page legal review.** `src/pages/Privacy.jsx` must name every
-      processor that handles visitors' data: Formspree (form submissions),
-      Planyo (bookings and payments), Cloudflare (Turnstile) and Google (the
-      map, only after the visitor clicks "show map"). See the
-      review item below for the other open questions.
+- [ ] **Confirm the Subs Bench minimum age.** Get a Game now refuses sign-ups
+      under `SUBS_BENCH_MIN_AGE` (18) in `src/lib/config.js`, because joining
+      adds people to a WhatsApp group where everyone sees each other's number.
+      Change the number there if the venue wants a different rule.
+
+- [ ] **Formspree dashboard protections.** In the form's settings: restrict
+      submissions to the live domain(s), keep spam filtering on, and — if the
+      plan supports it — add the Turnstile SECRET key so Formspree rejects
+      submissions without a valid token. All forms (enquiry + Get a Game) now
+      send the Turnstile token.
+
+- [ ] **Cloudflare account check.** Confirm who owns the Cloudflare account,
+      that every member has two-factor login on, and remove anyone who
+      shouldn't have access. Turn on build-failure notifications.
+
+- [ ] **Privacy page legal review.** `src/pages/Privacy.jsx` now names
+      Formspree, Planyo, Cloudflare (hosting + Turnstile), WhatsApp/Meta (Subs
+      Bench group) and Google (map, after a click). Still unconfirmed: ICO
+      registration, the seven-year retention period, child-photo consent. Also
+      needed: a terms & conditions page, and the company number + registered
+      office in the footer (`src/components/Nav.jsx`).
 
 ---
 
@@ -109,7 +127,6 @@ differ. The astro-kings.com domain still points at the old Apache site.
 
 - [ ] Test the full booking journey on mobile and desktop
 - [ ] Confirm booking confirmation emails arrive (customer + venue)
-- [ ] HSTS — now a launch blocker (see above)
 - [ ] Set up a backup of the Planyo data
 - [ ] Move to Tailwind 4. The remaining `npm audit` warnings (braces,
       postcss-selector-parser) come from Tailwind 3. They are build-time only

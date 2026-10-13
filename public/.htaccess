@@ -17,9 +17,10 @@
     # Turn off browser features the site doesn't use.
     Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
 
-    # Force HTTPS for 1 year. ⚠️ Only enable this once HTTPS is confirmed
-    # working — if the certificate breaks, the site becomes unreachable.
-    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    # Force HTTPS for 1 year (HTTPS is confirmed on Cloudflare). ⚠️ Before the
+    # real domain points here, every *.astro-kings.com subdomain must also work
+    # over HTTPS — includeSubDomains makes browsers refuse plain HTTP for them.
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
     # Isolate this site's browsing context from windows it didn't open.
     Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"

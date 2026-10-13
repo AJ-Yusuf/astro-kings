@@ -58,7 +58,7 @@ export function Venue({ params }){
               {[['surface','4G rubber-crumb',I.shield],['lighting','LED floodlit',I.bolt],['goals',p.goals,I.ball],['format',p.size,I.user],['boards','rebound',I.whistle],['all-weather','covered',I.shield]].map(([l,v,ic],i)=>(
                 <Glass key={i} className="rounded-2xl p-4">
                   <span className="accent-text" style={{width:20,height:20,display:'block'}}>{ic({})}</span>
-                  <div className="mt-3 text-[11px] uppercase tracking-wide text-white/40">{l}</div>
+                  <div className="mt-3 text-[11px] uppercase tracking-wide text-white/60">{l}</div>
                   <div className="text-[14px]">{v}</div>
                 </Glass>
               ))}
@@ -88,9 +88,9 @@ export function Venue({ params }){
                   <div><div className="tnum text-4xl font-semibold">£{p.price}</div><div className="text-[13px] text-white/45">{p.unit} · off-peak −20%</div></div>
                   <Tag>{p.size}</Tag>
                 </div>
-                <div className="mt-5 text-[12px] uppercase tracking-wide text-white/40">pick a date</div>
+                <div className="mt-5 text-[12px] uppercase tracking-wide text-white/60">pick a date</div>
                 <div className="mt-3"><Calendar value={dayKey} onChange={setDayKey} /></div>
-                <div className="mt-4 text-[12px] uppercase tracking-wide text-white/40">preferred kick-off · {keyLabel(dayKey)}</div>
+                <div className="mt-4 text-[12px] uppercase tracking-wide text-white/60">preferred kick-off · {keyLabel(dayKey)}</div>
                 <div className="mt-3 grid grid-cols-3 gap-2">
                   {slotsInBand('evening').map(s=>(
                     <button key={s} onClick={()=>setTime(s)}
@@ -99,9 +99,9 @@ export function Venue({ params }){
                     </button>
                   ))}
                 </div>
-                <div className="mt-2 text-center text-[11px] text-white/35">live availability is confirmed at the booking step</div>
+                <div className="mt-2 text-center text-[11px] text-white/60">live availability is confirmed at the booking step</div>
                 <Btn kind="primary" size="lg" className="mt-4 w-full" iconEnd={I.arrow({})} onClick={()=>{ store.venue=p.id; store.time=time; store.day=dayKey; go('booking',{p:p.id,t:time}); }}>check availability &amp; book</Btn>
-                <div className="mt-3 flex items-center justify-center gap-2 text-[12px] text-white/60"><span style={{width:14,height:14}}>{I.lock({})}</span> free cancellation up to 48h before</div>
+                <div className="mt-3 flex items-center justify-center gap-2 text-[12px] text-white/60"><span style={{width:14,height:14}}>{I.lock({})}</span> secure card payment via Planyo</div>
               </Glass>
             </div>
           </aside>

@@ -1,0 +1,4 @@
+# Files Cloudflare Workers must not publish (read by wrangler at deploy time).
+# .htaccess is only for Apache hosting; on Cloudflare it would just be served
+# as a public file.
+.htaccess

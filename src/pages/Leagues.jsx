@@ -43,7 +43,7 @@ export function Leagues(){
                   </div>
                 </div>
                 <div className="flex items-center gap-3 sm:flex-col sm:items-end">
-                  <span className={`text-[12px] ${full?'text-white/35':'accent-text'}`}>{l.spots}</span>
+                  <span className={`text-[12px] ${full?'text-white/60':'accent-text'}`}>{l.spots}</span>
                   <Btn kind={full?'glass':'primary'} size="sm" iconEnd={full?null:I.arrow({})} className={full?'pointer-events-none opacity-60':''}>{full?'waitlist':'enter'}</Btn>
                 </div>
               </Glass>
@@ -64,20 +64,20 @@ export function Leagues(){
               <div className="text-[15px] font-medium">Wednesday Div 2</div>
               <Tag>live</Tag>
             </div>
-            <div className="mt-4 grid grid-cols-[18px_1fr_repeat(4,22px)_30px] gap-y-1 text-[11px] uppercase tracking-wide text-white/35">
+            <div className="mt-4 grid grid-cols-[18px_1fr_repeat(4,22px)_30px] gap-y-1 text-[11px] uppercase tracking-wide text-white/60">
               <span></span><span></span><span className="text-center">p</span><span className="text-center">w</span><span className="text-center">d</span><span className="text-center">l</span><span className="text-right">pts</span>
             </div>
             <div className="mt-1 space-y-1">
               {table.map((r,i)=>(
                 <div key={i} className={`grid grid-cols-[18px_1fr_repeat(4,22px)_30px] items-center rounded-lg py-1.5 text-[12.5px] ${r[1]==='Your Team'?'accent-ring bg-white/5 px-1':'px-1'}`}>
-                  <span className="tnum text-white/40">{r[0]}</span>
+                  <span className="tnum text-white/60">{r[0]}</span>
                   <span className="truncate">{r[1]}</span>
                   {r.slice(2,6).map((x,j)=><span key={j} className="tnum text-center text-white/60">{x}</span>)}
                   <span className="tnum text-right font-semibold accent-text">{r[6]}</span>
                 </div>
               ))}
             </div>
-            <div className="mt-5 text-[12px] text-white/40">updated after every fixture</div>
+            <div className="mt-5 text-[12px] text-white/60">updated after every fixture</div>
           </Glass>
         </aside>
       </div>
