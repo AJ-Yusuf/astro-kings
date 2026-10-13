@@ -22,35 +22,36 @@ export const PLANYO_EMBED_URL = 'https://www.planyo.com/booking.php?calendar=223
    "having trouble?" fallback beneath the embedded widget. */
 export const BOOKING_PLATFORM_URL = 'https://www.planyo.com/booking.php?calendar=22300';
 
-/* Planyo resource IDs for the pitches, from Dan's own Planyo shortcode:
-   ppp_resfilter=58246,58245,58244,185941
-   ⚠️ NOT yet matched to individual pitch names - we know these are the four
-   bookable resources but not which ID is which pitch. Only needed if the
-   custom API booking flow (Path 2) is built later. */
+/* Planyo resource IDs, from Dan's Planyo shortcode
+   (ppp_resfilter=58246,58245,58244,185941). Matched to names on
+   astro-kings.com/book-pitch-astro-kings and confirmed in Planyo's own
+   booking form (Oct 2026):
+     58246 Big One · 58245 Classic · 58244 Samba · 185941 Performance Zone */
 export const PLANYO_RESOURCE_IDS = [58246, 58245, 58244, 185941];
 
 /* Map each of our pitch cards (PITCHES id) to its Planyo resource_id, so the
-   native pitch picker on #booking can filter the embedded widget / deep-link
-   straight to that pitch.
-   ⚠️ Leave a pitch null until its ID is CONFIRMED — a wrong guess sends people
-   to the wrong pitch. While null, that card just opens the full calendar.
-   The four known resource IDs are in PLANYO_RESOURCE_IDS above; we don't yet
-   know which is which pitch, so all are null for now. */
+   pitch picker on #booking opens Planyo's booking form with that pitch
+   already selected.
+   Mini Soccer has no Planyo resource of its own (Planyo lists only Big One,
+   Classic, Samba and Performance Zone), so it stays null and opens the full
+   calendar. Never guess an ID — a wrong one books the wrong pitch. */
 export const PLANYO_PITCH_RESOURCE = {
-  classic: null,
-  samba:   null,
-  big:     null,
+  classic: 58245,
+  samba:   58244,
+  big:     58246,
   mini:    null,
 };
 
-/* Build the Planyo booking URL, optionally pre-set to one resource and start
-   date. `startDate` is best-effort (YYYY-MM-DD): if Planyo's date format differs
-   it's simply ignored and the customer picks the day on Planyo — never a
-   dead-end. */
+/* Build the Planyo booking URL.
+   With a pitch: opens Planyo's booking form (mode=reserve) with that pitch
+   selected and, if given, the day (`one_date`, YYYY-MM-DD) filled in.
+   Without one: the full calendar, where the customer picks the pitch — we
+   don't pre-fill a day there, as the form would silently pick a pitch. */
 export const planyoUrl = (resourceId, startDate) =>
-  PLANYO_EMBED_URL
-  + (resourceId ? `&resource_id=${resourceId}` : '')
-  + (startDate ? `&start_date=${startDate}` : '');
+  resourceId
+    ? `${PLANYO_EMBED_URL}&mode=reserve&resource_id=${resourceId}`
+      + (startDate ? `&one_date=${startDate}` : '')
+    : PLANYO_EMBED_URL;
 
 /* Where enquiry + Subs Bench form submissions go.
 
