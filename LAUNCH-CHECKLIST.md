@@ -4,10 +4,11 @@ Bookings, payments and availability are handled entirely by Planyo: the
 booking page opens the venue's Planyo page in a new tab (nothing is framed).
 This site holds no API keys, takes no payments, and stores no customer records.
 
-Hosting: the live site and PR previews are on **Vercel**, which reads
-`vercel.json`. `public/_headers` (Cloudflare Pages) and `public/.htaccess`
-(Apache) carry the same security headers, so the site can move host without
-losing them; `vite.config.js` fails the build if the three ever differ.
+Hosting: the site is built and served by **Cloudflare Workers** (Workers
+Builds, project `astro-kings`), which reads `public/_headers`. Vercel was
+used until late September 2026; `vercel.json` and `public/.htaccess` (Apache)
+carry the same headers, and `vite.config.js` fails the build if the three ever
+differ. The astro-kings.com domain still points at the old Apache site.
 
 ---
 
@@ -28,9 +29,10 @@ losing them; `vite.config.js` fails the build if the three ever differ.
 
 - [ ] **Enable HSTS once HTTPS is confirmed on the real domain.** The
       `Strict-Transport-Security` line in `public/.htaccess` is commented out,
-      and it is not in `vercel.json` or `public/_headers` yet. First check the
-      live response headers — Vercel may already send it. If not, add it to
-      all three files together (the build check requires that). Only keep
+      and it is not in `public/_headers` or `vercel.json` yet. Once the domain
+      is on Cloudflare, either turn on HSTS in the Cloudflare dashboard
+      (SSL/TLS → Edge Certificates) or add it to all three files together
+      (the build check requires that). Only keep
       `includeSubDomains` if every subdomain is also on HTTPS.
 
 - [ ] **Confirm the cancellation wording.** "free cancellation up to 48h" is
@@ -79,7 +81,7 @@ losing them; `vite.config.js` fails the build if the three ever differ.
   not depend on the old WordPress site.
   ⚠️ **Must be tested before launch** — complete a test booking end to end.
 
-- Security headers + CSP in `vercel.json`, `public/_headers` and
+- Security headers + CSP in `public/_headers` (live), `vercel.json` and
   `public/.htaccess` (X-Frame-Options, nosniff, Referrer-Policy,
   Permissions-Policy, Cross-Origin-Opener-Policy, no `'unsafe-inline'`
   styles; `.htaccess` also turns off directory listing and blocks dotfiles).

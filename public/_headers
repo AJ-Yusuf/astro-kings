@@ -1,6 +1,6 @@
-# Cloudflare Pages security headers (used only if the site is hosted there).
-# Mirrors vercel.json exactly; vite.config.js refuses to run if they differ.
-# Vercel ignores this file; Apache uses public/.htaccess.
+# Security headers for the live site (Cloudflare Workers static assets).
+# Mirrors vercel.json and public/.htaccess; vite.config.js refuses to run if
+# they differ.
 
 /*
   X-Frame-Options: DENY
