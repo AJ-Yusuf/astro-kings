@@ -49,7 +49,7 @@ function NavItem({ l, name }){
   const active = name===l.id;
   return (
     <a href={'#'+l.id} aria-current={active?'page':undefined}
-       className={`relative rounded-full px-3.5 py-2 text-[13px] transition-colors duration-200 ${active?'text-[#0b0b0b] accent-bg':'text-white/65 hover:text-white hover:bg-white/8'}`}>
+       className={`relative whitespace-nowrap rounded-full px-3 py-1.5 text-[13px] transition-colors duration-200 ${active?'text-[#0b0b0b] accent-bg':'text-white/65 hover:text-white hover:bg-white/8'}`}>
       {l.label}
     </a>
   );
@@ -67,7 +67,7 @@ export function TopNav(){
   useEffect(()=>{ setOpen(false); },[name]);
 
   return (
-    <nav aria-label="Primary" className="fixed inset-x-0 top-0 z-40 px-4 pt-4 md:px-7 md:pt-6">
+    <nav aria-label="Primary" className="fixed inset-x-0 top-0 z-40 px-4 pt-3 md:px-7 md:pt-4">
       {/* blurred fading backdrop once scrolled, so content underneath doesn't clash with the nav */}
       <div className={`pointer-events-none absolute inset-x-0 top-0 h-28 transition-opacity duration-300 ${scrolled?'opacity-100':'opacity-0'}`}
            style={{
@@ -79,21 +79,21 @@ export function TopNav(){
       <div className={`relative z-50 mx-auto flex max-w-7xl items-center justify-between gap-3 transition-all duration-300 ${scrolled?'scale-[.99]':''}`}>
         {/* left — brand pill */}
         <a href="#home" className="group flex items-center">
-          <Logo h={48} className="transition group-hover:scale-105" />
+          <Logo h={40} className="transition group-hover:scale-105" />
         </a>
 
         {/* center — the 8 links (mirrors the home tiles) */}
-        <div className="glass glass-soft hidden items-center gap-0.5 rounded-full p-1.5 xl:flex">
+        <div className="glass glass-soft hidden items-center gap-0.5 rounded-full p-1 xl:flex">
           {NAV_LINKS.map(l=>(<NavItem key={l.id} l={l} name={name} />))}
         </div>
 
         {/* right — actions */}
         <div className="flex items-center gap-2">
           <a href={BOOK_HREF} {...BOOK_EXT} className="hidden md:block" aria-label="Search availability">
-            <Btn kind="primary" size="md" icon={I.search({})}>Search availability</Btn>
+            <Btn kind="primary" size="sm" className="h-10" icon={I.search({})}>Search availability</Btn>
           </a>
           <button onClick={()=>setOpen(o=>!o)} aria-label={open?'Close menu':'Open menu'} aria-expanded={open}
-            className="glass glass-soft grid h-11 w-11 place-items-center rounded-full text-white xl:hidden">
+            className="glass glass-soft grid h-10 w-10 place-items-center rounded-full text-white xl:hidden">
             <span style={{width:20,height:20}}>{(open?I.x:I.menu)({})}</span>
           </button>
         </div>
