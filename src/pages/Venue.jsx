@@ -85,7 +85,7 @@ export function Venue({ params }){
             <div className="lg:sticky lg:top-28">
               <Glass strong className="rounded-[28px] p-6">
                 <div className="flex items-end justify-between">
-                  <div><div className="tnum text-4xl font-semibold">£{p.price}</div><div className="text-[13px] text-white/45">{p.unit} · off-peak −20%</div></div>
+                  <div><div className="tnum text-4xl font-semibold">£{p.price}</div><div className="text-[13px] text-white/45">{p.unit}</div></div>
                   <Tag>{p.size}</Tag>
                 </div>
                 <div className="mt-5 text-[12px] uppercase tracking-wide text-white/60">pick a date</div>

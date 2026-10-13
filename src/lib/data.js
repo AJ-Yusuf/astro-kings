@@ -12,7 +12,10 @@ export const ACADEMY_VIDEO = '/academy.mp4';     // background for the Academy (
 
 /* Prices here are DISPLAY ONLY. The actual amount charged is whatever Planyo
    calculates at booking time from the venue's pricing manager. If these drift
-   apart, customers see one price and are charged another - keep them in step. */
+   apart, customers see one price and are charged another - keep them in step.
+   Checked against astro-kings.com (Oct 2026): Classic £60/hr is confirmed.
+   Samba, The Big One and Mini Soccer prices are NOT published there — confirm
+   them in Planyo's pricing manager. */
 export const PITCHES = [
   { id:'classic', name:'Classic 5-a-side', price:60, unit:'/hr', size:'5v5', goals:'12ft × 4ft goals', tag:'Most booked', desc:'Rebound boards · 4G surface', spec:['Rebound boards','12ft × 4ft goals','4G rubber-crumb'] },
   { id:'samba',   name:'Samba 5-a-side',   price:60, unit:'/hr', size:'5v5', goals:'12ft × 6ft goals', tag:'', desc:'Bigger goals · rebound boards', spec:['Rebound boards','12ft × 6ft goals','4G rubber-crumb'] },
