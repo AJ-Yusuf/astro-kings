@@ -21,7 +21,7 @@ export function Parties(){
       feat:['12 players included','30 min coaching','30 min match play','LED-lit 4G pitch','Optional cabin hire +£25'] },
     { n:'Premiership', price:'£159.99', dur:'2 hours', tag:'most popular', c:PINK,
       feat:['12 players included','45 min games + 45 min match','Party photo & hot food','Certificate for every player','Trophy for the birthday child','Extra players £14.99 each'] },
-    { n:'Kings', price:'£249.99', dur:'2 hours', tag:'all-in', c:CYAN,
+    { n:'Kings', price:'£249.50', dur:'2 hours', tag:'all-in', c:CYAN,
       feat:['Everything in Premiership','Birthday cake','Sweet party bags + medals for all','Special medal, trophy & football','Extra players £24.99 each'] },
   ];
   const jump = (id)=>(e)=>{ e.preventDefault(); scrollToId(id); };
