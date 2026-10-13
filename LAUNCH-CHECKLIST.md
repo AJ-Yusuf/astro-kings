@@ -1,14 +1,17 @@
 # Astro Kings — Launch Checklist
 
-Site is configured for **Path 1: Planyo embed**. Bookings, payments and
-availability are handled entirely by Planyo. This site holds no API keys,
-takes no payments, and stores no customer records.
+Bookings, payments and availability are handled entirely by Planyo: the
+booking page opens the venue's Planyo page in a new tab (nothing is framed).
+This site holds no API keys, takes no payments, and stores no customer records.
+
+Hosting: the live site and PR previews are on **Vercel**, which reads
+`vercel.json`. `public/_headers` (Cloudflare Pages) and `public/.htaccess`
+(Apache) carry the same security headers, so the site can move host without
+losing them; `vite.config.js` fails the build if the three ever differ.
 
 ---
 
 ## ⚠️ BLOCKERS — cannot go live without these
-
-- [ ] **Hosting access** (FTP / cPanel) to actually deploy.
 
 - [ ] **Real Turnstile site key + server-side verification** —
       `TURNSTILE_SITE_KEY` is currently Cloudflare's always-passes TEST key and
@@ -23,19 +26,22 @@ takes no payments, and stores no customer records.
       Emails, have the venue confirm it, then make it the form's recipient
       (the endpoint URL does not change).
 
-- [ ] **Enable HSTS once HTTPS is confirmed.** The `Strict-Transport-Security`
-      line in `public/.htaccess` is commented out. Turn it on only after the
-      certificate is live and working, and only keep `includeSubDomains` if
-      every subdomain of the domain is also on HTTPS.
+- [ ] **Enable HSTS once HTTPS is confirmed on the real domain.** The
+      `Strict-Transport-Security` line in `public/.htaccess` is commented out,
+      and it is not in `vercel.json` or `public/_headers` yet. First check the
+      live response headers — Vercel may already send it. If not, add it to
+      all three files together (the build check requires that). Only keep
+      `includeSubDomains` if every subdomain is also on HTTPS.
 
-- [ ] **Confirm the cancellation wording.** "free cancellation up to 24h" is
+- [ ] **Confirm the cancellation wording.** "free cancellation up to 48h" is
       shown on Venue and in `PlanyoBooking.jsx` (from `CANCEL_WINDOW_HRS`).
       Check it against the cancellation policy actually configured in Planyo;
       change or remove it if they differ.
 
 - [ ] **Privacy page legal review.** `src/pages/Privacy.jsx` must name every
       processor that handles visitors' data: Formspree (form submissions),
-      Planyo (bookings and payments) and Cloudflare (Turnstile). See the
+      Planyo (bookings and payments), Cloudflare (Turnstile) and Google (the
+      map, only after the visitor clicks "show map"). See the
       review item below for the other open questions.
 
 ---
@@ -68,17 +74,19 @@ takes no payments, and stores no customer records.
 ## ✅ Done
 
 - **Planyo booking URL wired in** —
-  `https://www.planyo.com/booking.php?calendar=22300` set as both the embedded
-  widget and the direct-link fallback. This is Planyo's own hosted page, so it
-  does not depend on the old WordPress site.
-  ⚠️ **Must be tested in a browser before launch** — confirm the widget loads
-  inside the iframe (some booking systems refuse to be framed) and that a test
-  booking completes end to end.
+  `https://www.planyo.com/booking.php?calendar=22300`. "check availability &
+  book" opens it in a new tab. This is Planyo's own hosted page, so it does
+  not depend on the old WordPress site.
+  ⚠️ **Must be tested before launch** — complete a test booking end to end.
 
-- Security headers + CSP via `public/.htaccess` (X-Frame-Options,
-  nosniff, Referrer-Policy, Permissions-Policy, directory listing off,
-  dotfile access blocked). HSTS is written but commented out — enable only
-  once HTTPS is confirmed working.
+- Security headers + CSP in `vercel.json`, `public/_headers` and
+  `public/.htaccess` (X-Frame-Options, nosniff, Referrer-Policy,
+  Permissions-Policy, Cross-Origin-Opener-Policy, no `'unsafe-inline'`
+  styles; `.htaccess` also turns off directory listing and blocks dotfiles).
+  HSTS is still open — see the blockers above.
+- Readex Pro font self-hosted; no Google Fonts requests.
+- Google Map loads only after the visitor clicks "show map" (sandboxed iframe).
+- GitHub Actions workflow: `npm ci`, production dependency audit, build.
 - Privacy policy page created at `#privacy`, linked from the footer and from
   the enquiry form.
 - Fake payment engine deleted (`booking.js`, `store.js`, `booking.test.js`,
@@ -101,6 +109,10 @@ takes no payments, and stores no customer records.
 - [ ] Confirm booking confirmation emails arrive (customer + venue)
 - [ ] HSTS — now a launch blocker (see above)
 - [ ] Set up a backup of the Planyo data
+- [ ] Move to Tailwind 4. The remaining `npm audit` warnings (braces,
+      postcss-selector-parser) come from Tailwind 3. They are build-time only
+      and never reach visitors, but clearing them needs the Tailwind 4
+      upgrade, which changes styling and must be checked page by page.
 
 ---
 
@@ -113,6 +125,9 @@ takes no payments, and stores no customer records.
   - `public/nottsolympic-hero.png` — Canva XMP (contains Canva account IDs).
   - `public/league-academy.png`, `league-development.png`,
     `league-foundation.png` — screenshots.
-  None contain GPS data. See `IMAGE_SOURCES.md` once it exists.
+  None contain GPS data. See `IMAGE_SOURCES.md`.
+- **Photos of children** need recorded parental consent before launch.
+- **Temporary Pexels placeholders** on Events and Performance Zone need real
+  Astro Kings photos.
 - **Large files:** `public/kfl-crest.png` and `public/nottsolympic-crest.png`
   are about 1.5 MB each. The owner will decide whether to optimise them.

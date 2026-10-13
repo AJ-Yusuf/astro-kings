@@ -188,7 +188,7 @@ export function GetAGame(){
                 </div>
 
                 <div className="mt-5">
-                  <div className="text-[12px] uppercase tracking-wide text-white/45">which days can you play?</div>
+                  <div className="text-[12px] uppercase tracking-wide text-white/60">which days can you play?</div>
                   <div className="mt-3 grid grid-cols-2 gap-2.5">
                     {DAYS.map(d=><Check key={d} on={days.includes(d)} onClick={()=>toggleDay(d)}>{d}</Check>)}
                   </div>

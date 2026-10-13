@@ -101,7 +101,7 @@ export function Venue({ params }){
                 </div>
                 <div className="mt-2 text-center text-[11px] text-white/35">live availability is confirmed at the booking step</div>
                 <Btn kind="primary" size="lg" className="mt-4 w-full" iconEnd={I.arrow({})} onClick={()=>{ store.venue=p.id; store.time=time; store.day=dayKey; go('booking',{p:p.id,t:time}); }}>check availability &amp; book</Btn>
-                <div className="mt-3 flex items-center justify-center gap-2 text-[12px] text-white/45"><span style={{width:14,height:14}}>{I.lock({})}</span> free cancellation up to 48h before</div>
+                <div className="mt-3 flex items-center justify-center gap-2 text-[12px] text-white/60"><span style={{width:14,height:14}}>{I.lock({})}</span> free cancellation up to 48h before</div>
               </Glass>
             </div>
           </aside>
