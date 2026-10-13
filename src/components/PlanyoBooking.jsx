@@ -52,14 +52,14 @@ function PitchTile({ p, active, onPick }){
       <div className="flex items-start justify-between gap-2">
         <div>
           <div className="text-[16px] font-medium">{p.name}</div>
-          <div className="mt-0.5 text-[12px] text-white/45">{p.desc}</div>
+          <div className="mt-0.5 text-[12px] text-white/60">{p.desc}</div>
         </div>
         <span className="shrink-0 rounded-full bg-white/8 px-2.5 py-1 text-[11px] font-medium text-white/70">{p.size}</span>
       </div>
       <div className="mt-4 flex items-end justify-between">
         <div className="flex items-baseline gap-1">
           <span className="tnum text-2xl font-semibold accent-text">£{p.price}</span>
-          <span className="text-[12px] text-white/40">{p.unit}</span>
+          <span className="text-[12px] text-white/60">{p.unit}</span>
         </div>
         <span className={`grid h-6 w-6 place-items-center rounded-full border transition-colors ${active?'accent-bg border-transparent text-[#0b0b0b]':'border-white/20 text-transparent'}`}>
           <span style={{ width: 13, height: 13 }}>{I.check({})}</span>
@@ -95,8 +95,8 @@ export function PlanyoBooking(){
       <div className="mx-auto max-w-5xl px-6 pb-16">
         {/* step 1 — pitch */}
         <div className="mb-3 flex items-center justify-between">
-          <div className="text-[12px] uppercase tracking-[.18em] text-white/40">1 · choose your pitch</div>
-          {active ? <button onClick={()=>setPitch(null)} className="text-[12px] text-white/45 underline-offset-2 hover:text-white/80 hover:underline">clear</button> : null}
+          <div className="text-[12px] uppercase tracking-[.18em] text-white/60">1 · choose your pitch</div>
+          {active ? <button onClick={()=>setPitch(null)} className="text-[12px] text-white/60 underline-offset-2 hover:text-white/80 hover:underline">clear</button> : null}
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {PITCHES.map(p => <PitchTile key={p.id} p={p} active={pitch === p.id} onPick={() => setPitch(p.id)} />)}
@@ -104,8 +104,8 @@ export function PlanyoBooking(){
 
         {/* step 2 — day */}
         <div className="mb-3 mt-10 flex items-center justify-between">
-          <div className="text-[12px] uppercase tracking-[.18em] text-white/40">2 · choose a day</div>
-          {day ? <button onClick={()=>setDay(null)} className="text-[12px] text-white/45 underline-offset-2 hover:text-white/80 hover:underline">clear</button> : null}
+          <div className="text-[12px] uppercase tracking-[.18em] text-white/60">2 · choose a day</div>
+          {day ? <button onClick={()=>setDay(null)} className="text-[12px] text-white/60 underline-offset-2 hover:text-white/80 hover:underline">clear</button> : null}
         </div>
         <div className="-mx-6 flex gap-2 overflow-x-auto px-6 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {DAYS.map((d,i) => {
@@ -114,9 +114,9 @@ export function PlanyoBooking(){
               <button key={i} onClick={()=>setDay(d)}
                 className={`flex shrink-0 flex-col items-center rounded-2xl border px-3.5 py-2.5 transition-all
                   ${on ? 'accent-ring border-transparent bg-white/[.06]' : 'border-white/10 bg-white/[.02] hover:border-white/20 hover:bg-white/[.04]'}`}>
-                <span className="text-[11px] uppercase tracking-wide text-white/45">{i===0?'today':i===1?'tmrw':d.toLocaleDateString('en-GB',{weekday:'short'})}</span>
+                <span className="text-[11px] uppercase tracking-wide text-white/60">{i===0?'today':i===1?'tmrw':d.toLocaleDateString('en-GB',{weekday:'short'})}</span>
                 <span className="tnum mt-0.5 text-[16px] font-semibold">{d.getDate()}</span>
-                <span className="text-[11px] text-white/40">{d.toLocaleDateString('en-GB',{month:'short'})}</span>
+                <span className="text-[11px] text-white/60">{d.toLocaleDateString('en-GB',{month:'short'})}</span>
               </button>
             );
           })}
@@ -125,13 +125,13 @@ export function PlanyoBooking(){
         {/* step 3 — hand off to Planyo */}
         <Glass strong className="mt-10 flex flex-col items-center justify-between gap-5 rounded-[26px] p-6 md:flex-row md:p-7">
           <div className="text-center md:text-left">
-            <div className="text-[12px] uppercase tracking-[.18em] text-white/40">3 · check availability &amp; book</div>
+            <div className="text-[12px] uppercase tracking-[.18em] text-white/60">3 · check availability &amp; book</div>
             <div className="mt-1.5 text-[16px] font-medium">
               {active ? active.name : <span className="text-white/50">any pitch</span>}
               <span className="text-white/30"> · </span>
               {dayLabel || <span className="text-white/50">any day</span>}
             </div>
-            <p className="mt-1 text-[12.5px] text-white/45">Opens our secure Planyo booking page with real-time availability &amp; card payment.</p>
+            <p className="mt-1 text-[12.5px] text-white/60">Opens our secure Planyo booking page with real-time availability &amp; card payment.</p>
           </div>
           <a href={href} target="_blank" rel="noreferrer" className="w-full md:w-auto">
             <Btn kind="primary" size="lg" className="w-full md:w-auto" iconEnd={I.arrow({})}>Check availability &amp; book</Btn>
@@ -144,7 +144,7 @@ export function PlanyoBooking(){
             <span className="accent-text" style={{ width: 12, height: 12 }}>{I.shield({})}</span>
             Booking &amp; payment secured by Planyo
           </span>
-          <span className="text-[12px] text-white/45">
+          <span className="text-[12px] text-white/60">
             Prefer to talk?{' '}
             <a href={'tel:'+CONTACT.phone.replace(/\s/g,'')} className="accent-text hover:underline">{CONTACT.phone}</a>
           </span>

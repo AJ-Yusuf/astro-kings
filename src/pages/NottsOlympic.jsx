@@ -71,7 +71,7 @@ const SUPPORT = [
 ];
 
 const PARTNERS = [
-  { name:'Social Kicks',     to:'http://socialkicks.co.uk' },
+  { name:'Social Kicks',     to:'https://www.socialkicks.co.uk' },
   { name:'Notts Senior League', to:SENIOR_LEAGUE },
 ];
 

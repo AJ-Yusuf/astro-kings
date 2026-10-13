@@ -1,27 +1,11 @@
-# Cloudflare security headers.
-#
-# This file replaces vercel.json, which Cloudflare ignores completely (same way
-# .htaccess only works on Apache). Lives in public/ so Vite copies it into dist/
-# at build time. Rules are a direct port of what was in vercel.json.
-#
-# ⚠️ TEST AFTER DEPLOYING. A CSP that's too strict breaks things silently — open
-# the live site, press Cmd+Opt+J for the console, and look for red
-# "Refused to..." errors. See the note on style-src below.
+# Cloudflare Pages security headers (used only if the site is hosted there).
+# Mirrors vercel.json exactly; vite.config.js refuses to run if they differ.
+# Vercel ignores this file; Apache uses public/.htaccess.
 
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.planyo.com https://planyo.com https://maps.google.com https://www.google.com https://www.youtube-nocookie.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
-
-# NOTE ON style-src 'unsafe-inline':
-# vercel.json did NOT include 'unsafe-inline' in style-src. This codebase uses
-# React inline styles (style={{...}}) heavily — every one of those becomes an
-# inline style attribute, which CSP blocks without 'unsafe-inline'. Without it
-# the site renders with large parts of its styling missing.
-#
-# It has been added here so the site works. It is a genuine (small) weakening of
-# the policy: it permits inline styles, not inline scripts, so the XSS risk is
-# limited. Removing it properly would mean refactoring the inline styles into
-# CSS classes — worth doing eventually, not before launch.
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; frame-src https://maps.google.com https://www.google.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests

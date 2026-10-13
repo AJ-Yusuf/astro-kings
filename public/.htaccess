@@ -21,16 +21,19 @@
     # working — if the certificate breaks, the site becomes unreachable.
     # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
+    # Isolate this site's browsing context from windows it didn't open.
+    Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+
     # Content Security Policy — controls what the page is allowed to load.
-    # Allows only: Google Fonts, Cloudflare Turnstile (script + frame + verify),
-    # Formspree (form submissions), and the embedded Planyo booking widget,
-    # Google Map and YouTube (nocookie) videos. No 'unsafe-inline'/'unsafe-eval'.
+    # Allows only: Cloudflare Turnstile (script + frame + verify), Formspree
+    # (form submissions) and the Google Map (loaded only after a visitor clicks
+    # "show map"). Fonts are self-hosted. No 'unsafe-inline'/'unsafe-eval'.
     # ⚠️ If a feature breaks after deploying, check the browser console — it
     # will name whatever CSP blocked, and that exact domain needs adding here.
     # vite.config.js reads these lines so `npm run preview` tests the same policy.
     # The live site is on Vercel, which ignores this file: vercel.json carries the
     # same headers, and vite.config.js refuses to run if the two differ.
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-src https://www.planyo.com https://planyo.com https://maps.google.com https://www.google.com https://www.youtube-nocookie.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; frame-src https://maps.google.com https://www.google.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 </IfModule>
 
 # ---------------------------------------------------------------- MIME types

@@ -15,9 +15,16 @@ const htaccessHeaders = () => Object.fromEntries(
 const vercelHeaders = () => Object.fromEntries(
   JSON.parse(readFileSync('vercel.json', 'utf8')).headers.find(h => h.source === '/(.*)').headers.map(h => [h.key, h.value])
 );
+/* Cloudflare Pages reads public/_headers ("  Name: value" lines under "/*"). */
+const cloudflareHeaders = () => Object.fromEntries(
+  readFileSync('public/_headers', 'utf8').split('\n')
+    .filter(l => /^\s+[\w-]+: /.test(l))
+    .map(l => { const i = l.indexOf(': '); return [l.slice(0, i).trim(), l.slice(i + 2).trim()]; })
+);
 const headers = htaccessHeaders();
-if (JSON.stringify(headers) !== JSON.stringify(vercelHeaders()))
-  throw new Error('Security headers differ between public/.htaccess and vercel.json — update both.');
+const expected = JSON.stringify(vercelHeaders());
+if (JSON.stringify(headers) !== expected || JSON.stringify(cloudflareHeaders()) !== expected)
+  throw new Error('Security headers differ between vercel.json, public/.htaccess and public/_headers — update all three.');
 
 export default defineConfig({
   plugins: [react()],

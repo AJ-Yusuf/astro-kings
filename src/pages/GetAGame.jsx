@@ -123,7 +123,7 @@ export function GetAGame(){
         </div>
         {/* coral banner divider with the downward notch, mirroring the live site */}
         <div className="relative z-10 accent-bg py-5">
-          <div className="mx-auto max-w-6xl px-6 text-center text-[13px] font-medium uppercase tracking-[.2em] text-[#0b0b0b]/80">
+          <div className="mx-auto max-w-6xl px-6 text-center text-[13px] font-medium uppercase tracking-[.2em] text-[#0b0b0b]">
             all standards welcome · no team needed
           </div>
           <div className="absolute left-1/2 top-full h-0 w-0 -translate-x-1/2 border-x-[18px] border-x-transparent border-t-[16px]" style={{borderTopColor:'var(--accent)'}}></div>
@@ -222,7 +222,7 @@ export function GetAGame(){
         <p className="mt-3 text-[15px] text-white/60">Contact us on <span className="accent-text">{CONTACT.phone}</span> for more information.</p>
       </section>
       <div className="mx-auto mt-10 max-w-6xl px-6">
-        <div className="aspect-[21/9] w-full overflow-hidden rounded-[30px] glass">
+        <div className="aspect-[21/9] min-h-[230px] w-full overflow-hidden rounded-[30px] glass">
           <Map className="h-full w-full" />
         </div>
       </div>

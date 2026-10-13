@@ -32,7 +32,7 @@ export function Privacy(){
         sub="How Astro Kings collects, uses and protects your personal information." />
 
       <div className="mx-auto max-w-2xl px-6 pb-16">
-        <p className="mt-8 text-[13px] text-white/40">Last updated: September 2026</p>
+        <p className="mt-8 text-[13px] text-white/60">Last updated: October 2026</p>
 
         <Section title="Who we are">
           <p>
@@ -44,7 +44,7 @@ export function Privacy(){
             We are the data controller for the personal information described in
             this policy, and we are registered with the Information
             Commissioner’s Office (ICO) in the UK. You can reach us at{' '}
-            <a href={'mailto:'+CONTACT.email} className="accent-text hover:underline">{CONTACT.email}</a>{' '}
+            <a href={'mailto:'+CONTACT.email} className="accent-text underline">{CONTACT.email}</a>{' '}
             or {CONTACT.phone}.
           </p>
         </Section>
@@ -69,7 +69,7 @@ export function Privacy(){
             Photographs of children used on this website are published with the
             consent of their parent or guardian. If you would like a photograph
             removed, or a child’s details deleted, contact us at{' '}
-            <a href={'mailto:'+CONTACT.email} className="accent-text hover:underline">{CONTACT.email}</a> and we will do so.
+            <a href={'mailto:'+CONTACT.email} className="accent-text underline">{CONTACT.email}</a> and we will do so.
           </p>
         </Section>
 
@@ -96,6 +96,14 @@ export function Privacy(){
           <p>
             <span className="text-white/85">Formspree</span> — the service that
             delivers enquiry and sign-up forms from this site to our inbox.
+            Formspree is a US company, so your form details may be processed
+            outside the UK.
+          </p>
+          <p>
+            <span className="text-white/85">Google</span> — the map on some pages
+            is provided by Google. It is not loaded until you click “show map”;
+            when you do, Google receives your IP address and may set cookies under
+            its own privacy policy.
           </p>
           <p>
             We may also share information with regulators, the police or other
@@ -128,20 +136,23 @@ export function Privacy(){
             You have the right to ask us for a copy of the information we hold
             about you, to have it corrected or deleted, and to object to how we
             use it. To do any of these, email{' '}
-            <a href={'mailto:'+CONTACT.email} className="accent-text hover:underline">{CONTACT.email}</a>.
+            <a href={'mailto:'+CONTACT.email} className="accent-text underline">{CONTACT.email}</a>.
           </p>
           <p>
             If you are unhappy with how we have handled your information, you can
             complain to the Information Commissioner's Office at{' '}
-            <a href="https://ico.org.uk" target="_blank" rel="noreferrer" className="accent-text hover:underline">ico.org.uk</a>.
+            <a href="https://ico.org.uk" target="_blank" rel="noreferrer" className="accent-text underline">ico.org.uk</a>.
           </p>
         </Section>
 
         <Section title="Cookies">
           <p>
             This website does not set advertising or analytics cookies, and does
-            not track you across other websites. The embedded booking widget and
-            map may set cookies that are necessary for them to work.
+            not track you across other websites. Fonts are served from this site. The
+            map (only after you click “show map”) and the Cloudflare Turnstile
+            check on the Get a Game form may set cookies of their own, and
+            Planyo, our booking provider, may do so once you leave this site to
+            book. We do not control those cookies.
           </p>
         </Section>
       </div>
