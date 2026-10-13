@@ -30,7 +30,6 @@ function TrustRow(){
   const items = [
     { icon: I.bolt,  label:'Instant confirmation' },
     { icon: I.lock,  label:'Secure card payment' },
-    { icon: I.clock, label:'Free cancellation 48h before' },
   ];
   return (
     <div className="mt-6 flex flex-wrap items-center gap-x-7 gap-y-2.5">
@@ -140,7 +139,7 @@ export function PlanyoBooking(){
 
         {/* fallbacks */}
         <div className="mt-5 flex flex-wrap items-center justify-between gap-3 px-1">
-          <span className="flex items-center gap-1.5 text-[11px] text-white/35">
+          <span className="flex items-center gap-1.5 text-[11px] text-white/60">
             <span className="accent-text" style={{ width: 12, height: 12 }}>{I.shield({})}</span>
             Booking &amp; payment secured by Planyo
           </span>

@@ -42,7 +42,7 @@ export function Calendar({ value, onChange, className='', big=false }){
         <NavBtn onClick={()=>shiftYear(1)} label="next year">»</NavBtn>
       </div>
 
-      <div className={`mt-3 grid grid-cols-7 text-center uppercase tracking-wide text-white/35 ${big?'gap-1.5 text-[11px]':'gap-1 text-[10px]'}`}>
+      <div className={`mt-3 grid grid-cols-7 text-center uppercase tracking-wide text-white/60 ${big?'gap-1.5 text-[11px]':'gap-1 text-[10px]'}`}>
         {WEEK.map(w=><div key={w}>{w}</div>)}
       </div>
       <div className={`mt-1 grid grid-cols-7 ${big?'gap-1.5':'gap-1'}`}>

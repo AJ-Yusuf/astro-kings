@@ -87,8 +87,16 @@ export const GOOGLE_REVIEWS_URL = '';
    always whatever Planyo calculates at booking time — these are for display
    and must be kept in step with Planyo's pricing manager. */
 export const MAX_HOURS      = 2;     // longest bookable run shown in marketing copy
-export const CANCEL_WINDOW_HRS = 48; // shown in the cancellation policy text
 export const PAYPLAY_PRICE  = 4.5;   // U18 daily pay & play, per person
+/* No cancellation window is shown anywhere until the venue confirms the policy
+   set in Planyo — an unconfirmed "free cancellation" promise is a misleading
+   claim under the DMCC Act 2024. */
+
+/* ---------------------------------------------------------------- subs bench */
+/* Get a Game adds people to a WhatsApp group of adult players, where every
+   member sees every other member's name and phone number. Under-18s are turned
+   away (safeguarding). ⚠️ Owner to confirm the age — change it here only. */
+export const SUBS_BENCH_MIN_AGE = 18;
 
 /* ---------------------------------------------------------------- security */
 

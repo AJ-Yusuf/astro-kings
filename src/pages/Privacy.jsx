@@ -13,6 +13,7 @@
    updating this page. */
 
 import { CONTACT } from '../lib/data.js';
+import { SUBS_BENCH_MIN_AGE } from '../lib/config.js';
 import { PageHead } from '../components/ui.jsx';
 import { Footer } from '../components/Nav.jsx';
 
@@ -53,7 +54,7 @@ export function Privacy(){
           <p>Depending on how you use the site, we may collect:</p>
           <ul className="space-y-1.5 pl-4">
             <li>· <span className="text-white/85">Enquiry forms:</span> your name, email address, phone number and the message you send us.</li>
-            <li>· <span className="text-white/85">Subs Bench / Get a Game sign-up:</span> your name, email, phone number, age and preferred playing days.</li>
+            <li>· <span className="text-white/85">Subs Bench / Get a Game sign-up:</span> your name, email, phone number, age and preferred playing days. The Subs Bench is for adults only ({SUBS_BENCH_MIN_AGE} and over).</li>
             <li>· <span className="text-white/85">Bookings:</span> pitch bookings and payments are handled by our booking provider, Planyo. When you book, your details are collected by Planyo under their own privacy policy, not by this website.</li>
           </ul>
         </Section>
@@ -89,9 +90,18 @@ export function Privacy(){
             provider, who process bookings and card payments on our behalf.
           </p>
           <p>
-            <span className="text-white/85">Cloudflare</span> — we use Cloudflare
-            Turnstile to check that form submissions come from a real person and
-            not an automated bot.
+            <span className="text-white/85">Cloudflare</span> — hosts this
+            website, so it receives your IP address and basic request details
+            when you visit. We also use Cloudflare Turnstile on our forms to
+            check that submissions come from a real person and not an automated
+            bot.
+          </p>
+          <p>
+            <span className="text-white/85">WhatsApp (Meta)</span> — if you join
+            the Subs Bench, we add your name and phone number to our Subs Bench
+            WhatsApp group. Everyone else in the group can see them, and WhatsApp
+            processes them under its own privacy policy. You can leave the group
+            at any time, or ask us to remove you.
           </p>
           <p>
             <span className="text-white/85">Formspree</span> — the service that
@@ -150,7 +160,7 @@ export function Privacy(){
             This website does not set advertising or analytics cookies, and does
             not track you across other websites. Fonts are served from this site. The
             map (only after you click “show map”) and the Cloudflare Turnstile
-            check on the Get a Game form may set cookies of their own, and
+            check on our forms may set cookies of their own, and
             Planyo, our booking provider, may do so once you leave this site to
             book. We do not control those cookies.
           </p>

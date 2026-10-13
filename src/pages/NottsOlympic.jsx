@@ -305,7 +305,7 @@ export function NottsOlympic(){
 
       {/* ---------- partners ---------- */}
       <section className="mx-auto mt-20 max-w-6xl px-6">
-        <div className="text-center text-[11px] uppercase tracking-[.24em] text-white/40">proudly working with</div>
+        <div className="text-center text-[11px] uppercase tracking-[.24em] text-white/60">proudly working with</div>
         <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
           {PARTNERS.map(p=>(
             <a key={p.name} href={p.to} target="_blank" rel="noreferrer"

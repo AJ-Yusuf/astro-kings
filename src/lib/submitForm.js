@@ -21,6 +21,14 @@ export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export const PHONE_RE = /^[0-9 +()-]{7,20}$/;
 export const PHONE_PATTERN = '[0-9 +\\(\\)\\-]{7,20}';   // HTML pattern attribute version
 
+/* 'missing' | 'invalid' | 'under' | 'ok' */
+export function checkAge(raw, min){
+  const s = String(raw ?? '').trim();
+  if (!s) return 'missing';
+  if (!/^\d{1,3}$/.test(s) || Number(s) > 120) return 'invalid';
+  return Number(s) < min ? 'under' : 'ok';
+}
+
 /* resolves 'sent' | 'blocked' (honeypot tripped — pretend nothing happened);
    throws on network error, timeout or a non-2xx reply */
 export async function submitForm(data, { honeypot = '', token = '' } = {}){

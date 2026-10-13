@@ -3,12 +3,12 @@
 
 import { useState } from 'react';
 import { I } from '../lib/icons.jsx';
-import { ENQUIRY_ENDPOINT } from '../lib/config.js';
+import { ENQUIRY_ENDPOINT, SUBS_BENCH_MIN_AGE } from '../lib/config.js';
 import { scrollToId } from '../lib/router.js';
 import { CONTACT, GETAGAME_VIDEO } from '../lib/data.js';
 import { Glass, Btn, Field } from '../components/ui.jsx';
 import { Turnstile } from '../components/Turnstile.jsx';
-import { submitForm, LIMITS, EMAIL_RE, PHONE_RE, PHONE_PATTERN, HONEYPOT_PROPS } from '../lib/submitForm.js';
+import { submitForm, checkAge, LIMITS, EMAIL_RE, PHONE_RE, PHONE_PATTERN, HONEYPOT_PROPS } from '../lib/submitForm.js';
 import { Map } from '../components/Map.jsx';
 import { Footer } from '../components/Nav.jsx';
 
@@ -23,7 +23,7 @@ const WHATSAPP_ICON = (<svg viewBox="0 0 24 24" fill="currentColor" className="h
 
 function Check({ on, onClick, children }){
   return (
-    <button type="button" onClick={onClick} className="flex items-center gap-2.5 text-[14px] text-white/80">
+    <button type="button" role="checkbox" aria-checked={on} onClick={onClick} className="flex items-center gap-2.5 text-left text-[14px] text-white/80">
       <span className={`grid h-5 w-5 place-items-center rounded-md transition ${on?'accent-bg text-[#0b0b0b]':'border border-white/25'}`}>
         {on ? <span style={{width:13,height:13}}>{I.check({})}</span> : null}
       </span>
@@ -49,7 +49,10 @@ export function GetAGame(){
     if (f.name.length > LIMITS.name) { setErr('Please shorten your name (100 characters max).'); return; }
     if (!EMAIL_RE.test(f.email.trim()) || f.email.length > LIMITS.email) { setErr('Please check your email address.'); return; }
     if (!PHONE_RE.test(f.phone.trim())) { setErr('Please check your contact number.'); return; }
-    if (f.age.trim() && !/^\d{1,3}$/.test(f.age.trim())) { setErr('Please enter your age as a number.'); return; }
+    const age = checkAge(f.age, SUBS_BENCH_MIN_AGE);
+    if (age === 'missing') { setErr('Please add your age.'); return; }
+    if (age === 'invalid') { setErr('Please enter your age as a number.'); return; }
+    if (age === 'under') { setErr(`The Subs Bench is for players aged ${SUBS_BENCH_MIN_AGE} and over. For junior football, ask a parent or guardian to email ${CONTACT.email} or call ${CONTACT.phone}.`); return; }
     if (!token) { setErr('Please complete the captcha to verify you’re human.'); return; }
     if (!confirm) { setErr('Please confirm you’re happy to join the Subs Bench WhatsApp group.'); return; }
 
@@ -144,7 +147,8 @@ export function GetAGame(){
             <h3 className="mt-9 text-[19px] font-medium">The Subs Bench concept</h3>
             <p className="mt-3 text-[15px] leading-relaxed text-white/60">
               Sometimes players drop out at the last minute or can’t make their usual games. So rather than everybody
-              missing out, you can be the super sub by joining their game. All standards are welcome — just register your
+              missing out, you can be the super sub by joining their game. All standards are welcome (players must be
+              {' '}{SUBS_BENCH_MIN_AGE} or over) — just register your
               interest using the form, let us know the days you’re available, and you’ll get an invite to join our Subs
               Bench WhatsApp group.
             </p>
@@ -175,7 +179,7 @@ export function GetAGame(){
 
                 {/* real Cloudflare Turnstile captcha */}
                 <div className="mt-4">
-                  <Turnstile onVerify={(t)=>{setToken(t);setErr('');}} onExpire={()=>setToken('')} />
+                  <Turnstile onVerify={(t)=>{setToken(t);setErr(e=>e.includes('captcha')?'':e);}} onExpire={()=>setToken('')} />
                 </div>
 
                 {err ? <div className="mt-4 rounded-xl border border-red-400/30 bg-red-500/10 px-3 py-2 text-[13px] text-red-200" role="alert">{err}</div> : null}
@@ -184,7 +188,7 @@ export function GetAGame(){
                   <Field label="name" icon={I.user({})}><input name="name" autoComplete="name" required maxLength={LIMITS.name} value={f.name} onChange={set('name')} className="w-full bg-transparent text-[14px] outline-none placeholder:text-white/35" placeholder="First & last" /></Field>
                   <Field label="email" icon={I.user({})}><input name="email" type="email" autoComplete="email" required maxLength={LIMITS.email} value={f.email} onChange={set('email')} className="w-full bg-transparent text-[14px] outline-none placeholder:text-white/35" placeholder="you@email.com" /></Field>
                   <Field label="contact number" icon={I.user({})}><input name="phone" type="tel" autoComplete="tel" required maxLength={LIMITS.phone} pattern={PHONE_PATTERN} value={f.phone} onChange={set('phone')} className="w-full bg-transparent text-[14px] tnum outline-none placeholder:text-white/35" placeholder="07…" /></Field>
-                  <Field label="age" icon={I.user({})}><input name="age" inputMode="numeric" maxLength={3} value={f.age} onChange={set('age')} className="w-full bg-transparent text-[14px] tnum outline-none placeholder:text-white/35" placeholder="18" /></Field>
+                  <Field label={`age (${SUBS_BENCH_MIN_AGE}+)`} icon={I.user({})}><input name="age" inputMode="numeric" required maxLength={3} value={f.age} onChange={set('age')} className="w-full bg-transparent text-[14px] tnum outline-none placeholder:text-white/35" placeholder="18" /></Field>
                 </div>
 
                 <div className="mt-5">
@@ -196,13 +200,13 @@ export function GetAGame(){
 
                 <div className="mt-5">
                   <Check on={confirm} onClick={()=>{setConfirm(c=>!c);setErr('');}}>
-                    <span className="text-[13px] leading-snug text-white/70">I confirm I’m happy to be added to the Subs Bench WhatsApp group to find out when games are available.</span>
+                    <span className="text-[13px] leading-snug text-white/70">I confirm I’m {SUBS_BENCH_MIN_AGE} or over and happy to be added to the Subs Bench WhatsApp group to find out when games are available. I understand other group members will see my name and phone number.</span>
                   </Check>
                 </div>
 
                 <input {...HONEYPOT_PROPS} value={trap} onChange={e=>setTrap(e.target.value)} />
                 <Btn kind="primary" size="lg" className="mt-6 w-full" iconEnd={I.arrow({})} onClick={submit} disabled={sending}>{sending ? 'sending…' : 'get on the bench'}</Btn>
-                <p className="mt-3 text-center text-[11px] leading-relaxed text-white/35">
+                <p className="mt-3 text-center text-[11px] leading-relaxed text-white/60">
                   We use your details only to run the Subs Bench. See our{' '}
                   <a href="#privacy" className="underline hover:text-white/60">privacy policy</a>.
                 </p>

@@ -110,7 +110,7 @@ export function TopNav(){
                 <a key={l.id} href={'#'+l.id} aria-current={name===l.id?'page':undefined}
                    className={`flex items-center justify-between rounded-2xl px-4 py-3.5 text-[15px] transition-colors ${name===l.id?'accent-text bg-white/[.06]':'text-white/85'} hover:bg-white/10`}>
                   <span className="flex items-center gap-3">
-                    <span className="grid h-6 w-6 place-items-center rounded-full text-[11px] tnum text-white/35">{String(i+1).padStart(2,'0')}</span>
+                    <span className="grid h-6 w-6 place-items-center rounded-full text-[11px] tnum text-white/60">{String(i+1).padStart(2,'0')}</span>
                     {l.label}
                   </span>
                   <span className="text-white/30" style={{width:18,height:18}}>{I.chev({})}</span>
@@ -157,19 +157,19 @@ export function Footer(){
               </div>
             </div>
             <div>
-              <div className="text-[11px] uppercase tracking-[.2em] text-white/40">play</div>
+              <div className="text-[11px] uppercase tracking-[.2em] text-white/60">play</div>
               <ul className="mt-4 space-y-2.5 text-[14px] text-white/65">
                 {ALL_LINKS.slice(0,5).map(l=>(<li key={l.id}><a href={'#'+l.id} className="hover:text-white">{l.label}</a></li>))}
               </ul>
             </div>
             <div>
-              <div className="text-[11px] uppercase tracking-[.2em] text-white/40">more</div>
+              <div className="text-[11px] uppercase tracking-[.2em] text-white/60">more</div>
               <ul className="mt-4 space-y-2.5 text-[14px] text-white/65">
                 {ALL_LINKS.slice(5).map(l=>(<li key={l.id}><a href={'#'+l.id} className="hover:text-white">{l.label}</a></li>))}
               </ul>
             </div>
             <div>
-              <div className="text-[11px] uppercase tracking-[.2em] text-white/40">visit us</div>
+              <div className="text-[11px] uppercase tracking-[.2em] text-white/60">visit us</div>
               <ul className="mt-4 space-y-3 text-[14px] text-white/65">
                 <li className="flex items-start gap-2.5"><span className="mt-0.5 text-white/40" style={{width:17,height:17}}>{I.pin({})}</span><a href={CONTACT.maps} target="_blank" rel="noreferrer" className="hover:text-white">{CONTACT.addr}</a></li>
                 <li className="flex items-center gap-2.5"><span className="text-white/40" style={{width:17,height:17}}>{I.clock({})}</span>Mon–Fri 08–22 · Sat–Sun 08–20</li>
@@ -178,9 +178,9 @@ export function Footer(){
               </ul>
             </div>
           </div>
-          <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-[12px] text-white/40 md:flex-row md:items-center md:justify-between">
+          <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-[12px] text-white/60 md:flex-row md:items-center md:justify-between">
             <span>© 2016–2026 Astro Kings · All rights reserved · <a href="#privacy" className="hover:text-white/70 underline">Privacy policy</a></span>
-            <span className="flex items-center gap-1.5"><span className="text-white/30">Nottingham NG8</span> · floodlit 4G 5-a-side</span>
+            <span className="flex items-center gap-1.5"><span>Nottingham NG8</span> · floodlit 4G 5-a-side</span>
           </div>
         </Glass>
       </div>

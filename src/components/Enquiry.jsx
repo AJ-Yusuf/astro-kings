@@ -14,12 +14,14 @@ import { ENQUIRY_ENDPOINT } from '../lib/config.js';
 import { submitForm, LIMITS, EMAIL_RE, PHONE_RE, PHONE_PATTERN, HONEYPOT_PROPS } from '../lib/submitForm.js';
 import { CONTACT } from '../lib/data.js';
 import { Btn, Field } from './ui.jsx';
+import { Turnstile } from './Turnstile.jsx';
 
 const INPUT = 'w-full bg-transparent text-[14px] outline-none placeholder:text-white/35';
 
 export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we help?', labels = true, source = 'website' }){
   const [v,setV]   = useState({ name:'', phone:'', email:'', message:'' });
   const [trap,setTrap] = useState('');   // honeypot — see submitForm.js
+  const [token,setToken] = useState('');  // Cloudflare Turnstile — see config.js
   const [err,setErr]   = useState('');
   const [done,setDone] = useState(false);
   const set = (k)=>(e)=>{ setV(s=>({...s,[k]:e.target.value})); setErr(''); };
@@ -33,6 +35,7 @@ export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we he
     if (!EMAIL_RE.test(v.email.trim()) || v.email.length > LIMITS.email) { setErr('Please check your email address.'); return; }
     if (v.phone.trim() && !PHONE_RE.test(v.phone.trim())) { setErr('Please check your phone number.'); return; }
     if (v.message.length > LIMITS.message) { setErr('Please shorten your message (2000 characters max).'); return; }
+    if (!token) { setErr('Please complete the captcha to verify you’re human.'); return; }
 
     // No endpoint configured yet - never pretend the message was sent.
     if (!ENQUIRY_ENDPOINT) {
@@ -49,7 +52,7 @@ export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we he
         _subject: `Website enquiry — ${source}`,
         _replyto: v.email,
         page: source,
-      }, { honeypot: trap });
+      }, { honeypot: trap, token });
       setDone(true);
     } catch (_) {
       setErr(`Sorry — we couldn't send that. Please email ${CONTACT.email} or call ${CONTACT.phone}.`);
@@ -78,9 +81,10 @@ export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we he
         <textarea name="message" rows="3" maxLength={LIMITS.message} value={v.message} onChange={set('message')} aria-label={labels?undefined:'message'} className="glass glass-soft w-full rounded-2xl px-4 py-3 text-[14px] outline-none placeholder:text-white/35" placeholder={placeholder}></textarea>
       </label>
       <input {...HONEYPOT_PROPS} value={trap} onChange={e=>setTrap(e.target.value)} />
+      <Turnstile onVerify={(t)=>{setToken(t);setErr(e=>e.includes('captcha')?'':e);}} onExpire={()=>setToken('')} />
       {err ? <div className="text-[13px] text-red-200" role="alert">{err}</div> : null}
       <Btn kind="primary" size="lg" type="submit" className="w-full" disabled={sending} iconEnd={I.arrow({})}>{sending ? 'sending…' : cta}</Btn>
-      <p className="text-center text-[11px] leading-relaxed text-white/35">
+      <p className="text-center text-[11px] leading-relaxed text-white/60">
         We use your details only to reply to your enquiry. See our{' '}
         <a href="#privacy" className="underline hover:text-white/60">privacy policy</a>.
       </p>
