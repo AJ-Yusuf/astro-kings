@@ -9,4 +9,14 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   Cross-Origin-Opener-Policy: same-origin-allow-popups
-  Content-Security-Policy: default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; frame-src https://maps.google.com https://www.google.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; frame-src https://maps.google.com https://www.google.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+
+# WHY style-src KEEPS 'unsafe-inline':
+# This codebase sets ~196 inline style attributes (style={{...}} in JSX). CSP
+# blocks inline style attributes unless 'unsafe-inline' is listed, so without
+# it the live site renders with icon sizing, gradients and spacing missing.
+# The dev server does NOT apply this file, so the breakage only appears on a
+# real deploy — don't remove this without checking the deployed site.
+#
+# It permits inline STYLES, not inline scripts, so the XSS exposure is limited.
+# Removing it properly means moving those 196 inline styles into CSS classes.
