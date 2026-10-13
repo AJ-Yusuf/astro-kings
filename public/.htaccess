@@ -34,7 +34,7 @@
     # vite.config.js reads these lines so `npm run preview` tests the same policy.
     # The live site is on Cloudflare Workers, which ignores this file and reads
     # public/_headers; vite.config.js refuses to run if the header sets differ.
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; frame-src https://maps.google.com https://www.google.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://challenges.cloudflare.com; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; frame-src https://maps.google.com https://www.google.com https://challenges.cloudflare.com; connect-src 'self' https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 </IfModule>
 
 # ---------------------------------------------------------------- MIME types

@@ -37,6 +37,7 @@ export function GetAGame(){
   const [days,setDays] = useState([]);
   const [confirm,setConfirm] = useState(false);
   const [token,setToken] = useState('');
+  const [tsKey,setTsKey] = useState(0);   // bump to render a fresh captcha (tokens are single-use)
   const [err,setErr] = useState('');
   const [done,setDone] = useState(false);
   const [sending,setSending] = useState(false);
@@ -73,6 +74,7 @@ export function GetAGame(){
       }, { honeypot: trap, token });
       setDone(true);
     } catch (_) {
+      setToken(''); setTsKey(k=>k+1);
       setErr(`Sorry — we couldn't send that. Please email ${CONTACT.email} or call ${CONTACT.phone}.`);
     } finally {
       setSending(false);
@@ -171,7 +173,7 @@ export function GetAGame(){
                 <span className="mx-auto grid h-16 w-16 place-items-center rounded-full accent-bg text-[#0b0b0b]"><span style={{width:30,height:30}}>{I.check({})}</span></span>
                 <h3 className="hero-title mt-5 text-2xl font-semibold">You’re on the bench</h3>
                 <p className="mx-auto mt-3 max-w-xs text-[14px] text-white/60">Thanks {f.name.split(' ')[0]}! We’ll add you to the Subs Bench WhatsApp group and ping you when a game needs a sub.</p>
-                <Btn kind="outline" className="mt-6" onClick={()=>{ setDone(false); setF({name:'',email:'',phone:'',age:''}); setDays([]); setConfirm(false); }}>register someone else</Btn>
+                <Btn kind="outline" className="mt-6" onClick={()=>{ setDone(false); setF({name:'',email:'',phone:'',age:''}); setDays([]); setConfirm(false); setToken(''); }}>register someone else</Btn>
               </div>
             ) : (
               <>
@@ -179,7 +181,7 @@ export function GetAGame(){
 
                 {/* real Cloudflare Turnstile captcha */}
                 <div className="mt-4">
-                  <Turnstile onVerify={(t)=>{setToken(t);setErr(e=>e.includes('captcha')?'':e);}} onExpire={()=>setToken('')} />
+                  <Turnstile key={tsKey} onVerify={(t)=>{setToken(t);setErr(e=>e.includes('captcha')?'':e);}} onExpire={()=>setToken('')} />
                 </div>
 
                 {err ? <div className="mt-4 rounded-xl border border-red-400/30 bg-red-500/10 px-3 py-2 text-[13px] text-red-200" role="alert">{err}</div> : null}

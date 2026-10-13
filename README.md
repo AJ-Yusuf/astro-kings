@@ -15,6 +15,15 @@ npm run build      # production build → dist/
 npm run preview    # preview the production build
 ```
 
+## Forms
+
+The enquiry and Subs Bench forms post to `/api/submit`, handled by the
+Cloudflare Worker in `worker/` (config: `wrangler.jsonc`). It verifies the
+Turnstile captcha server-side, re-checks the fields, then forwards to Formspree.
+Settings it needs are listed in `worker/submit.js` and `LAUNCH-CHECKLIST.md`.
+`npm run dev` doesn't run the Worker — to test forms locally:
+`npm run build && npx wrangler dev` (with the secrets passed as `--var`).
+
 ## Screens
 
 Hash-routed (`#home`, `#browse`, …) so it deploys as a static site anywhere:
