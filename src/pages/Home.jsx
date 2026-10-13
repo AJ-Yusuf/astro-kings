@@ -39,7 +39,7 @@ function QuickBook({ compact=false }){
         </div>
 
         <Field icon={I.ball({})}>
-          <select aria-label="pitch size" value={size} onChange={e=>setSize(e.target.value)} className="w-full bg-transparent text-[14px] outline-none [&>option]:text-black">
+          <select aria-label="pitch size" value={size} onChange={e=>setSize(e.target.value)} className="w-full bg-transparent text-[14px] outline-hidden [&>option]:text-black">
             {['5v5','7v7','9v9'].map(d=><option key={d}>{d}</option>)}
           </select>
         </Field>
@@ -88,7 +88,7 @@ export function Hero({ variant='stacked' }){
             <div className="mt-8 flex flex-wrap items-center gap-8">{stats}</div>
           </div>
           <div className="fade-up" style={{animationDelay:'.1s'}}>
-            <HeroVideo className="relative aspect-[4/5] w-full" />
+            <HeroVideo className="relative aspect-4/5 w-full" />
             <div className="-mt-16 px-3"><QuickBook compact /></div>
           </div>
         </div>
@@ -99,7 +99,7 @@ export function Hero({ variant='stacked' }){
   if (variant === 'centered') {
     return (
       <header className="media-hero relative overflow-hidden px-6 pt-36 md:pt-44">
-        <HeroVideo className="!absolute inset-x-3 inset-y-3 md:inset-x-4 md:inset-y-4" dim />
+        <HeroVideo className="absolute! inset-x-3 inset-y-3 md:inset-x-4 md:inset-y-4" dim />
         <div className="relative z-10 mx-auto max-w-4xl text-center fade-up">
           <Tag accent className="mb-6">⚡ brand new 4g pitches</Tag>
           <h1 className="hero-title text-[17vw] font-semibold md:text-[9vw]">New <span className="accent-text">4G</span> pitches</h1>
@@ -114,7 +114,7 @@ export function Hero({ variant='stacked' }){
   // 'stacked' (default) — staggered words over a looping video stage
   return (
     <header className="media-hero relative min-h-[88vh] w-full overflow-hidden px-4 md:h-[92vh] md:min-h-[600px] md:px-6">
-      <HeroVideo className="!absolute inset-0 !border-0" rounded="rounded-none" />
+      <HeroVideo className="absolute! inset-0 border-0!" rounded="rounded-none" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56" style={{background:'linear-gradient(to bottom, transparent, rgba(4,7,10,.92))'}}></div>
 
       {/* desktop — staggered scattered words (upper half), CTA + search (lower band, no overlap) */}
@@ -139,7 +139,7 @@ export function Hero({ variant='stacked' }){
         {/* the main event — one booking CTA, front and centre */}
         <div className="absolute inset-x-0 bottom-[10%] flex justify-center fade-up" style={{animationDelay:'.3s'}}>
           <a href={BOOK_HREF} {...BOOK_EXT} aria-label="Book a pitch">
-            <Btn kind="primary" className="h-16 px-12 text-[17px] accent-glow hover:scale-[1.03]" icon={I.ball({})} iconEnd={I.arrow({})}>Book a pitch</Btn>
+            <Btn kind="primary" className="h-16 text-[17px] accent-glow hover:scale-[1.03]" icon={I.ball({})} iconEnd={I.arrow({})}>Book a pitch</Btn>
           </a>
         </div>
       </div>
@@ -162,7 +162,7 @@ export function Hero({ variant='stacked' }){
 function PitchCard({ p, i }){
   return (
     <Glass className="group flex flex-col overflow-hidden rounded-3xl p-3 transition-transform duration-300 hover:-translate-y-1 fade-up" style={{animationDelay:(i*.05)+'s'}}>
-      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl">
+      <div className="relative aspect-16/10 w-full overflow-hidden rounded-2xl">
         <img src={PITCH_PHOTO} alt={p.name} className="absolute inset-0 h-full w-full object-cover" />
         {p.tag ? <span className="absolute right-3 top-3 z-10"><Tag accent>{p.tag}</Tag></span> : null}
       </div>
@@ -203,26 +203,26 @@ export function Section({ eyebrow, title, action, children }){
 }
 
 /* big captioned image tiles — mirrors the live site's "Football" & "What Else" grids */
-export function FeatureTiles({ tiles, cols='md:grid-cols-2', aspect='aspect-[16/10]', big=true }){
+export function FeatureTiles({ tiles, cols='md:grid-cols-2', aspect='aspect-16/10', big=true }){
   return (
     <div className={`grid gap-4 md:gap-5 ${cols}`}>
       {tiles.map((t,i)=>(
         <a key={i} href={'#'+t.to}
            className={`ph group relative block ${aspect} overflow-hidden rounded-[28px] ring-1 ring-white/10 shadow-[0_18px_40px_-24px_rgba(0,0,0,.9)] transition-[transform,box-shadow] duration-500 will-change-transform hover:-translate-y-1.5 hover:shadow-[0_34px_70px_-28px_rgba(0,0,0,.95)] hover:ring-white/25 fade-up ${t.cls||''}`}
            style={{animationDelay:(i*.06)+'s'}}>
-          {t.img ? <img src={t.img} alt={t.t} className="absolute inset-0 h-full w-full object-cover transition-transform duration-[700ms] ease-out group-hover:scale-[1.07]" /> : null}
+          {t.img ? <img src={t.img} alt={t.t} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]" /> : null}
           {/* base legibility gradient + a coral wash that blooms on hover */}
           <div className="pointer-events-none absolute inset-0"
                style={{background:'linear-gradient(to top, rgba(4,7,10,.90), rgba(4,7,10,.20) 56%, rgba(4,7,10,.02))'}}></div>
           <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                style={{background:'radial-gradient(80% 60% at 50% 100%, color-mix(in oklab, var(--accent), transparent 78%), transparent 70%)'}}></div>
           {/* thin top sheen */}
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"></div>
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/25 to-transparent"></div>
 
           <div className="absolute inset-x-0 bottom-0 p-5 text-center md:p-6">
             <div className={`hero-title font-semibold lowercase transition-transform duration-500 group-hover:-translate-y-0.5 ${(t.big ?? big)?'text-3xl md:text-4xl':'text-xl md:text-2xl'}`}>{t.t}</div>
             <div className="mt-1.5 text-[13.5px] leading-snug text-white/70">{t.d}</div>
-            <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-[11px] uppercase tracking-wide text-white/90 backdrop-blur-sm transition-colors duration-300 group-hover:accent-bg group-hover:text-[#0b0b0b]">
+            <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-[11px] uppercase tracking-wide text-white/90 backdrop-blur-xs transition-colors duration-300 group-hover:accent-bg group-hover:text-[#0b0b0b]">
               explore <span className="transition-transform duration-300 group-hover:translate-x-1" style={{width:13,height:13}}>{I.arrow({})}</span>
             </span>
           </div>
@@ -253,7 +253,7 @@ export function Home(){
 
       {/* the 8 headline tiles — the hub: everything the centre offers, booking first */}
       <Section eyebrow="play at astro kings" title="What would you like to do?">
-        <FeatureTiles tiles={HOME_TILES} cols="md:grid-cols-2" aspect="aspect-[16/10]" big={true} />
+        <FeatureTiles tiles={HOME_TILES} cols="md:grid-cols-2" aspect="aspect-16/10" big={true} />
       </Section>
 
       <Section eyebrow="our pitches" title="Choose your format"

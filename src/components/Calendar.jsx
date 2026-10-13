@@ -10,7 +10,7 @@ const WEEK = ['Mo','Tu','We','Th','Fr','Sa','Su'];
 function NavBtn({ onClick, children, label }){
   return (
     <button onClick={onClick} aria-label={label}
-      className="glass glass-soft grid h-8 w-8 place-items-center rounded-full text-[14px] text-white/75 transition hover:bg-white/12">
+      className="glass glass-soft grid h-8 w-8 place-items-center rounded-full text-[14px] text-white/75 transition">
       {children}
     </button>
   );
@@ -56,8 +56,8 @@ export function Calendar({ value, onChange, className='', big=false }){
               className={`grid place-items-center rounded-xl tnum transition ${big?'h-12 text-[15px] md:h-14':'h-9 text-[13px]'}
                 ${past ? 'cursor-not-allowed text-white/20'
                   : isSel ? 'accent-bg font-semibold text-[#0b0b0b]'
-                  : 'glass glass-soft text-white/80 hover:bg-white/12'}
-                ${isToday && !isSel ? 'ring-1 ring-[var(--accent)]' : ''}`}>
+                  : 'glass glass-soft text-white/80'}
+                ${isToday && !isSel ? 'ring-1 ring-(--accent)' : ''}`}>
               {d.getDate()}
             </button>
           );

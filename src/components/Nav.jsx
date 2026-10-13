@@ -49,7 +49,7 @@ function NavItem({ l, name }){
   const active = name===l.id;
   return (
     <a href={'#'+l.id} aria-current={active?'page':undefined}
-       className={`relative rounded-full px-3.5 py-2 text-[13px] transition-colors duration-200 ${active?'text-[#0b0b0b] accent-bg':'text-white/65 hover:text-white hover:bg-white/8'}`}>
+       className={`relative rounded-full px-3.5 py-2 text-[13px] transition-colors duration-200 ${active?'text-[#0b0b0b] accent-bg':'text-white/65 hover:text-white'}`}>
       {l.label}
     </a>
   );
@@ -108,7 +108,7 @@ export function TopNav(){
             <Glass strong className="glass-menu max-h-[calc(100dvh-7rem)] overflow-y-auto overflow-x-hidden rounded-3xl p-2">
               {NAV_LINKS.map((l,i)=>(
                 <a key={l.id} href={'#'+l.id} aria-current={name===l.id?'page':undefined}
-                   className={`flex items-center justify-between rounded-2xl px-4 py-3.5 text-[15px] transition-colors ${name===l.id?'accent-text bg-white/[.06]':'text-white/85'} hover:bg-white/10`}>
+                   className={`flex items-center justify-between rounded-2xl px-4 py-3.5 text-[15px] transition-colors ${name===l.id?'accent-text bg-white/6':'text-white/85'} hover:bg-white/10`}>
                   <span className="flex items-center gap-3">
                     <span className="grid h-6 w-6 place-items-center rounded-full text-[11px] tnum text-white/60">{String(i+1).padStart(2,'0')}</span>
                     {l.label}

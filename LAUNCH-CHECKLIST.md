@@ -137,10 +137,8 @@ differ. The astro-kings.com domain still points at the old Apache site.
 - [ ] Test the full booking journey on mobile and desktop
 - [ ] Confirm booking confirmation emails arrive (customer + venue)
 - [ ] Set up a backup of the Planyo data
-- [ ] Move to Tailwind 4. The remaining `npm audit` warnings (braces,
-      postcss-selector-parser) come from Tailwind 3. They are build-time only
-      and never reach visitors, but clearing them needs the Tailwind 4
-      upgrade, which changes styling and must be checked page by page.
+- [x] Move to Tailwind 4 — done (4.3.3); `npm audit` is at 0. Every page was
+      checked against the Tailwind 3 build at desktop and phone width.
 
 ---
 

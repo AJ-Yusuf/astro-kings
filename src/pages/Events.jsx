@@ -55,7 +55,7 @@ export function Events(){
 
         <div className="relative z-10 mx-auto flex h-full max-w-4xl items-center justify-center px-6 text-center">
           <div className="pop">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[.22em] text-white backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[.22em] text-white backdrop-blur-xs">
               <span className="h-1.5 w-1.5 rounded-full" style={{background:AMBER, boxShadow:`0 0 10px ${AMBER}`}}></span>
               events &amp; experiences
             </span>
@@ -118,7 +118,7 @@ export function Events(){
           <Glass strong className="overflow-hidden rounded-[28px] p-2 fade-up">
             <div className="px-5 py-3 text-center text-[12px] uppercase tracking-[.2em] text-white/45">event ideas</div>
             {ideas.map((x,i)=>(
-              <div key={i} className="flex items-center gap-3 rounded-2xl px-5 py-3 text-[14px] text-white/80 odd:bg-white/[.03]">
+              <div key={i} className="flex items-center gap-3 rounded-2xl px-5 py-3 text-[14px] text-white/80 odd:bg-white/3">
                 <span style={{width:15,height:15,color:i%2?VIOLET:AMBER}}>{I.check({})}</span>{x}
               </div>
             ))}
@@ -147,7 +147,7 @@ export function Events(){
       {/* ---------- event extras ---------- */}
       <Section eyebrow="event extras" title="Finish it in style">
         <Glass strong className="relative overflow-hidden rounded-[30px] p-7 md:p-8">
-          <div className="pointer-events-none !absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{background:VIOLET}}></div>
+          <div className="pointer-events-none absolute! -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{background:VIOLET}}></div>
           {/* TEMPORARY Pexels placeholder (not Astro Kings) — see IMAGE_SOURCES.md */}
           <CardPhoto src="/images/events-celebrate.webp" alt="Young players celebrating together at the side of the pitch" width={1280} height={1024} position="center 40%" className="-mx-7 -mt-7 mb-7 md:-mx-8 md:-mt-8" />
           <p className="relative text-[15px] leading-relaxed text-white/70">Complete your event with food, drink and awards. We hold an alcohol licence, rooms are available for hire, and the on-site kitchen can serve food fit for a king — why not add a video and photos of the day?</p>
@@ -162,7 +162,7 @@ export function Events(){
       {/* ---------- enquire direct ---------- */}
       <section id="events-enquiry" className="mx-auto mt-24 max-w-6xl px-6">
         <Glass strong className="relative overflow-hidden rounded-[34px] p-8 md:p-12">
-          <div className="pointer-events-none !absolute -left-16 -bottom-16 h-64 w-64 rounded-full opacity-20 blur-3xl" style={{background:AMBER}}></div>
+          <div className="pointer-events-none absolute! -left-16 -bottom-16 h-64 w-64 rounded-full opacity-20 blur-3xl" style={{background:AMBER}}></div>
           {/* TEMPORARY Pexels placeholder (not Astro Kings) — see IMAGE_SOURCES.md */}
           <CardPhoto src="/images/events-action.webp" alt="Goalkeeper diving to save a shot" width={1600} height={1067} position="center 36%" h="h-64 sm:h-80 lg:h-96" className="-mx-8 -mt-8 mb-8 md:-mx-12 md:-mt-12 md:mb-10" />
           <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center">

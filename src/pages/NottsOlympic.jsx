@@ -138,7 +138,7 @@ export function NottsOlympic(){
               <span className="h-1.5 w-1.5 rounded-full" style={{background:RED, boxShadow:`0 0 10px ${RED}`}}></span>
               nottingham · founded 1882
             </div>
-            <h1 className="hero-title mt-4 text-5xl font-semibold leading-[1]">Notts Olympic FC</h1>
+            <h1 className="hero-title mt-4 text-5xl font-semibold leading-none">Notts Olympic FC</h1>
             <div className="mt-4 text-[15px] italic tracking-wide text-white/80">“per sempre calcio” — <span className="not-italic text-white/50">forever football</span></div>
           </div>
         </div>
