@@ -14,27 +14,18 @@ differ. The astro-kings.com domain still points at the old Apache site.
 
 ## ⚠️ BLOCKERS — cannot go live without these
 
-- [ ] **Turnstile + Formspree settings in Cloudflare.** The code is done:
-      forms post to `/api/submit` (`worker/submit.js`), which verifies the
-      Turnstile token server-side, re-checks every field (including the Subs
-      Bench minimum age) and only then forwards to Formspree. Until these are
-      set, the forms refuse to send:
-      - Workers → astro-kings → Settings → Build → Variables:
-        `VITE_TURNSTILE_SITE_KEY` = the real site key (dash.cloudflare.com →
-        Turnstile; add the live domain to the widget).
-      - Workers → astro-kings → Settings → Variables and Secrets (type Secret):
-        `TURNSTILE_SECRET_KEY` (that widget's secret key),
-        `FORMSPREE_ENDPOINT` (see next item), `ALLOWED_ORIGINS` (e.g.
-        `https://astro-kings.com,https://www.astro-kings.com` plus the
-        workers.dev URL while testing).
-      Redeploy, then send one test enquiry and one Subs Bench sign-up.
+- [ ] **Real Turnstile site key + server-side verification** —
+      `TURNSTILE_SITE_KEY` is currently Cloudflare's always-passes TEST key and
+      blocks nothing. dash.cloudflare.com → Turnstile. The token must ALSO be
+      verified server-side at /siteverify — until that exists, the captcha is
+      cosmetic even with a real key.
 
-- [ ] **New Formspree form for the venue inbox.** Create a NEW form in
-      Formspree with recipient play@astro-kings.com (add it under Linked
-      Emails first and have the venue confirm it) and put its URL in
-      `FORMSPREE_ENDPOINT`. Don't reuse `formspree.io/f/mvkgdpok`: that URL
-      was published in this repo, so bots can post to it directly and skip the
-      captcha. Disable it once the new form works.
+- [ ] **Switch the Formspree recipient to the venue inbox.** `ENQUIRY_ENDPOINT`
+      is set to `https://formspree.io/f/mvkgdpok` and the enquiry + Subs Bench
+      forms DO submit to it — but it currently delivers to a developer's
+      personal test inbox. In Formspree: add play@astro-kings.com under Linked
+      Emails, have the venue confirm it, then make it the form's recipient
+      (the endpoint URL does not change).
 
 - [ ] **Before pointing astro-kings.com at Cloudflare: HTTPS everywhere.**
       HSTS (`max-age=31536000; includeSubDomains`) is now sent by all three

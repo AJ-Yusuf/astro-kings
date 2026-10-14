@@ -16,7 +16,3 @@ skills-lock.json
 
 # original photos — only the optimised copies in src/assets/images are committed
 images-src/
-
-# Cloudflare Wrangler local state + local secrets
-.wrangler/
-.dev.vars

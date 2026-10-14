@@ -1,15 +1,13 @@
 /* submitForm.js — one place that sends every website form to ENQUIRY_ENDPOINT
-   (/api/submit, worker/submit.js), which verifies the captcha and forwards to
-   Formspree. Never put a secret key in config.js or any VITE_ variable —
-   everything here ships to the browser. Secrets are Worker secrets.
+   (Formspree). The endpoint is public by design; never put a secret API key
+   in config.js or any VITE_ variable — everything here ships to the browser.
 
    - Honeypot: forms render a hidden `_gotcha` input. Real people never see it;
      bots fill it, and then nothing is sent (the bot still sees "sent", so it
      learns nothing). This only stops simple bots — client-side checks are not
-     security; worker/submit.js repeats every check server-side.
-   - Turnstile: pass the widget token and it is sent as `cf-turnstile-response`,
-     then verified server-side by worker/submit.js. Tokens are single-use, so
-     a form must render a fresh widget after a failed send.
+     security; Formspree's own spam filtering is the server-side layer.
+   - Turnstile: pass the widget token and it is sent as `cf-turnstile-response`.
+     It only protects anything once it is verified server-side (see config.js).
    - Times out after 15s so the button can't hang on "sending…" forever.
    - Never logs form contents: personal data must not end up in the console. */
 

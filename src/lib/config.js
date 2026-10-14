@@ -55,18 +55,27 @@ export const planyoUrl = (resourceId, startDate) =>
 
 /* Where enquiry + Subs Bench form submissions go.
 
-   Forms post to our own Worker endpoint (worker/submit.js), which verifies the
-   Turnstile captcha server-side, re-checks the fields (including the Subs
-   Bench minimum age) and only then forwards to Formspree. The Formspree URL is
-   a Worker secret (FORMSPREE_ENDPOINT) and never appears in this code, so bots
-   can't skip the captcha by posting to Formspree directly.
+   ⚠️ REQUIRED BEFORE LAUNCH — currently empty, so the forms tell people to
+   phone or email instead of submitting. They never show a fake "sent" message.
 
-   Recipient: the company inbox (play@astro-kings.com), set in the Formspree
-   account — changing it there needs no code change.
+   Set this to the venue's Formspree form URL:
+     https://formspree.io/f/XXXXXXXX
 
-   Set to '' to switch the forms off: they then tell people to phone or email
-   instead, and never show a fake "sent" message. */
-export const ENQUIRY_ENDPOINT = '/api/submit';
+   To create it: formspree.io → sign up → New Form → set the recipient to the
+   venue's inbox → copy the form's endpoint URL and paste it below.
+   Formspree emails each submission and handles spam filtering, so no backend
+   of our own is needed. The first submission needs confirming by email.
+
+   Each form passes a `source` (which page it came from) into the subject line,
+   and sets reply-to as the customer's address, so hitting reply in the inbox
+   replies straight to them.
+
+   ⚠️ CURRENTLY POINTS AT A PERSONAL INBOX. The Formspree form behind this URL
+   delivers to the developer's own address for testing. Before launch, add the
+   venue's address (play@astro-kings.com) under Linked Emails in the Formspree
+   account, have the venue confirm it by email, then switch the form's
+   recipient. The URL below does NOT change when you do that. */
+export const ENQUIRY_ENDPOINT = 'https://formspree.io/f/mvkgdpok';
 
 /* ---------------------------------------------------------------- reviews */
 /* The venue's Google Business reviews link. Leave '' until the client supplies
@@ -92,15 +101,11 @@ export const SUBS_BENCH_MIN_AGE = 18;
 
 /* ---------------------------------------------------------------- security */
 
-/* Cloudflare Turnstile site key (public by design — the SECRET key is a
-   Worker secret, TURNSTILE_SECRET_KEY, see worker/submit.js).
-   Set VITE_TURNSTILE_SITE_KEY as a build variable in Cloudflare (Workers →
-   astro-kings → Settings → Build → Variables) to the real key from
-   dash.cloudflare.com → Turnstile.
-   Without it, the build falls back to Cloudflare's always-passes TEST key. A
-   test-key token is rejected by a real secret key, so a production build that
-   forgot the variable fails closed rather than letting bots through.
-   (`?.` because the Worker imports this file too, outside Vite.) */
-export const TURNSTILE_SITE_KEY = import.meta.env?.VITE_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
+/* Cloudflare Turnstile site key.
+   ⚠️ This is Cloudflare's ALWAYS-PASSES test key — it blocks nothing.
+   Before launch: replace with the venue's real site key from
+   dash.cloudflare.com → Turnstile, AND verify tokens server-side at
+   /siteverify. Until then, treat forms as unprotected against bots. */
+export const TURNSTILE_SITE_KEY = '1x00000000000000000000AA';
 
 export const pounds = (n) => '£' + Math.round(n);
