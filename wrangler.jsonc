@@ -6,9 +6,6 @@
   "name": "astro-kings",
   "main": "worker/index.js",
   "compatibility_date": "2026-09-01",
-  // Build before every deploy/version upload. Without a config file Workers
-  // Builds auto-detects Vite and builds; with one it doesn't, so say it here.
-  "build": { "command": "npm run build" },
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS"
