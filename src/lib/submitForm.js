@@ -7,7 +7,7 @@
      learns nothing). This only stops simple bots — client-side checks are not
      security; Formspree's own spam filtering is the server-side layer.
    - Turnstile: pass the widget token and it is sent as `cf-turnstile-response`.
-     It only protects anything once it is verified server-side (see config.js).
+     Formspree verifies it server-side (see TURNSTILE_SITE_KEY in config.js).
    - Times out after 15s so the button can't hang on "sending…" forever.
    - Never logs form contents: personal data must not end up in the console. */
 

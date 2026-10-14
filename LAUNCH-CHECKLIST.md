@@ -14,12 +14,6 @@ differ. The astro-kings.com domain still points at the old Apache site.
 
 ## ⚠️ BLOCKERS — cannot go live without these
 
-- [ ] **Real Turnstile site key + server-side verification** —
-      `TURNSTILE_SITE_KEY` is currently Cloudflare's always-passes TEST key and
-      blocks nothing. dash.cloudflare.com → Turnstile. The token must ALSO be
-      verified server-side at /siteverify — until that exists, the captcha is
-      cosmetic even with a real key.
-
 - [ ] **Switch the Formspree recipient to the venue inbox.** `ENQUIRY_ENDPOINT`
       is set to `https://formspree.io/f/mvkgdpok` and the enquiry + Subs Bench
       forms DO submit to it — but it currently delivers to a developer's
@@ -47,15 +41,16 @@ differ. The astro-kings.com domain still points at the old Apache site.
       adds people to a WhatsApp group where everyone sees each other's number.
       Change the number there if the venue wants a different rule.
 
-- [ ] **Formspree dashboard protections.** In the form's settings: restrict
-      submissions to the live domain(s), keep spam filtering on, and — if the
-      plan supports it — add the Turnstile SECRET key so Formspree rejects
-      submissions without a valid token. All forms (enquiry + Get a Game) now
-      send the Turnstile token.
+- [ ] **Formspree dashboard protections.** Turnstile verification is ON
+      (confirmed 14 Oct 2026). Still to check in the form's settings: restrict
+      submissions to the live domain(s) and keep spam filtering on.
 
 - [ ] **Cloudflare account check.** Confirm who owns the Cloudflare account,
       that every member has two-factor login on, and remove anyone who
       shouldn't have access. Turn on build-failure notifications.
+      Workers Builds currently FAILS on every branch except `main` (main
+      builds fine), so PRs get no preview — check the non-production branch
+      build settings (Workers → astro-kings → Settings → Build).
 
 - [ ] **Privacy page legal review.** `src/pages/Privacy.jsx` now names
       Formspree, Planyo, Cloudflare (hosting + Turnstile), WhatsApp/Meta (Subs
@@ -77,12 +72,6 @@ differ. The astro-kings.com domain still points at the old Apache site.
       - Actual data retention periods
       - Is Astro Kings registered with the ICO? (likely required — £40–60/yr)
 
-- [ ] **Check every price on the site against reality.** Prices in the code are
-      display-only; Planyo charges its own. Worth Dan eyeballing:
-      - Pitch prices (£60 / £90) in `src/lib/data.js`
-      - `Pricing.jsx` — "Pay & Play £350/pp" looks like it should be £3.50
-      - `Parties.jsx`, `Leagues.jsx`, `PayAndPlay.jsx`, `Shop.jsx`
-
 - [ ] **Placeholder content across several pages.** Shop has invented products
       and prices; Notts Olympic has no real squad/fixtures; Coaching has
       placeholder crests; GetAGame has a placeholder WhatsApp invite link.
@@ -101,9 +90,13 @@ differ. The astro-kings.com domain still points at the old Apache site.
 
 - Security headers + CSP in `public/_headers` (live), `vercel.json` and
   `public/.htaccess` (X-Frame-Options, nosniff, Referrer-Policy,
-  Permissions-Policy, Cross-Origin-Opener-Policy, no `'unsafe-inline'`
-  styles; `.htaccess` also turns off directory listing and blocks dotfiles).
-  HSTS is still open — see the blockers above.
+  Permissions-Policy, Cross-Origin-Opener-Policy, HSTS; `.htaccess` also
+  turns off directory listing and blocks dotfiles). `style-src` allows
+  `'unsafe-inline'` (inline styles only, never scripts) — see the note in
+  `public/_headers`.
+- Real Turnstile site key live; Formspree verifies tokens server-side
+  (confirmed 14 Oct 2026).
+- Display prices checked against Planyo by the owner (14 Oct 2026).
 - Readex Pro font self-hosted; no Google Fonts requests.
 - Google Map loads only after the visitor clicks "show map" (sandboxed iframe).
 - GitHub Actions workflow: `npm ci`, production dependency audit, build.
@@ -120,6 +113,25 @@ differ. The astro-kings.com domain still points at the old Apache site.
 - Student discount (`.ac.uk` email = discount, trivially spoofed) gone with the
   deleted booking engine.
 - `.agents/`, `.claude/`, `.env` gitignored.
+
+---
+
+## 🚨 If something goes wrong
+
+- **Spam flood through the forms:** Formspree → the form → turn on
+  "Disable submissions" (or rotate the Turnstile secret there). The site
+  keeps working; forms show the phone/email fallback on error.
+- **A key or password leaks:** the only secrets are the Turnstile SECRET key
+  (Cloudflare → Turnstile → rotate, then paste the new one into Formspree)
+  and account logins (change password, check 2FA). Nothing secret is in this
+  repo.
+- **Bad deploy on the live site:** Cloudflare → Workers → astro-kings →
+  Deployments → roll back to the previous version, then revert the PR.
+- **Take the site offline:** Cloudflare → Workers → astro-kings → Settings →
+  Domains & Routes → disable the route/custom domain.
+- **Who to contact:** site owner (Dan), repo + Cloudflare (Suleiman /
+  Daxsintech), developer (AJ). Personal-data breaches may need reporting to
+  the ICO within 72 hours.
 
 ---
 

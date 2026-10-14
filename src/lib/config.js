@@ -55,14 +55,11 @@ export const planyoUrl = (resourceId, startDate) =>
 
 /* Where enquiry + Subs Bench form submissions go.
 
-   ⚠️ REQUIRED BEFORE LAUNCH — currently empty, so the forms tell people to
-   phone or email instead of submitting. They never show a fake "sent" message.
+   If this is ever emptied, the forms tell people to phone or email instead of
+   submitting. They never show a fake "sent" message.
 
-   Set this to the venue's Formspree form URL:
-     https://formspree.io/f/XXXXXXXX
-
-   To create it: formspree.io → sign up → New Form → set the recipient to the
-   venue's inbox → copy the form's endpoint URL and paste it below.
+   To make a new one: formspree.io → New Form → set the recipient to the
+   venue's inbox → copy the form's endpoint URL (https://formspree.io/f/…).
    Formspree emails each submission and handles spam filtering, so no backend
    of our own is needed. The first submission needs confirming by email.
 

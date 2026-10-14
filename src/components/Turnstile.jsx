@@ -1,8 +1,8 @@
 /* Turnstile.jsx — real Cloudflare Turnstile captcha widget.
 
    Loads the Turnstile script once, renders an explicit widget, and reports the
-   verification token via onVerify. Token verification must also happen
-   server-side (/siteverify) before this is production-secure — see config.js. */
+   verification token via onVerify. Formspree checks the token server-side
+   (/siteverify) — see TURNSTILE_SITE_KEY in config.js. */
 
 import { useEffect, useRef } from 'react';
 import { TURNSTILE_SITE_KEY } from '../lib/config.js';
