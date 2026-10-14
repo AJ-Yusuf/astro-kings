@@ -54,5 +54,5 @@ export async function submitForm(data, { honeypot = '', token = '' } = {}){
 /* visually hidden honeypot input — spread onto an <input> */
 export const HONEYPOT_PROPS = {
   type: 'text', name: '_gotcha', tabIndex: -1, autoComplete: 'off', 'aria-hidden': true,
-  className: 'absolute -left-[9999px] h-px w-px opacity-0',
+  className: 'absolute left-[-9999px] h-px w-px opacity-0',
 };

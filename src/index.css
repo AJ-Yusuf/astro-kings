@@ -1,6 +1,43 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Readex Pro', system-ui, -apple-system, sans-serif;
+
+  --color-accent: var(--accent);
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  /* Tailwind v4 dropped v3's pointer cursor on buttons — keep it */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* All site CSS lives in the `utilities` layer, AFTER Tailwind's own utilities.
+   That keeps Tailwind v3's cascade: these rules beat a utility of equal
+   specificity, but lose to more specific ones. Left unlayered, Tailwind v4
+   would let ANY rule here — even `a{color:inherit}` — override every utility
+   class on the element. v3 also emitted variant utilities (hover:, md:…)
+   after this file; v4 can't, so the few clashes are restored explicitly
+   below (search "v3 order"). */
+@layer utilities {
 
 /* ============================================================
    Astro Kings · Stadium Night / Liquid Glass design system
@@ -85,6 +122,9 @@ html[data-grain="off"] .ak-grain{ display:none; }
 .glass-strong{ background:var(--glass-bg-2); }
 .glass-soft{ box-shadow:inset 0 1px 0 var(--glass-hi), 0 10px 30px -16px rgba(0,0,0,.7); }
 .glass > *{ position:relative; z-index:1; }
+/* v3 order: hover:/lg: utilities used with .glass must still win over it */
+@media (hover:hover){ .glass.hover\:bg-white\/10:hover{ background-color:rgba(255,255,255,.10); } }
+@media (width >= 64rem){ .glass.lg\:sticky{ position:sticky; } }
 
 /* Menu surfaces (nav dropdowns + mobile sheet): opaque dark tint so the items
    stay readable over the hero video / bright areas instead of the see-through glass.
@@ -105,6 +145,14 @@ html[data-grain="off"] .ak-grain{ display:none; }
 .accent-glow{ box-shadow:0 14px 44px -12px color-mix(in oklab, var(--accent), transparent 35%); }
 
 .hero-title{ letter-spacing:-0.045em; line-height:.92; }
+/* v3 order: from md up, an md:text-* size sets the line height; below md,
+   .hero-title's .92 wins */
+@media (width >= 48rem){
+  .hero-title.md\:text-4xl{ line-height:var(--text-4xl--line-height); }
+  .hero-title.md\:text-5xl{ line-height:var(--text-5xl--line-height); }
+  .hero-title.md\:text-6xl{ line-height:var(--text-6xl--line-height); }
+  .hero-title.md\:text-7xl{ line-height:var(--text-7xl--line-height); }
+}
 .tnum{ font-variant-numeric:tabular-nums; letter-spacing:-0.03em; }
 
 ::selection{ background:color-mix(in oklab, var(--accent), transparent 55%); color:#fff; }
@@ -141,3 +189,5 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .nav-drop-item:hover .nav-ball{ opacity:1; animation:navBallSpin .9s linear infinite; }
 .nav-drop-item .nav-go{ opacity:0; transform:translateX(-4px); transition:opacity .2s ease, transform .2s ease; }
 .nav-drop-item:hover .nav-go{ opacity:1; transform:translateX(0); }
+
+} /* end @layer utilities */

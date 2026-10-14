@@ -97,7 +97,7 @@ export function GetAGame(){
         <div className="pointer-events-none absolute inset-0" style={{background:'linear-gradient(180deg, rgba(4,7,10,.55), rgba(4,7,10,.82))'}}></div>
 
         <div className="relative z-10 mx-auto max-w-5xl px-6 pt-36 pb-24 text-center md:pt-44 md:pb-28">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[.22em] text-white backdrop-blur-sm">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[.22em] text-white backdrop-blur-xs">
             <span className="h-1.5 w-1.5 rounded-full" style={{background:ELECTRIC, boxShadow:`0 0 10px ${ELECTRIC}`}}></span>
             social kicks · football · friends · every week
           </span>
@@ -129,7 +129,7 @@ export function GetAGame(){
           <div className="mx-auto max-w-6xl px-6 text-center text-[13px] font-medium uppercase tracking-[.2em] text-[#0b0b0b]">
             all standards welcome · no team needed
           </div>
-          <div className="absolute left-1/2 top-full h-0 w-0 -translate-x-1/2 border-x-[18px] border-x-transparent border-t-[16px]" style={{borderTopColor:'var(--accent)'}}></div>
+          <div className="absolute left-1/2 top-full h-0 w-0 -translate-x-1/2 border-x-18 border-x-transparent border-t-16" style={{borderTopColor:'var(--accent)'}}></div>
         </div>
       </section>
 
@@ -185,10 +185,10 @@ export function GetAGame(){
                 {err ? <div className="mt-4 rounded-xl border border-red-400/30 bg-red-500/10 px-3 py-2 text-[13px] text-red-200" role="alert">{err}</div> : null}
 
                 <div className="mt-4 space-y-3.5">
-                  <Field label="name" icon={I.user({})}><input name="name" autoComplete="name" required maxLength={LIMITS.name} value={f.name} onChange={set('name')} className="w-full bg-transparent text-[14px] outline-none placeholder:text-white/35" placeholder="First & last" /></Field>
-                  <Field label="email" icon={I.user({})}><input name="email" type="email" autoComplete="email" required maxLength={LIMITS.email} value={f.email} onChange={set('email')} className="w-full bg-transparent text-[14px] outline-none placeholder:text-white/35" placeholder="you@email.com" /></Field>
-                  <Field label="contact number" icon={I.user({})}><input name="phone" type="tel" autoComplete="tel" required maxLength={LIMITS.phone} pattern={PHONE_PATTERN} value={f.phone} onChange={set('phone')} className="w-full bg-transparent text-[14px] tnum outline-none placeholder:text-white/35" placeholder="07…" /></Field>
-                  <Field label={`age (${SUBS_BENCH_MIN_AGE}+)`} icon={I.user({})}><input name="age" inputMode="numeric" required maxLength={3} value={f.age} onChange={set('age')} className="w-full bg-transparent text-[14px] tnum outline-none placeholder:text-white/35" placeholder="18" /></Field>
+                  <Field label="name" icon={I.user({})}><input name="name" autoComplete="name" required maxLength={LIMITS.name} value={f.name} onChange={set('name')} className="w-full bg-transparent text-[14px] outline-hidden placeholder:text-white/35" placeholder="First & last" /></Field>
+                  <Field label="email" icon={I.user({})}><input name="email" type="email" autoComplete="email" required maxLength={LIMITS.email} value={f.email} onChange={set('email')} className="w-full bg-transparent text-[14px] outline-hidden placeholder:text-white/35" placeholder="you@email.com" /></Field>
+                  <Field label="contact number" icon={I.user({})}><input name="phone" type="tel" autoComplete="tel" required maxLength={LIMITS.phone} pattern={PHONE_PATTERN} value={f.phone} onChange={set('phone')} className="w-full bg-transparent text-[14px] tnum outline-hidden placeholder:text-white/35" placeholder="07…" /></Field>
+                  <Field label={`age (${SUBS_BENCH_MIN_AGE}+)`} icon={I.user({})}><input name="age" inputMode="numeric" required maxLength={3} value={f.age} onChange={set('age')} className="w-full bg-transparent text-[14px] tnum outline-hidden placeholder:text-white/35" placeholder="18" /></Field>
                 </div>
 
                 <div className="mt-5">
@@ -226,7 +226,7 @@ export function GetAGame(){
         <p className="mt-3 text-[15px] text-white/60">Contact us on <span className="accent-text">{CONTACT.phone}</span> for more information.</p>
       </section>
       <div className="mx-auto mt-10 max-w-6xl px-6">
-        <div className="aspect-[21/9] min-h-[230px] w-full overflow-hidden rounded-[30px] glass">
+        <div className="aspect-21/9 min-h-[230px] w-full overflow-hidden rounded-[30px] glass">
           <Map className="h-full w-full" />
         </div>
       </div>

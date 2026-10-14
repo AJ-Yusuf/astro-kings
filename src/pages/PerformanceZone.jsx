@@ -61,7 +61,7 @@ export function PerformanceZone(){
 
         <div className="relative z-10 mx-auto flex h-full max-w-4xl items-center justify-center px-6 text-center">
           <div className="pop">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[.22em] text-white backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[.22em] text-white backdrop-blur-xs">
               <span className="h-1.5 w-1.5 rounded-full" style={{background:VOLT, boxShadow:`0 0 10px ${VOLT}`}}></span>
               1-2-1 · small groups · coaches
             </span>
@@ -111,9 +111,9 @@ export function PerformanceZone(){
       <Section eyebrow="inside the zone" title="Everything a session needs">
         <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
           <Glass strong className="relative overflow-hidden rounded-[30px] p-8">
-            <div className="pointer-events-none !absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{background:VOLT}}></div>
+            <div className="pointer-events-none absolute! -right-16 -top-16 h-56 w-56 rounded-full opacity-20 blur-3xl" style={{background:VOLT}}></div>
             {/* TEMPORARY Pexels placeholder (not Astro Kings) — see IMAGE_SOURCES.md */}
-            <CardPhoto src="/images/pz-team-talk.webp" alt="Coach talking to a young team sitting on an artificial pitch" width={1600} height={869} position="center 35%" h="h-48 sm:h-72 lg:h-[28rem]" className="-mx-8 -mt-8 mb-7" />
+            <CardPhoto src="/images/pz-team-talk.webp" alt="Coach talking to a young team sitting on an artificial pitch" width={1600} height={869} position="center 35%" h="h-48 sm:h-72 lg:h-112" className="-mx-8 -mt-8 mb-7" />
             <p className="relative text-[15px] leading-relaxed text-white/70">
               The Zone runs as <span className="text-white">two dedicated coaching pods</span>, walled off from the main pitches so
               sessions run flat-out without interruption. Every hire comes with the full training set-up ready to go.

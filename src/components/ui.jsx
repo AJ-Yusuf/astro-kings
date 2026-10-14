@@ -55,8 +55,8 @@ export function Btn({ kind='primary', size='md', className='', icon, iconEnd, ch
   let look;
   if (kind==='primary') look = 'text-[#0b0b0b] accent-bg accent-glow hover:brightness-110';
   else if (kind==='glass') look = 'glass glass-soft text-white hover:bg-white/10';
-  else if (kind==='ghost') look = 'text-white/80 hover:text-white hover:bg-white/8';
-  else if (kind==='outline') look = 'text-white border border-white/22 hover:border-white/45 hover:bg-white/5';
+  else if (kind==='ghost') look = 'text-white/80 hover:text-white';
+  else if (kind==='outline') look = 'text-white border hover:border-white/45 hover:bg-white/5';
   const El = href ? 'a' : 'button';
   return (
     <El href={href} className={`${base} ${sz} ${look} ${className}`} {...rest}>
@@ -74,7 +74,7 @@ export function CardPhoto({ src, alt, width, height, position='center', h='h-52 
   return (
     <div className={`relative overflow-hidden ${h} ${className}`}>
       <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" draggable="false" style={{objectPosition:position}} className="absolute inset-0 h-full w-full object-cover" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/45 to-transparent"></div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-t from-black/45 to-transparent"></div>
     </div>
   );
 }
@@ -82,11 +82,11 @@ export function CardPhoto({ src, alt, width, height, position='center', h='h-52 
 /* SectionPhoto — a photo band inside a page section: rounded, hairline border like
    the glass cards, soft fade into the page at the bottom. Pass the image's real
    width/height so the browser reserves space (no layout shift). */
-export function SectionPhoto({ src, alt, width, height, aspect='aspect-[16/10] md:aspect-[21/9]', className='' }){
+export function SectionPhoto({ src, alt, width, height, aspect='aspect-16/10 md:aspect-21/9', className='' }){
   return (
-    <div className={`relative w-full overflow-hidden rounded-[30px] border border-[color:var(--glass-border)] ${aspect} ${className}`}>
+    <div className={`relative w-full overflow-hidden rounded-[30px] border border-(--glass-border) ${aspect} ${className}`}>
       <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" draggable="false" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#06090A]/60 to-transparent"></div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-[#06090A]/60 to-transparent"></div>
     </div>
   );
 }

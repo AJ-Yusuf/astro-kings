@@ -76,7 +76,7 @@ export function Browse(){
           <div className="space-y-4">
             {list.map((p,i)=>(
               <Glass key={p.id} className="grid gap-5 rounded-3xl p-4 md:grid-cols-[200px_1fr] fade-up" style={{animationDelay:(i*.05)+'s'}}>
-                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl md:aspect-auto md:min-h-[150px]">
+                <div className="relative aspect-16/10 overflow-hidden rounded-2xl md:aspect-auto md:min-h-[150px]">
                   <img src={PITCH_PHOTO} alt={p.name} className="absolute inset-0 h-full w-full object-cover" />
                   {p.tag ? <span className="absolute left-3 top-3 z-10"><Tag accent>{p.tag}</Tag></span> : null}
                 </div>
