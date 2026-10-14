@@ -150,7 +150,7 @@ function LeagueCard({ l, i }){
       <div className="relative min-h-[260px] flex-1 overflow-hidden">
         {hasImg ? (
           <img src={l.img} alt={`${l.name} league players`} loading="lazy" onError={()=>setBroken(true)}
-               className="absolute inset-0 h-full w-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-105" />
+               className="absolute inset-0 h-full w-full object-cover transition-transform duration-600 ease-out group-hover:scale-105" />
         ) : (
           <div className="absolute inset-0" style={{background:`linear-gradient(150deg, ${l.c}, ${l.c}22)`}}></div>
         )}
@@ -158,7 +158,7 @@ function LeagueCard({ l, i }){
         <div className="pointer-events-none absolute inset-0" style={{background:'linear-gradient(180deg, rgba(11,21,51,.05) 0%, rgba(11,21,51,.12) 45%, rgba(11,21,51,.9) 100%)'}}></div>
         {/* overlaid tag + name */}
         <div className="absolute inset-x-0 bottom-0 p-6">
-          <span className="rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide backdrop-blur-sm" style={{background:l.c+'33',color:'#fff'}}>{l.tag}</span>
+          <span className="rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide backdrop-blur-xs" style={{background:l.c+'33',color:'#fff'}}>{l.tag}</span>
           <h3 className="hero-title mt-3 text-3xl font-semibold" style={{color:l.c}}>{l.name}</h3>
         </div>
       </div>
@@ -297,7 +297,7 @@ export function Coaching(){
                 <div className="text-[12px] uppercase tracking-[.2em] text-white/45">{t.age}</div>
                 <div className="mt-2 text-[19px] font-medium">{t.days}</div>
               </div>
-              <div className="tnum rounded-2xl bg-white/8 px-4 py-3 text-[18px] font-semibold">{t.time}</div>
+              <div className="tnum rounded-2xl px-4 py-3 text-[18px] font-semibold">{t.time}</div>
             </Glass>
           ))}
         </div>

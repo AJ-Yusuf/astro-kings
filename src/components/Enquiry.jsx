@@ -16,7 +16,7 @@ import { CONTACT } from '../lib/data.js';
 import { Btn, Field } from './ui.jsx';
 import { Turnstile } from './Turnstile.jsx';
 
-const INPUT = 'w-full bg-transparent text-[14px] outline-none placeholder:text-white/35';
+const INPUT = 'w-full bg-transparent text-[14px] outline-hidden placeholder:text-white/35';
 
 export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we help?', labels = true, source = 'website' }){
   const [v,setV]   = useState({ name:'', phone:'', email:'', message:'' });
@@ -78,7 +78,7 @@ export function EnquiryForm({ cta = 'get in touch', placeholder = 'How can we he
       <Field label={labels?'email':undefined} icon={I.user({})}><input name="email" type="email" autoComplete="email" required maxLength={LIMITS.email} value={v.email} onChange={set('email')} className={INPUT} placeholder="you@email.com" aria-label={labels?undefined:'email'} /></Field>
       <label className="block">
         {labels ? <span className="mb-2 block text-[12px] uppercase tracking-wide text-white/45">message</span> : null}
-        <textarea name="message" rows="3" maxLength={LIMITS.message} value={v.message} onChange={set('message')} aria-label={labels?undefined:'message'} className="glass glass-soft w-full rounded-2xl px-4 py-3 text-[14px] outline-none placeholder:text-white/35" placeholder={placeholder}></textarea>
+        <textarea name="message" rows="3" maxLength={LIMITS.message} value={v.message} onChange={set('message')} aria-label={labels?undefined:'message'} className="glass glass-soft w-full rounded-2xl px-4 py-3 text-[14px] outline-hidden placeholder:text-white/35" placeholder={placeholder}></textarea>
       </label>
       <input {...HONEYPOT_PROPS} value={trap} onChange={e=>setTrap(e.target.value)} />
       <Turnstile onVerify={(t)=>{setToken(t);setErr(e=>e.includes('captcha')?'':e);}} onExpire={()=>setToken('')} />

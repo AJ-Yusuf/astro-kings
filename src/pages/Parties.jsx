@@ -44,7 +44,7 @@ export function Parties(){
 
         <div className="relative z-10 mx-auto flex h-full max-w-4xl items-center justify-center px-6 text-center">
           <div className="pop">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[.22em] text-white backdrop-blur-sm">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[.22em] text-white backdrop-blur-xs">
               <span className="h-1.5 w-1.5 rounded-full" style={{background:PINK, boxShadow:`0 0 10px ${PINK}`}}></span>
               kids football parties
             </span>
@@ -89,7 +89,7 @@ export function Parties(){
       {/* ---------- enquire direct ---------- */}
       <section id="party-enquiry" className="mx-auto mt-24 max-w-6xl px-6">
         <Glass strong className="relative overflow-hidden rounded-[34px] p-8 md:p-12">
-          <div className="pointer-events-none !absolute -left-16 -bottom-16 h-64 w-64 rounded-full opacity-20 blur-3xl" style={{background:PINK}}></div>
+          <div className="pointer-events-none absolute! -left-16 -bottom-16 h-64 w-64 rounded-full opacity-20 blur-3xl" style={{background:PINK}}></div>
           {/* TEMPORARY Pexels placeholder (not Astro Kings) — see IMAGE_SOURCES.md */}
           <CardPhoto src="/images/party-christmas.webp" alt="Young players hugging someone dressed as Santa" width={1600} height={1600} position="center 24%" h="h-64 sm:h-80 lg:h-96" className="-mx-8 -mt-8 mb-8 md:-mx-12 md:-mt-12 md:mb-10" />
           <div className="relative grid gap-8 lg:grid-cols-2 lg:items-center">

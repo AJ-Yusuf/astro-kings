@@ -21,7 +21,7 @@ export function Map({ query = VENUE, zoom = 14, className = '' }){
           Google will then receive your IP address.
         </p>
         <button type="button" onClick={() => setShow(true)}
-          className="rounded-full border border-white/30 px-5 py-2 text-[13px] font-medium text-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+          className="rounded-full border border-white/30 px-5 py-2 text-[13px] font-medium text-white hover:bg-white/10 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-white">
           show map
         </button>
         <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`}

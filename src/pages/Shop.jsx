@@ -44,7 +44,7 @@ export function Shop(){
       {/* ---------- hero ---------- */}
       <section className="relative w-full overflow-hidden px-6 pt-28 pb-2 text-center md:pt-32">
         <div className="mx-auto max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[.22em] text-white backdrop-blur-sm">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[.22em] text-white backdrop-blur-xs">
             <span className="h-1.5 w-1.5 rounded-full" style={{background:TEAL, boxShadow:`0 0 10px ${TEAL}`}}></span>
             the football shop
           </span>
@@ -58,7 +58,7 @@ export function Shop(){
               const on = cat===t;
               return (
                 <button key={t} type="button" aria-pressed={on} onClick={()=>setCat(t)}
-                  className="rounded-full px-3 py-1.5 text-[12px] font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                  className="rounded-full px-3 py-1.5 text-[12px] font-medium transition focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2"
                   style={on ? {background:TEAL,color:'#06100f',outlineColor:TEAL} : {background:TEAL+'1a',color:TEAL,outlineColor:TEAL}}>{t}</button>
               );
             })}
@@ -73,7 +73,7 @@ export function Shop(){
             <Glass key={p.name} className="flex flex-col rounded-3xl p-5 transition-transform duration-300 hover:-translate-y-1 fade-up" style={{animationDelay:(i*.05)+'s'}}>
               <div className="text-[16px] font-medium">{p.name}</div>
               <p className="mt-1.5 flex-1 text-[13.5px] leading-relaxed text-white/60">{p.desc}</p>
-              <div className="mt-4 flex items-center gap-2 border-t border-white/8 pt-3">
+              <div className="mt-4 flex items-center gap-2 border-t pt-3">
                 <span style={{width:13,height:13,color:TEAL}}>{I.pin({})}</span>
                 <span className="text-[12.5px] text-white/50">in stock at reception</span>
               </div>
