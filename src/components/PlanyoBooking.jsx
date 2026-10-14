@@ -3,13 +3,13 @@
    FLOW (agreed):
    1. Pick a pitch  (our UI)
    2. Pick a day    (our UI)
-   3. "check availability & book" opens the venue's own Planyo page in a new tab,
-      pre-set to that pitch (resource_id, once mapped in config) and day
-      (start_date, best-effort). Real availability + card payment happen there.
+   3. "check availability & book" opens the venue's own Planyo booking form in a
+      new tab with that pitch selected and that day filled in (see planyoUrl in
+      config.js). Real availability + card payment happen there.
 
    We embed nothing and hold no data — the whole selection just rides along in
-   the Planyo URL. Pitch-filtering activates once PLANYO_PITCH_RESOURCE is filled
-   in config.js. */
+   the Planyo URL. Pitches without a Planyo ID (PLANYO_PITCH_RESOURCE in
+   config.js) open the full calendar instead. */
 
 import { useState } from 'react';
 import { planyoUrl, PLANYO_PITCH_RESOURCE } from '../lib/config.js';

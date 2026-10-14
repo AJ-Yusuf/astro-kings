@@ -28,12 +28,12 @@ const KIT = ['2 coaching pods','Speed ladders & hurdles','Mannequins','Mini-goal
 
 const RATES = [
   {
-    who:'Players & small groups', price:'£30', unit:'/session', tag:'',
+    who:'Players & small groups', price:'£30', unit:'/hr', tag:'',
     note:'Hire the Zone for yourself — up to 1 hour',
     feat:['Full coaching set-up, ready to go','Suitable for 1–6 players','Equipment & footballs included'],
   },
   {
-    who:'Coaches — full day or night', price:'from £60', unit:'', tag:'best for coaches',
+    who:'Coaches — full day or night', price:'from £60', unit:'/day', tag:'best for coaches',
     note:'Take the Zone and run your own clients',
     feat:['The space is exclusively yours','Full coaching set-up included','Advertising board on site','Featured on our socials','Recurring slots get priority'],
   },
