@@ -101,11 +101,12 @@ export const SUBS_BENCH_MIN_AGE = 18;
 
 /* ---------------------------------------------------------------- security */
 
-/* Cloudflare Turnstile site key.
-   ⚠️ This is Cloudflare's ALWAYS-PASSES test key — it blocks nothing.
-   Before launch: replace with the venue's real site key from
-   dash.cloudflare.com → Turnstile, AND verify tokens server-side at
-   /siteverify. Until then, treat forms as unprotected against bots. */
-export const TURNSTILE_SITE_KEY = '1x00000000000000000000AA';
+/* Cloudflare Turnstile site key — the live "Astro Kings" widget.
+   Public by design: it ships in the bundle and is safe there. The matching
+   SECRET key lives only in the Formspree dashboard and must never be
+   committed. Formspree makes the server-side /siteverify call; if that
+   integration is turned off there, tokens stop being validated and the
+   widget protects nothing, however real the key is. */
+export const TURNSTILE_SITE_KEY = '0x4AAAAAAFWDyFt3XXutQ4_l';
 
 export const pounds = (n) => '£' + Math.round(n);
